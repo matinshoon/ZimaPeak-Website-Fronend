@@ -8,8 +8,16 @@
   background: #7ABFFF;
 }
 
+.text-primary {
+  color: #7ABFFF;
+}
+
+.border-primary {
+  border-color: #7ABFFF;
+}
+
 .bg-dark {
-  background: #1e293b;
+  background: #000000;
 }
 
 /* Dark theme */
@@ -24,6 +32,23 @@
 
 .dark .bg {
   background-color: var(--bg-color);
+}
+
+/* Ensure body and html take up full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh; /* Ensures the root element fills the viewport height */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+}
+
+main {
+  flex: 1; /* Takes up available space, pushing the footer down */
 }
 
 /* Light theme */
@@ -80,10 +105,11 @@ body {
 .navbar {
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 1000;
-  background-color: transparent; /* Initially transparent */
-  transition: background-color 0.3s ease; /* Smooth transition for background-color */
+  background-color: transparent;
+  /* Initially transparent */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background-color */
 }
 
 .navbar.dark {
@@ -246,8 +272,8 @@ body {
 }
 
 .glass {
-  background: #7abfff15;
-  backdrop-filter: blur(10px);
+  background: #ffffff20;
+  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -397,7 +423,7 @@ body {
   box-shadow: 0 0 0 1px inset hsl(var(--hsl));
 }
 
-#about .overlay .active {
+#about .overlay .type {
   border-color: hsla(var(--hsl), 1);
   box-shadow: 0 0 0 1px inset hsl(var(--hsl));
 }
@@ -420,18 +446,18 @@ body {
   background: hsla(var(--hsl), 0.1);
 }
 
-#about :not(.overlay)>.active {
+#about :not(.overlay)>.type {
   transition: 400ms background ease;
   will-change: background;
 }
 
-#about :not(.overlay)>.active:hover {
+#about :not(.overlay)>.type:hover {
   background: #1e293b;
   color: #ffffff;
   --lightness: 90%;
 }
 
-#about :not(.overlay)>.active:hover .cta {
+#about :not(.overlay)>.type:hover .cta {
   display: block;
   align-self: end;
   margin: 1em 0 0.5em 0;
@@ -499,19 +525,28 @@ body {
   background: radial-gradient(circle, #3676b3, #1f5089, #123875, #1e293b);
 }
 
+.circle-white-dark {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  width: 5%;
+  height: 800px;
+  border-radius: 20%;
+  overflow: hidden;
+  filter: blur(75px);
+  background: radial-gradient(circle, #ffffff35, #ffffff35);
+}
+
 .circle-gradient-dark::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  /* Cover the entire area */
   height: 100%;
-  /* Cover the entire area */
   background: radial-gradient(circle, #3676b3, #1f5089, #123875, #1e293b);
   filter: blur(100px);
   z-index: -1;
-  /* Ensure the blur layer is behind the main gradient */
 }
 
 .circle-gradient-light {
@@ -549,8 +584,178 @@ body {
 }
 
 .bg-tiles {
-
   background-image: linear-gradient(to right, #7abfff1f 1px, transparent 1px),
     linear-gradient(to bottom, #7abfff1f 1px, transparent 1px);
-  background-size: 100px 100px;
+  background-size: 120px 120px;
+}
+
+.bg-glass {
+  background-color: rgba(171, 171, 171, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.bg-colors {
+  background: url('') no-repeat center center;
+  background-size: cover;
+  padding: 100px;
+}
+
+/* AIzaSyAcYNSxIsZxMyKYDc6IiDJR2D6SRyRG_fM */
+
+/* TimerUi.css */
+
+#timerUi *::-moz-selection {
+  background: transparent;
+  color: inherit;
+}
+
+#timerUi *::selection {
+  background: transparent;
+  color: inherit;
+}
+
+#timerUi *::-moz-selection {
+  background: transparent;
+  color: inherit;
+}
+
+#timerUi * {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+#timerUi {
+  display: block;
+  width: 15em;
+  height: 15em;
+  transition: background-color 3s linear 0s;
+}
+
+#wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-sizing: border-box;    
+}
+
+#timerUi #timeUi, #timerUi #scale, #timerUi #hour, #timerUi #minute, #timerUi #quater, #timerUi #half, #timerUi #third {
+  background-color: transparent;
+  display: block;
+  font-size: 0.6em;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  overflow: visible;
+  border-radius: 50%;
+  transform: translate(-50%,-50%) rotate(90deg);
+}
+
+#timerUi #timeUi .container {
+  background-color: rgba(0,0,0,0);
+  color: #fff;
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  color: transparent;
+  overflow: visible;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}
+
+#timerUi #timeUi .element {
+  display: inline-block;
+  position: relative;
+  width: 2%;
+  height: 2%;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-left: 0;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  transition: background-color 30s linear 0s, margin-left 0.5s ease 0s, width 0.5s ease 0s, height 0.5s ease 0s;
+}
+
+#timerUi #timeUi .element.tick {
+  background-color: #7ABFFF;
+  margin-left: 6.25%;
+  width: 2em;
+  height: 2em;
+  transition: background-color 0.25s ease 0s, margin-left 0.5s ease 0s, width 0.5s ease 0s, height 0.5s ease 0s;
+}
+
+#timerUi #minute {
+  background-color: #7ABFFF;
+  transition: width 0.5s ease 0s, height 0.5s ease 0s;
+  width: 0;
+  height: 0;
+}
+
+#timerUi #scale {
+  position: relative;
+}
+
+#timerUi #quater, #timerUi #half, #timerUi #third {
+  background-color: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0);
+}
+
+#timerUi #quater {
+  width: 25%;
+  height: 25%;
+}
+
+#timerUi #half {
+  width: 50%;
+  height: 50%;
+}
+
+#timerUi #third {
+  width: 75%;
+  height: 75%;
+}
+
+#timerUi #hour {
+  text-align: center;
+  background-color: transparent;
+}
+
+#timerUi #hour > span {
+  color: #fff;
+  background-color: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  display: block;
+  height: 50%;
+  width: 100%;
+  transform: translate(21%,-50%) rotate(-90deg);
+  position: relative;
+  left: 50%;
+  top: 50%;
+  font-size: 4em;
+  margin-left: -3.9em;
+  line-height: 1em;
+  letter-spacing: -0.05em;
+  text-indent: -0.05em;
+}
+
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

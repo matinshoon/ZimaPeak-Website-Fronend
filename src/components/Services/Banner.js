@@ -156,7 +156,7 @@ const Banner = () => {
                         </div>
                     </div>
                     <div className="m-4 rounded-3xl items-center w-[20%] relative h-[50vh] flex flex-col justify-end">
-                        <video src={Card5Vid} className="rounded-3xl w-full h-[50vh] object-cover" autoPlay loop muted />
+                        <video src={Card5Vid} className="rounded-3xl w-full h-[50vh] object-cover" autoPlay loop muted playsInline />
                         <Link to="/booking" className="w-full flex justify-center">
                             <button className={`glass absolute -translate-y-20 text-white z-10 px-6 py-3 rounded-2xl text-lg font-semibold m-2`}>
                                 See how it all works

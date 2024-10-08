@@ -1,12 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ThemeContext } from '../ThemeContext';
-import Navbar from '../components/Navbar';
-import BookEvent from '../components/Booking/BookEvent';
 
 const Privacy = () => {
     const { darkMode } = useContext(ThemeContext);
-    const [modalOpen, setModalOpen] = useState(false); // State to manage modal visibility
 
     return (
         <div id="privacy" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
@@ -14,9 +11,6 @@ const Privacy = () => {
                 <title>Privacy Policy | Zimapeak Marketing</title>
                 <meta name="description" content="Privacy Policy for Zimapeak Marketing Inc., describing how we collect, use, and protect your information." />
             </Helmet>
-
-            <Navbar setModalOpen={setModalOpen} />
-
             <div className='flex flex-col max-w-6xl my-40'>
             <div>
                 <h1 className='text-4xl font-bold text-center mb-20'>Privacy Policy</h1>
@@ -315,22 +309,6 @@ const Privacy = () => {
                 </p>
             </div>
             </div>
-
-           
-
-
-            {modalOpen && (
-                <div className="fixed z-20 inset-0 overflow-y-auto">
-                    <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-                            <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-                        </div>
-                        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-60 sm:align-middle sm:max-w-2xl sm:w-full">
-                            <BookEvent closeModal={() => setModalOpen(false)} />
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { ThemeContext } from '../ThemeContext';
 import ReCAPTCHA from 'react-google-recaptcha';
-
 
 const Booking = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -13,6 +12,17 @@ const Booking = () => {
         Website: ''
     });
     const [captchaVerified, setCaptchaVerified] = useState(false);
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,7 +46,7 @@ const Booking = () => {
             // Add priority, added_by, niche, and Result to formData
             const formDataWithPriority = { ...formData, priority: 1, added_by: 'system', niche: 'N/A', Result: 'N/A' };
     
-            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/addContact`, formDataWithPriority);
+            const response = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URLL}/addContact`, formDataWithPriority);
             console.log(response.data);
             // Optionally, handle any post-submission tasks
         } catch (error) {
@@ -45,8 +55,10 @@ const Booking = () => {
     };
 
     return (
-        <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
-            <div className="flex justify-center items-center py-28">
+        <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-black'} pt-20`}>
+           <div className="calendly-inline-widget" data-url="https://calendly.com/zimapeak_audit/30min" style={{ minWidth: '10vw', height: '100vh' }}></div>
+
+            {/* <div className="flex justify-center items-center py-28">
                 <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-black'} p-6 rounded-lg w-1/2`}>
                     <h2 className="text-2xl flex justify-center mb-20">Book a <span className='font-black text-primary mx-2'>Free</span> Discovery call</h2>
                     <form onSubmit={handleSubmit}>
@@ -79,7 +91,7 @@ const Booking = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

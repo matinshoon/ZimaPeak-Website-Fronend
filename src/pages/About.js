@@ -1,28 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ThemeContext } from '../ThemeContext';
-import Navbar from '../components/Navbar';
-import BookEvent from '../components/Booking/BookEvent';
 
 const About = () => {
     const { darkMode } = useContext(ThemeContext);
-    const [modalOpen, setModalOpen] = useState(false);
 
     const teamMembersWithPictures = [
         {
             name: 'Matt Rashidi',
             position: 'CEO & Founder',
             imageUrl: 'https://i.ibb.co/7nFXZgS/IMG-0973.jpg'
-        },
-        {
-            name: 'Yeganeh Yaghouti',
-            position: 'Marketing Director',
-            imageUrl: 'https://i.ibb.co/FbKzRF0/photo-2024-05-30-00-27-57.jpg'
-        },
-        {
-            name: 'Ali Abyari',
-            position: 'Social Media Director',
-            imageUrl: 'https://media.licdn.com/dms/image/D4E03AQHk_b-0h1bKKA/profile-displayphoto-shrink_400_400/0/1701868703743?e=1722470400&v=beta&t=FCtuI84ysN6bj4LjEVxI3SUOARZAY-undp7O61li1n8'
         },
     ];
 
@@ -56,19 +43,6 @@ const About = () => {
                 <meta name="description" content="Learn more about ZimaPeak Marketing, Toronto's leading digital marketing agency specializing in social media marketing, SEO, and web development. Meet our team of experts dedicated to elevating your brand's online presence." />
                 <link rel="canonical" href="https://www.zimapeak.com/about" />
             </Helmet>
-            <Navbar setModalOpen={setModalOpen} />
-            {modalOpen && (
-                <div className="fixed z-20 inset-0 overflow-y-auto">
-                    <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-                            <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-                        </div>
-                        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-60 sm:align-middle sm:max-w-2xl sm:w-full">
-                            <BookEvent closeModal={() => setModalOpen(false)} />
-                        </div>
-                    </div>
-                </div>
-            )}
             <div className="container mx-auto py-20 z-10 relative flex flex-col justify-center items-center">
                 <p className="mb-4 text-sky-400">About Us</p>
                 <h1 className="text-3xl font-bold relative">ZimaPeak Marketing</h1>

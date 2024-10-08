@@ -85,7 +85,7 @@ const GlassCard = ({ icon, title }) => {
         <meta name="keywords" content="Google Ads, Facebook Ads, Paid Ads, Digital Marketing, Lead Generation, Zimapeak Marketing" />
         <link rel="canonical" href="https://www.zimapeak.com/marketing" />
       </Helmet>
-      <div className="glass p-6 rounded-xl flex flex-col items-center justify-center text-center w-full h-60 md:h-72">
+      <div className="glass shadow-lg border-2 p-6 rounded-xl flex flex-col items-center justify-center text-center w-full h-60 md:h-72">
         <div className="mb-2 text-3xl">{icon}</div>
         <h3 className="font-bold mb-1 text-lg">{title}</h3>
         <p className="text-xl mb-4">{`Leads generated today: ${lastValue}`}</p>

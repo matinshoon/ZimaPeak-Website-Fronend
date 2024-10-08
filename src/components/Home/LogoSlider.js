@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext';
-import Testimonial from './Testimonial';
 
 import Logodark1 from '../../images/logoslider/dark-1.png';
 import Logodark2 from '../../images/logoslider/dark-2.png';
@@ -70,12 +69,15 @@ const LogoSlider = () => {
 
     return (
         <section>
-            <h1 className="mb-20 text-center font-bold text-xl">Trusted by numerous businesses</h1>
             <div className="slider-logo">
                 <div className="flex flex-wrap justify-center slide-track">
                     {logos.map((logo, i) => (
                         <div key={i} className="slide mb-3">
-                            <img src={logo} width="150" alt="" />
+                            <img 
+                                src={logo} 
+                                className="w-28 sm:w-32 md:w-40 lg:w-48" // Different widths for mobile, tablet, and desktop
+                                alt="" 
+                            />
                         </div>
                     ))}
                 </div>
@@ -84,7 +86,11 @@ const LogoSlider = () => {
                 <div className="flex flex-wrap justify-center slide-track-reverse">
                     {logos.map((logo, i) => (
                         <div key={i} className="slide mb-3">
-                            <img src={logo} width="150" alt="" />
+                            <img 
+                                src={logo} 
+                                className="w-28 sm:w-32 md:w-40 lg:w-48" // Same responsive widths for reverse track
+                                alt="" 
+                            />
                         </div>
                     ))}
                 </div>

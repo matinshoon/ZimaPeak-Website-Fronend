@@ -1,18 +1,24 @@
 import React, { useState, useContext } from 'react';
+import axios from 'axios';  // Import axios
 import { ThemeContext } from '../ThemeContext';
 
 const PopupBanner = ({ closePopup }) => {
     const { darkMode } = useContext(ThemeContext);
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const baseUrl = process.env.REACT_APP_PUBLIC_BASE_URLL;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // You would typically send the email to your server here
-        setSubmitted(true);
-        setTimeout(() => {
-            closePopup();
-        }, 3000); // Close the popup after 3 seconds
+        try {
+            await axios.post(`${baseUrl}/website/make/newsletter`, { email }); // Send the email to your server
+            setSubmitted(true);
+            setTimeout(() => {
+                closePopup();
+            }, 3000);
+        } catch (error) {
+            console.error('There was an error subscribing:', error);
+        }
     };
 
     return (

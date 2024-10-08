@@ -1,180 +1,129 @@
-import React, { useState } from 'react';
-import logoblue from "../../images/logo-blue.png";
+import React, { useState, useEffect, useContext } from 'react';
+import { ThemeContext } from '../../ThemeContext';
+import axios from 'axios';
 
-const marketingCards = [
-  {
-    id: 1,
-    investment: "$1000",
-    time: "2 - 4 weeks",
-    roi: "10x",
-    active: false,
-    logo: logoblue,
-    features: [
-      "Google Ads Management",
-      "Gauranteed amount of Leads",
-      "Campaign Strategy and Planning",
-      "Monthly Performance Report",
-      "Ongoing Optimization",
-    ],
-  },
-  {
-    id: 2,
-    investment: "$3000",
-    time: "2 - 6 weeks",
-    roi: "20x",
-    active: false,
-    logo: logoblue,
-    features: [
-      "Management of 1-3 Ad Platforms",
-      "Gauranteed amount of Leads",
-      "Full Funnel Campaign Strategy and Planning",
-      "Bi-Weekly Performance Report",
-      "Ongoing Optimization",
-      "Bi-Weekly Meetings",
-      "Ad Creative Enhancement",
-    ],
-  },
-  {
-    id: 3,
-    investment: "$5000",
-    time: "2 - 6 weeks",
-    roi: "100x",
-    active: true,
-    logo: logoblue,
-    features: [
-      "Unlimited Ad Platforms",
-      "Gauranteed amount of Leads",
-      "Full Funnel Campaign Strategy and Planning",
-      "Weekly Performance Report",
-      "Ongoing Optimization",
-      "Weekly Meetings",
-      "Ad Creative Enhancement",
-    ],
-  },
-];
+const Compare = () => {
+  const { darkMode } = useContext(ThemeContext);
+  const [timeLeft, setTimeLeft] = useState({});
+  const [zoom, setZoom] = useState(false);
+  const [cards, setCards] = useState([]);
 
-const webDevCards = [
-  {
-    id: 4,
-    investment: "$500",
-    time: "2 - 4 weeks",
-    roi: "2x",
-    active: false,
-    logo: logoblue,
-    features: [
-      "3 Pages",
-      "Custom Made",
-      "Responsive",
-      "Unique Design",
-      "Full Control Panel",
-    ],
-  },
-  {
-    id: 5,
-    investment: "$1500",
-    time: "4 - 8 weeks",
-    roi: "4x",
-    active: true,
-    logo: logoblue,
-    features: [
-      "8 Pages",
-      "Custom Made",
-      "Responsive",
-      "Unique Design",
-      "Google Registration",
-      "Appointment Tool",
-      "Full Control Panel",
-      "Content Manager System",
-      "Multi Lingual",
-      "Marketing Setup",
-    ],
-  },
-  {
-    id: 6,
-    investment: "$3000",
-    time: "4 - 8 weeks",
-    roi: "5x",
-    active: false,
-    logo: logoblue,
-    features: [
-      "10 Pages",
-      "Custom Made",
-      "Responsive",
-      "Unique Design",
-      "Google Registration",
-      "Appointment Tool",
-      "Full Control Panel",
-      "Content Manager System",
-      "Multi Lingual",
-      "Marketing Setup",
-      "Lead Form",
-      "SEO",
-    ],
-  },
-];
+  const currentMonth = new Date().toLocaleString('default', { month: 'long' });
 
-const Compare = ({ darkMode }) => {
-  const [serviceType, setServiceType] = useState('marketing');
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+      const difference = endOfMonth - now;
 
-  const cardsData = serviceType === 'marketing' ? marketingCards : webDevCards;
+      let timeRemaining = {};
+      if (difference > 0) {
+        timeRemaining = {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        };
+      }
+
+      return timeRemaining;
+    };
+
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+      setZoom(true);
+      setTimeout(() => setZoom(false), 500);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/offer`);
+        // Filter the offers to include only those where showcase is true (1)
+        const showcasedOffers = response.data.filter(offer => offer.showcase === 1);
+        setCards(showcasedOffers);
+      } catch (error) {
+        console.error("Error fetching offers:", error);
+      }
+    };
+
+    fetchOffers();
+  }, []);
 
   return (
-    <section id="about" className={`${darkMode ? 'bg-dark text-white' : 'bg-light text-black'}`}>
-      <div className="mb-5 text-center">
-        <h1 className="font-bold mb-5 text-2xl">Pricing</h1>
-        <h5 className="mb-20">
-          Your internal team just can't handle every aspect, and that specialized agency fails to grasp the synergy among all marketing channels to optimize outcomes.
-        </h5>
-        <div className="flex justify-center mb-5">
-          <button
-            onClick={() => setServiceType('marketing')}
-            className={`mx-2 px-4 py-2 ${serviceType === 'marketing' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-          >
-            Marketing
-          </button>
-          <button
-            onClick={() => setServiceType('webDevelopment')}
-            className={`mx-2 px-4 py-2 ${serviceType === 'webDevelopment' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-          >
-            Web Development
-          </button>
-        </div>
+    <section id="about" className={`py-12 px-6 transition-colors duration-300`}>
+      <div className="mb-12 text-center">
+        <h1 className={`font-extrabold text-4xl mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+          {currentMonth} Offer
+        </h1>
+        <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+          Don’t miss out on our exclusive offers for this month! Take advantage of significant savings and top-notch services.
+        </p>
       </div>
 
-      <div className="cards">
-        <div className="cards__inner">
-          {cardsData.map((card) => (
-            <div className={`cardabout ${card.active ? 'active' : ''}`} key={card.id}>
-              <div className='flex justify-center'>
-                <a href="/booking">
-                  <img src={card.logo} className='h-20' alt="Logo" />
-                </a>
+      <div className="flex justify-center items-center space-x-6">
+        {cards.map((card, index) => (
+          <div key={index} className={`shadow-lg border-2 rounded-lg p-8 ${darkMode ? 'glass border-gray-700' : 'bg-white border-gray-300'} ${index === 1 ? 'flex-1 max-w-xs' : 'flex-1 max-w-md'}`}>
+            <div className="mb-6">
+              <p className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Offer valid for</p>
+              <div className="flex justify-center items-center space-x-4 text-2xl font-bold">
+                <span className={`${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{timeLeft.days || 0}d</span>
+                <span className={`${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{timeLeft.hours || 0}h</span>
+                <span className={`${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{timeLeft.minutes || 0}m</span>
+                <span className={`transition-transform ${zoom ? 'scale-150' : ''} ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{timeLeft.seconds || 0}s</span>
               </div>
-              <div className="flex flex-col justify-center items-center">
-                <p>Monthly Investment</p>
-                <h3 className="font-bold">{card.investment}</h3>
+            </div>
+
+            {/* Category Section */}
+            <div className="mb-6 text-center">
+              <p className={`text-lg font-bold ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                {card.category}
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <p className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Monthly Investment</p>
+              <div className="flex items-center space-x-3 justify-center">
+                <h3 className={`text-3xl font-bold line-through ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                  ${(parseFloat(card.original_price) / 100)}
+                </h3>
+                <h3 className={`text-3xl font-bold ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                  ${(parseFloat(card.discounted_price) / 100)}
+                </h3>
               </div>
-              <div className="flex flex-col justify-center items-center">
-                <p>Delivery time</p>
-                <h3 className="font-bold">{card.time}</h3>
-              </div>
-              <div className="flex flex-col justify-center items-center">
-                <p>ROI</p>
-                <h3 className="font-bold">{card.roi}</h3>
-              </div>
-              <ul className="flex flex-col justify-center items-center divide-y divide-gray-400">
-                {card.features.map((feature, index) => (
-                  <li key={index} className="py-1 w-full text-center">{feature}</li>
+            </div>
+
+            <div className="mb-10">
+              <ul className="space-y-3">
+                {card.features.split(',').map((feature, index) => (
+                  <li key={index} className={`text-base leading-6 ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>
+                    {feature}
+                  </li>
                 ))}
               </ul>
-              <a href="/booking" className={`cta w-100 ${darkMode ? 'text-black' : 'text-white'}`}>
-                Get Started
+            </div>
+
+            <div className="flex justify-center mt-8">
+              <a
+                href="/register"
+                className={`relative border-2 border-primary hover:text-slate-800 hover:border-slate-800 md:font-bold h-10 w-full md:w-auto md:h-auto px-4 md:py-3 md:px-6 rounded-full ${darkMode ? 'text-white' : 'text-primary'}`}
+              >
+                <div className="flex items-center justify-center space-x-2">
+                  <p className="text-xs">Claim Offer</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
               </a>
             </div>
-          ))}
-        </div>
-        <div className="overlay cards__inner"></div>
+          </div>
+        ))}
       </div>
+
+      <div className="overlay cards__inner"></div>
     </section>
   );
 };

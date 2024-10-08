@@ -2,31 +2,35 @@ import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { ThemeContext } from '../ThemeContext';
-import Navbar from '../components/Navbar';
-import BookEvent from '../components/Booking/BookEvent';
 
 const CaseStudy = () => {
     const { darkMode } = useContext(ThemeContext);
     const [caseStudy, setCaseStudy] = useState(null);
+    const [loading, setLoading] = useState(true);
     const { id } = useParams();
-    const baseUrl = process.env.REACT_APP_BASE_URL;
-    const [modalOpen, setModalOpen] = useState(false); // State to manage modal visibility
+    const baseUrl = process.env.REACT_APP_PUBLIC_BASE_URLL;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${baseUrl}/casestudy-get/${id}`);
+                const response = await axios.get(`${baseUrl}/website/get/casestudy/${id}`);
                 setCaseStudy(response.data);
             } catch (error) {
                 console.error('Error fetching case study data:', error);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchData();
-    }, [id]); // Fetch data whenever the id parameter changes
+    }, [id, baseUrl]);
+
+    if (loading) {
+        return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+    }
 
     if (!caseStudy) {
-        return <div>Loading...</div>;
+        return <div className="flex justify-center items-center min-h-screen">No case study found.</div>;
     }
 
     const outcomeNames = [
@@ -37,19 +41,6 @@ const CaseStudy = () => {
 
     return (
         <div id="casestudies" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
-            <Navbar setModalOpen={setModalOpen} />
-            {modalOpen && (
-                <div className="fixed z-20 inset-0 overflow-y-auto">
-                    <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-                            <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-                        </div>
-                        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-60 sm:align-middle sm:max-w-2xl sm:w-full">
-                            <BookEvent closeModal={() => setModalOpen(false)} />
-                        </div>
-                    </div>
-                </div>
-            )}
             <span className={`${darkMode ? 'blury-left' : 'blury-left'}`}></span>
             <span className={`${darkMode ? 'blury-right' : 'blury-right'}`}></span>
             <div className="container mx-auto py-40 z-10 relative flex flex-col justify-center items-center">
@@ -81,13 +72,9 @@ const CaseStudy = () => {
                         <p className="mb-10 whitespace-pre-line">{caseStudy.results}</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
     );
-
 };
 
 export default CaseStudy;

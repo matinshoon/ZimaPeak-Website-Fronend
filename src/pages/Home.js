@@ -6,14 +6,12 @@ import Objects from '../components/Home/Objects';
 import Compare from '../components/Home/Compare';
 import Testimonial from '../components/Home/Testimonial';
 import LogoSlider from '../components/Home/LogoSlider';
-import Navbar from '../components/Navbar';
-import BookEvent from '../components/Booking/BookEvent';
 import Stats from '../components/Home/Stats';
 import PopupBanner from '../components/PopupBanner';
+// import Ai from './Ai';
 
 const Home = () => {
-    const { darkMode } = useContext(ThemeContext); // Access darkMode state from ThemeContext
-    const [modalOpen, setModalOpen] = useState(false); // State to manage modal visibility
+    const { darkMode } = useContext(ThemeContext);
     const [popupVisible, setPopupVisible] = useState(false);
 
     useEffect(() => {
@@ -65,39 +63,32 @@ const Home = () => {
                     })}
                 </script>
             </Helmet>
-            <Navbar setModalOpen={setModalOpen} />
-            {modalOpen && (
-                <div className="fixed z-20 inset-0 overflow-y-auto">
-                    <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-                            <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-                        </div>
-                        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-60 sm:align-middle sm:max-w-2xl sm:w-full">
-                            <BookEvent closeModal={() => setModalOpen(false)} />
-                        </div>
-                    </div>
-                </div>
-            )}
             {popupVisible && <PopupBanner closePopup={closePopup} />}
-            <div className='pt-20'>
-                <Banner />
+            <div className='h-screen'>
+            <div className='h-2/3 lg:pt-40 flex flex-col justify-center'>
+                <Banner/>
             </div>
-            <div className='hidden md:block z-10'>
-                <Objects />
-            </div>
-            <div className='z-20 py-20 md:p-0'>
+            <div className='md:p-0 h-1/3 flex flex-col justify-end lg:justify-center'>
                 <LogoSlider />
             </div>
-            <div className="z-10">
+            </div>
+            {/* <div className='hidden md:block z-0'>
+                <Objects />
+            </div> */}
+            <div className="z-10 my-40">
                 <Stats />
             </div>
-            <div className='pb-10 z-20'>
+            <div className='my-40 z-20'>
                 <Testimonial />
             </div>
-            <div className='py-10 hidden md:flex justify-center'>
+            <div className='mt-40 flex justify-center'>
                 <Compare />
             </div>
-            <div className='md:hidden fixed bottom-0 left-0 w-full flex justify-center pb-4'>
+            {/* <div className='hidden md:flex justify-center'>
+                <Ai />
+            </div> */}
+            
+            {/* <div className='md:hidden fixed bottom-0 left-0 w-full flex justify-center pb-4'>
                 <button onClick={() => setModalOpen(true)} className={`relative bg-primary hover:bg-white hover:text-sky-600 text-white font-bold py-4 px-8 rounded-2xl`}>
                     <div className='flex items-center justify-center space-x-2'>
                         <p>Get Started</p>
@@ -106,7 +97,7 @@ const Home = () => {
                         </svg>
                     </div>
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 };
