@@ -180,7 +180,7 @@ const Ai = () => {
     };
 
     return (
-        <div className={`relative pt-20 md:pt-40 ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div className={`relative pt-20 md:pt-40 ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <canvas ref={canvasRef} className="webgl" />
             <div className="absolute top-0 left-0 w-full md:mt-52 mt-40 flex flex-col items-center justify-center">
                 <div className="flex-grow overflow-y-auto mb-4 w-full max-w-2xl mx-auto p-4" style={{ maxHeight: 'calc(100% - 50px)' }}>
@@ -195,7 +195,7 @@ const Ai = () => {
                 </div>
                 <div className="w-full max-w-2xl p-4 flex flex-col md:flex-row items-stretch space-y-4 md:space-y-0 md:space-x-4">
                     <input
-                        className={`flex-grow placeholder-gray-600 p-4 md:rounded-none !mr-0 ${darkMode ? 'border-gray-700 bg-glass text-white' : 'border-gray-300 bg-glass text-black'} rounded md:rounded-l-lg`}
+                        className={`flex-grow placeholder-gray-600 p-4 md:rounded-none !mr-0 ${darkMode ? 'border-gray-700 bg-glass text-white' : 'border-gray-300 bg-glass text-dark'} rounded md:rounded-l-lg`}
                         type="text"
                         placeholder='Your Business Niche (Nail)'
                         value={input}

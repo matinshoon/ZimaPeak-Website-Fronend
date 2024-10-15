@@ -42,7 +42,7 @@ const Blog = () => {
     return (
         <div
             id='blog'
-            className={`text-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'} ${
+            className={`text-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'} ${
                 filteredPosts.length === 0 && !loading ? 'min-h-screen' : ''
             }`}
             style={{ minHeight: filteredPosts.length === 0 && !loading ? '100vh' : 'auto' }}
@@ -61,7 +61,7 @@ const Blog = () => {
                     <button
                         key={category}
                         onClick={() => setSelectedCategory(category)}
-                        className={`mx-2 py-2 px-4 rounded ${darkMode ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'} ${selectedCategory === category ? 'font-bold' : ''} hover:bg-blue-600`}
+                        className={`mx-2 py-2 px-4 rounded ${darkMode ? 'bg-primary text-white' : 'bg-gray-200 text-dark'} ${selectedCategory === category ? 'font-bold' : ''} hover:bg-primary`}
                     >
                         {category}
                     </button>
@@ -79,11 +79,11 @@ const Blog = () => {
                             <div key={index} className={`max-w-sm m-4 rounded w-full ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} border ${darkMode ? 'border-gray-700' : 'border-gray-300'} hover:border-blue-500 transition duration-300`}>
                                 <img src={post.banner} alt={post.title} className="w-full h-80 object-cover object-center" />
                                 <div className="px-6 py-4">
-                                    <div className={`font-bold text-xl mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{post.title}</div>
+                                    <div className={`font-bold text-xl mb-2 ${darkMode ? 'text-white' : 'text-dark'}`}>{post.title}</div>
                                     <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{post.summary.length > 100 ? post.summary.substring(0, 100) + '...' : post.summary}</p>
                                 </div>
                                 <div className="px-6 pb-4">
-                                    <Link to={`/blog/${post.id}`} className={`inline-block ${darkMode ? 'bg-blue-500 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'} text-white py-2 px-4 rounded`}>
+                                    <Link to={`/blog/${post.id}`} className={`inline-block ${darkMode ? 'bg-primary hover:bg-primary' : 'bg-primary hover:bg-primary'} text-white py-2 px-4 rounded`}>
                                         Read more
                                     </Link>
                                 </div>

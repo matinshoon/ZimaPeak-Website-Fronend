@@ -71,51 +71,72 @@ const Banner = () => {
         labels: chartLabels,
         datasets: [
             {
-                data: leadsGeneratedData,
-                borderColor: '#0f172a',
-                borderWidth: 2,
-                fill: false,
+              data: leadsGeneratedData,
+              borderColor: '#f80', // Orange border color for the line
+              borderWidth: 2,
+              fill: false,
             },
-        ],
-    };
+          ],
+        };
 
     const chartOptions = {
         scales: {
             y: {
                 beginAtZero: true,
             },
+            x: {
+                grid: {
+                  color: 'rgba(255, 255, 255, 0.1)', // White grid lines with transparency
+                },
+                ticks: {
+                  color: '#fff', // White tick labels
+                },
+              },
+              y: {
+                grid: {
+                  color: 'rgba(255, 255, 255, 0.1)', // White grid lines with transparency
+                },
+                ticks: {
+                  color: '#fff', // White tick labels
+                },
+              },
         },
         plugins: {
             legend: {
                 display: false,
             },
+              tooltip: {
+                backgroundColor: '#fff', // White background for tooltips
+                titleColor: '#000', // Black tooltip title text
+                bodyColor: '#000', // Black tooltip body text
+              },
         },
     };
 
     return (
         <div className={`flex flex-col justify-around items-center ${darkMode ? 'text-white' : 'text-black'}`}>
             <div className="z-20 flex flex-col justify-center items-center">
-                <h1 className="text-3xl md:text-8xl font-bold text-center mt-20 mb-10">
+                <h1 className="text-dark text-3xl md:text-8xl font-bold text-center mt-20 mb-10">
                     <span>Services</span><br /> that make a difference
                 </h1>
                 <p className="text-2xl md:text-2xl text-center mb-6">Elevating Your Brand's Social Media Presence.</p>
-                <Link to="/booking">
-                    <button className={`${darkMode ? 'glass' : 'bg-slate-900 text-white'} hover:bg-gray-300 hover:text-slate-900 px-6 py-3 rounded-2xl text-lg font-semibold `}>
+                <Link to="/register">
+                    <button className={`${darkMode ? 'glass' : 'bg-white text-black border-4 border-dark'} hover:bg-dark hover:text-white transition duration-200 px-6 py-3 rounded-full text-lg font-semibold`}>
                         Get Started!
                     </button>
                 </Link>
             </div>
             <div className="hidden md:block -translate-y-20 relative px-20 w-full overflow-x-hidden">
                 <div className="relative flex items-end">
-                    <div className={`${darkMode ? 'border-4 border-gray-100' : 'border-gray-800 text-white bg-black'} p-6 m-4 rounded-3xl flex flex-col items-start w-[20%] h-[50vh]`}>
+                    <div className={`${darkMode ? 'border-4 border-gray-100' : 'border-4 border-dark text-dark bg-white'} p-6 m-4 rounded-3xl flex flex-col items-start w-[20%] h-[50vh]`}>
                         <h3 className="text-gray-400 text-lg mb-2">Select time slot</h3>
                         <p className="text-lg mb-4">{format(selectedDate, 'PPPP')}</p>
                         <div className="flex flex-row items-center mb-4 overflow-x-hidden w-full justify-center">
-                            <div className="flex space-x-4 bg-gray-900 rounded-xl">
+                            <div className="flex space-x-4 bg-dark text-white rounded-xl">
                                 {dateList.map((date, index) => (
                                     <button
                                         key={index}
-                                        className={`px-4 py-2 rounded ${format(date, 'PPPP') === format(selectedDate, 'PPPP') ? 'bg-gray-800' : 'bg-transparent'} whitespace-nowrap`}
+                                        className={`px-4 py-2 rounded ${format(date, 'PPPP') === format(selectedDate, 'PPPP') ? 'bg-secondary' : 'bg-transparent'} whitespace-nowrap`}
                                         onClick={() => handleDateClick(date)}
                                     >
                                         {format(date, 'd')}
@@ -145,19 +166,19 @@ const Banner = () => {
                     <div className={`m-4 rounded-3xl flex flex-col items-center w-[20%] h-[35vh]`}>
                         <img src={Card2Image} alt="Card 2" className="rounded-3xl w-full h-[35vh] object-cover" />
                     </div>
-                    <div className={`text-slate-800 bg-cyan-200 p-6 m-4 rounded-3xl flex flex-col justify-center items-center w-[20%] h-[20vh]`}>
+                    <div className={`text-white bg-secondary p-6 m-4 rounded-3xl flex flex-col justify-center items-center w-[20%] h-[20vh]`}>
                         <p className="text-lg font-black text-center mb-4">{quotes}</p>
                     </div>
-                    <div className={`bg-lime-200 p-6 m-4 rounded-3xl flex items-center justify-center w-[20%] h-[35vh]`}>
+                    <div className={`bg-dark text-white p-6 m-4 rounded-3xl flex items-center justify-center w-[20%] h-[35vh]`}>
                         <div className="w-full">
-                            <p className="text-center text-slate-900 text-5xl font-black mb-2">{leadsGeneratedToday}</p>
-                            <p className="text-center text-slate-900 text-sm mb-2">Leads generated today</p>
+                            <p className="text-center text-5xl font-black mb-2">{leadsGeneratedToday}</p>
+                            <p className="text-center text-sm mb-2">Leads generated today</p>
                             <Line data={chartData} options={chartOptions} />
                         </div>
                     </div>
                     <div className="m-4 rounded-3xl items-center w-[20%] relative h-[50vh] flex flex-col justify-end">
                         <video src={Card5Vid} className="rounded-3xl w-full h-[50vh] object-cover" autoPlay loop muted playsInline />
-                        <Link to="/booking" className="w-full flex justify-center">
+                        <Link to="/register" className="w-full flex justify-center">
                             <button className={`glass absolute -translate-y-20 text-white z-10 px-6 py-3 rounded-2xl text-lg font-semibold m-2`}>
                                 See how it all works
                             </button>

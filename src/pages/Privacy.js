@@ -6,7 +6,7 @@ const Privacy = () => {
     const { darkMode } = useContext(ThemeContext);
 
     return (
-        <div id="privacy" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div id="privacy" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
                 <title>Privacy Policy | Zimapeak Marketing</title>
                 <meta name="description" content="Privacy Policy for Zimapeak Marketing Inc., describing how we collect, use, and protect your information." />

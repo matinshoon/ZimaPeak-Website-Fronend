@@ -59,7 +59,7 @@ const AIChatbox = () => {
       </div>
       <div className="flex flex-col md:flex-row p-4 md:rounded-lg w-full space-y-4 md:space-y-0 md:space-x-4">
         <input
-          className={`flex-grow md:rounded-l-xl rounded p-4 ${darkMode ? 'border-gray-700 bg-glass text-white' : 'border-gray-300 bg-glass text-black'}`}
+          className={`flex-grow md:rounded-l-xl rounded p-4 ${darkMode ? 'border-gray-700 bg-glass text-white' : 'border-gray-300 bg-glass text-dark'}`}
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}

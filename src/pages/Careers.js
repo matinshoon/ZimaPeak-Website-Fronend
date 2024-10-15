@@ -10,12 +10,12 @@ const Careers = () => {
     const [jobs, setJobs] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const baseUrl = process.env.REACT_APP_PUBLIC_BASE_URLL;
+    const baseUrl = process.env.REACT_APP_PUBLIC_BASE_URL;
 
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const response = await axios.get(`${baseUrl}/website/get/careers`);
+                const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/website/get/careers`);
                 setJobs(response.data);
             } catch (error) {
                 console.error('Error fetching job postings:', error);
@@ -29,7 +29,7 @@ const Careers = () => {
     }, [baseUrl]);
 
     return (
-        <div className={`py-16 px-6 ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div className={`py-16 px-6 ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
                 <title>Careers | Join Our Team</title>
                 <meta name="description" content="Explore career opportunities at our company. We are hiring talented individuals for various positions. Apply now to join our team!" />
@@ -54,7 +54,7 @@ const Careers = () => {
                     </div>
                 ) : (
                     jobs.map((job) => (
-                        <div key={job.id} className={`flex justify-between py-6 border-b ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-black'}`}>
+                        <div key={job.id} className={`flex justify-between py-6 border-b ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-dark'}`}>
                             <div>
                                 <h2 className="text-xl font-semibold mb-2">{job.title}</h2>
                                 <p className="mb-4">{job.description}</p>

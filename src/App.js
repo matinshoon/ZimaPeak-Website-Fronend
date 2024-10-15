@@ -11,9 +11,9 @@ import ServiceDetails from './pages/ServiceDetails';
 import Booking from './pages/Booking';
 import About from './pages/About';
 import Careers from './pages/Careers';
-import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Privacy from './pages/Privacy';
+import Done from './pages/Done';
 import AppLayout from './AppLayout';
 import { ThemeContext } from './ThemeContext';
 import ReactGA from 'react-ga4';
@@ -51,11 +51,11 @@ function App() {
                 } 
               />
               <Route path="/services" element={<Services />} />
+              <Route path="/done" element={<Done />} />
               {/* <Route path="/ai" element={<Ai />} /> */}
               <Route path="/services/:serviceName" element={<ServiceDetails />} />
-              <Route path="/booking" element={<Booking />} />
+              <Route path="/register" element={<Booking />} />
               <Route path="/about" element={<About />} />
-              <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/careers" element={<Careers />} />

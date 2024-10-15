@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ThemeContext } from '../ThemeContext';
 import Banner from '../components/Home/Banner';
-import Objects from '../components/Home/Objects';
 import Compare from '../components/Home/Compare';
 import Testimonial from '../components/Home/Testimonial';
 import LogoSlider from '../components/Home/LogoSlider';
@@ -29,7 +28,7 @@ const Home = () => {
     };
 
     return (
-        <div className={`bg-tiles text-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div className={`bg-tiles text-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
                 <title>Zimapeak Marketing | Toronto's Best Web Development & Digital Marketing Agency</title>
                 <meta name="description" content="Zimapeak Marketing offers top-notch web development, SEO services, and social media marketing in Toronto. Let us help you grow your business online." />
@@ -65,16 +64,13 @@ const Home = () => {
             </Helmet>
             {popupVisible && <PopupBanner closePopup={closePopup} />}
             <div className='h-screen'>
-            <div className='h-2/3 lg:pt-40 flex flex-col justify-center'>
+            <div className='h-full md:h-2/3 lg:pt-40 flex flex-col justify-center'>
                 <Banner/>
             </div>
-            <div className='md:p-0 h-1/3 flex flex-col justify-end lg:justify-center'>
+            <div className='md:p-0 md:h-1/3 flex flex-col justify-end lg:justify-center'>
                 <LogoSlider />
             </div>
             </div>
-            {/* <div className='hidden md:block z-0'>
-                <Objects />
-            </div> */}
             <div className="z-10 my-40">
                 <Stats />
             </div>
@@ -84,20 +80,7 @@ const Home = () => {
             <div className='mt-40 flex justify-center'>
                 <Compare />
             </div>
-            {/* <div className='hidden md:flex justify-center'>
-                <Ai />
-            </div> */}
-            
-            {/* <div className='md:hidden fixed bottom-0 left-0 w-full flex justify-center pb-4'>
-                <button onClick={() => setModalOpen(true)} className={`relative bg-primary hover:bg-white hover:text-sky-600 text-white font-bold py-4 px-8 rounded-2xl`}>
-                    <div className='flex items-center justify-center space-x-2'>
-                        <p>Get Started</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </button>
-            </div> */}
+        
         </div>
     );
 };

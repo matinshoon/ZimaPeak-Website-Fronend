@@ -13,7 +13,7 @@ const RegistrationForm = ({ formData, handleChange, setFormData, errorMessage, d
                 value={formData.full_name}
                 onChange={handleChange}
                 placeholder="Full Name"
-                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
             />
             <div className='flex space-x-4'>
                 <input
@@ -22,7 +22,7 @@ const RegistrationForm = ({ formData, handleChange, setFormData, errorMessage, d
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Email"
-                    className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                    className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
                     required
                 />
                 <input
@@ -31,7 +31,7 @@ const RegistrationForm = ({ formData, handleChange, setFormData, errorMessage, d
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Phone Number"
-                    className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                    className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
                     required
                     pattern="[0-9]*"
                     onInput={(e) => {
@@ -46,12 +46,12 @@ const RegistrationForm = ({ formData, handleChange, setFormData, errorMessage, d
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Password"
-                    className={`p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                    className={`p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
                     required
                 />
                 <button
                     type="button"
-                    className={`absolute right-4 top-4 ${darkMode ? 'text-white' : 'text-black'}`}
+                    className={`absolute right-4 top-4 ${darkMode ? 'text-white' : 'text-dark'}`}
                     onClick={() => setFormData({ ...formData, showPassword: !formData.showPassword })}
                 >
                     <FontAwesomeIcon icon={formData.showPassword ? faEyeSlash : faEye} />
@@ -72,7 +72,7 @@ const RegistrationForm = ({ formData, handleChange, setFormData, errorMessage, d
                     required
                     className="mr-2"
                 />
-                <label htmlFor="terms" className={`${darkMode ? 'text-white' : 'text-black'}`}>
+                <label htmlFor="terms" className={`${darkMode ? 'text-white' : 'text-dark'}`}>
                     I agree to the <a href="https://example.com/terms" target="_blank" rel="noopener noreferrer" className="underline">terms and conditions</a>
                 </label>
             </div>

@@ -23,7 +23,7 @@ const PopupBanner = ({ closePopup }) => {
 
     return (
         <div className={`fixed inset-0 z-50 flex items-center justify-center ${darkMode ? 'bg-black bg-opacity-75' : 'bg-gray-800 bg-opacity-75'}`}>
-            <div className={`p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 lg:w-1/3 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
+            <div className={`p-6 rounded-lg shadow-lg w-11/12 md:w-1/2 lg:w-1/3 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-dark'}`}>
                 <h2 className="text-2xl font-bold mb-4 text-center">Get 50% Off!</h2>
                 <p className="mb-6 text-center">Get a 50% discount only by subscribing to our newsletter!</p>
                 {submitted ? (
@@ -36,7 +36,7 @@ const PopupBanner = ({ closePopup }) => {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                             placeholder="Enter your email"
-                            className={`w-full p-2 mb-4 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white text-black border-gray-300'}`}
+                            className={`w-full p-2 mb-4 border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white text-dark border-gray-300'}`}
                         />
                         <button
                             type="submit"

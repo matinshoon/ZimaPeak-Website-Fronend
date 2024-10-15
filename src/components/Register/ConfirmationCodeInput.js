@@ -18,7 +18,7 @@ const ConfirmationCodeInput = ({ darkMode, formData, handleChange }) => {
     return (
         <div className={`w-full ${darkMode ? 'bg-dark' : 'bg-white'}`}>
             <div className="flex flex-col space-y-4">
-                <p className={`text-lg ${darkMode ? 'text-white' : 'text-black'}`}>
+                <p className={`text-lg ${darkMode ? 'text-white' : 'text-dark'}`}>
                     Please check your email for the confirmation code. Enter it below to proceed.
                 </p>
                 <input
@@ -27,11 +27,11 @@ const ConfirmationCodeInput = ({ darkMode, formData, handleChange }) => {
                     value={formData.confirmationCode}
                     onChange={handleChange}
                     placeholder="Enter 4-digit code"
-                    className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                    className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
                     maxLength={4}
                 />
                 <div className="flex justify-between mb-4">
-                    <button onClick={handleSendCode} className={`p-2 rounded ${darkMode ? 'bg-blue-500' : 'bg-blue-300'} text-white`}>
+                    <button onClick={handleSendCode} className={`p-2 rounded ${darkMode ? 'bg-primary' : 'bg-primary'} text-white`}>
                         Resend Code
                     </button>
                 </div>

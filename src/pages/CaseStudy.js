@@ -40,11 +40,11 @@ const CaseStudy = () => {
     ];
 
     return (
-        <div id="casestudies" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div id="casestudies" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <span className={`${darkMode ? 'blury-left' : 'blury-left'}`}></span>
             <span className={`${darkMode ? 'blury-right' : 'blury-right'}`}></span>
             <div className="container mx-auto py-40 z-10 relative flex flex-col justify-center items-center">
-                <p className="mb-4 text-sky-400">{caseStudy.client}</p>
+                <p className="mb-4 text-primary">{caseStudy.client}</p>
                 <h1 className="text-3xl font-bold relative">{caseStudy.title}</h1>
                 <p className="text-lg mt-4">{caseStudy.summary}</p>
                 <div className={`w-full md:w-3/5 h-28 my-20 flex justify-around items-center text-white ${darkMode ? 'border' : 'bg-black opacity-90'} md:rounded-lg`}>

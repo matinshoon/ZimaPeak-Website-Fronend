@@ -29,29 +29,29 @@ const Testimonial = () => {
     const { darkMode } = useContext(ThemeContext);
 
     return (
-        <div className={`py-12 px-4 sm:px-6 lg:px-8 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+        <div className={`py-12 px-4 sm:px-6 lg:px-8 ${darkMode ? 'text-white' : 'text-dark'}`}>
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-center text-3xl font-extrabold tracking-tight mb-8">What Our Clients Say</h1>
+                <h1 className="text-center text-2xl font-extrabold tracking-tight mb-8">What Our Clients Say</h1>
                 <p className="text-center text-lg mb-12">Hear from our satisfied clients who have experienced the transformative power of our marketing services.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {testimonials.map((testimonial, index) => (
                         <div key={index} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
-                            <div className={`px-6 py-8 ${darkMode ? 'glass text-white' : 'bg-white text-gray-800'}`}>
+                            <div className={`px-6 py-8 bg-primary text-white`}>
                                 <div className="flex items-center mb-4">
-                                    <FaGoogle className="text-primary text-4xl mr-2" />
+                                    <FaGoogle className="text-white text-4xl mr-2" />
                                     <div>
                                         <div className="font-semibold">{testimonial.name}</div>
                                         <div className="flex items-center">
-                                            <FaStar className="text-yellow-500 mr-1" />
-                                            <FaStar className="text-yellow-500 mr-1" />
-                                            <FaStar className="text-yellow-500 mr-1" />
-                                            <FaStar className="text-yellow-500 mr-1" />
-                                            <FaStar className="text-yellow-500" />
+                                            <FaStar className="text-secondary mr-1" />
+                                            <FaStar className="text-secondary mr-1" />
+                                            <FaStar className="text-secondary mr-1" />
+                                            <FaStar className="text-secondary mr-1" />
+                                            <FaStar className="text-secondary" />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="text-sm italic mb-4">{testimonial.title}</div>
-                                <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{testimonial.quote}</p>
+                                <p className={`text-sm text-white`}>{testimonial.quote}</p>
                             </div>
                         </div>
                     ))}

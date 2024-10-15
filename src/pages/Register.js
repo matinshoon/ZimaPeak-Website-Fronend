@@ -16,11 +16,13 @@ const Register = () => {
             </Helmet>
             <div className="flex w-full h-screen">
                 {/* Left Side: ClaimCard */}
-                <div className="w-1/2 p-6">
+                {/* <div className="w-1/2 p-6"> */}
+                <div className="w-full md:w-1/2 flex md:block justify-center">
+
                     <RegisterCard />
                 </div>
                 {/* Right Side: ClaimBanner */}
-                <div className={`w-1/2 flex items-center justify-center ${darkMode ? 'bg-' : 'bg-white'}`}>
+                <div className={`hidden md:block w-1/2 flex items-center justify-center ${darkMode ? 'bg-' : 'bg-white'}`}>
                     <RegisterBanner />
                 </div>
             </div>

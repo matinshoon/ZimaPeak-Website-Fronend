@@ -1,17 +1,25 @@
-// RegistrationForm.js
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const OfferSelection = ({ darkMode, formData, handleChange }) => {
-
     const [offers, setOffers] = useState([]);
 
     useEffect(() => {
         const fetchOffers = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/offer`);
-                // Access offers from the response
+                // Retrieve token from localStorage
+                const token = localStorage.getItem('token');
+    
+                // Set up headers with the Authorization token
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Attach the token here
+                    },
+                };
+    
+                // Make the request with the config object that includes headers
+                const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/offer`, config);
+                
                 if (response.data) {
                     const showcasedOffers = response.data.filter(offer => offer.showcase === 1);
                     setOffers(showcasedOffers);
@@ -24,6 +32,10 @@ const OfferSelection = ({ darkMode, formData, handleChange }) => {
         };
         fetchOffers();
     }, []);
+
+    const handleOfferChange = (event) => {
+        handleChange(event); // Call the original handleChange function
+    };
 
     return (
         <div className={`w-full ${darkMode ? 'bg-dark' : 'bg-white'}`}>
@@ -44,16 +56,15 @@ const OfferSelection = ({ darkMode, formData, handleChange }) => {
                                 name="selectedOffer"
                                 value={offer.id}
                                 checked={formData.selectedOffer === offer.id}
-                                onChange={handleChange}
+                                onChange={handleOfferChange} // Use the new function
                                 className="mr-2"
                             />
                             <span
-                                className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}
+                                className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-dark'}`}
                             >
                                 {offer.category.charAt(0).toUpperCase() +
                                     offer.category.slice(1)}{' '}
-                                Offer - {(offer.discounted_price)/100} USD
-
+                                Offer - {(offer.discounted_price) / 100} USD
                             </span>
                             <p
                                 className={`mt-4 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}

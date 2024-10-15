@@ -37,17 +37,17 @@ const About = () => {
     ];
 
     return (
-        <div id="about" className={`flex flex-col justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div id="about" className={`flex flex-col justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
                 <title>About | ZimaPeak Marketing - Toronto's Premier Digital Marketing Agency</title>
                 <meta name="description" content="Learn more about ZimaPeak Marketing, Toronto's leading digital marketing agency specializing in social media marketing, SEO, and web development. Meet our team of experts dedicated to elevating your brand's online presence." />
                 <link rel="canonical" href="https://www.zimapeak.com/about" />
             </Helmet>
             <div className="container mx-auto py-20 z-10 relative flex flex-col justify-center items-center">
-                <p className="mb-4 text-sky-400">About Us</p>
+                <p className="mb-4 text-primary">About Us</p>
                 <h1 className="text-3xl font-bold relative">ZimaPeak Marketing</h1>
                 <p className="text-lg text-center mt-4">Elevating Your Beauty Brand's Social Media Presence. We're experts in crafting strategies to boost engagement and visibility.</p>
-                <div className={`w-full md:w-3/5 h-28 my-20 flex justify-around items-center text-white ${darkMode ? 'border' : 'bg-black opacity-90'} md:rounded-lg`}>
+                <div className={`w-full md:w-3/5 h-28 my-20 flex justify-around items-center text-white ${darkMode ? 'border' : 'bg-primary opacity-90'} md:rounded-lg`}>
                     <div className="text-center">
                         <p className='font-bold text-2xl mb-2'>+100</p>
                         <p>Customers Served</p>
@@ -84,7 +84,7 @@ const About = () => {
                                 <div className="w-40 h-40 bg-gray-300 rounded-full overflow-hidden">
                                     <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
                                 </div>
-                                <p className="mt-4 font-semibold">{member.name}</p>
+                                <p className="text-secondary text-2xl mt-4 font-semibold">{member.name}</p>
                                 <p className="text-gray-500">{member.position}</p>
                             </div>
                         ))}
@@ -95,7 +95,7 @@ const About = () => {
                     <div className="flex flex-wrap justify-center items-center">
                         {teamMembersWithoutPictures.map((member, index) => (
                             <div key={index} className="text-center mb-4 w-full sm:w-1/2 lg:w-1/3 px-4">
-                                <p className="font-semibold text-xl">{member.name}</p>
+                                <p className="font-semibold text-primary text-xl">{member.name}</p>
                                 <p className="text-gray-500">{member.position}</p>
                             </div>
                         ))}

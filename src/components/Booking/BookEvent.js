@@ -61,7 +61,7 @@ const BookEvent = ({ closeModal }) => {
             </div>
             <div className="calendly-inline-widget" data-url="https://calendly.com/zimapeak_audit/30min" style={{ minWidth: '320px', height: '700px' }}></div>
 
-            {/* <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-black'} p-6`}>
+            {/* <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'} p-6`}>
                 <h2 className="text-2xl flex justify-center mb-20">Book a <span className='font-black text-primary mx-2'>Free</span> Discovery call</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
@@ -88,7 +88,7 @@ const BookEvent = ({ closeModal }) => {
                     />
                     <div className="flex justify-end">
                         <button type="button" onClick={closeModal} className={`mr-2 ${darkMode ? 'bg-gray-800 hover:bg-gray-700 text-gray-200' : 'bg-gray-200 hover:bg-gray-300 text-gray-800'} font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-400`}>Cancel</button>
-                        <button type="submit" className={`bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400`}>Submit</button>
+                        <button type="submit" className={`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400`}>Submit</button>
                     </div>
                 </form>
             </div> */}

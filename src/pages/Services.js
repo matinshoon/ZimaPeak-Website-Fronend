@@ -8,7 +8,7 @@ const Services = () => {
     const { darkMode } = useContext(ThemeContext); // Access darkMode state from ThemeContext
 
     return (
-        <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-black'} py-20 px-10 md:px-0`}>
+        <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'} py-20 px-10 md:px-0`}>
             <Helmet>
                 <title>Our Services - ZimaPeak Marketing</title>
                 <meta name="description" content="Discover the range of services offered by ZimaPeak Marketing, including social media marketing, SEO, and web development. Elevate your brand's online presence with our expert solutions." />

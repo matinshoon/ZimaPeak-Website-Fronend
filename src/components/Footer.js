@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import logoblue from "../images/logo-blue.png"; // Ensure the correct path to your logo image
+import logo from "../images/logo-white.png"; // Ensure the correct path to your logo image
 
 function Footer() {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <section id="footer" className={`${darkMode ? 'bg-dark text-white' : 'bg-sky-100 text-black'}`}>
+    <section id="footer" className={`${darkMode ? 'bg-dark text-white' : 'bg-primary text-white'}`}>
       <div className="container mx-auto py-8 px-4 flex flex-col md:flex-row items-center justify-between">
         
         {/* Logo and Social Icons Section */}
         <div className="flex flex-col items-center md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
-          <img src={logoblue} className='h-32 mb-4' alt="Logo Blue" /> {/* Increased size of the logo */}
+          <img src={logo} className='h-32 mb-4' alt="Logo Blue" /> {/* Increased size of the logo */}
           <div className="flex justify-center mb-4">
             <a href="https://x.com/zimapeak" className="mx-2 text-decoration-none">
               <FaTwitter size={24} />
@@ -41,13 +41,13 @@ function Footer() {
         <div className="w-full flex flex-col items-center text-center md:items-start md:text-left md:w-1/2 lg:w-1/4">
           <p className="m-0">&copy; ZimaPeak Marketing Inc. 2024</p>
           <div className="flex flex-col justify-center mt-2">
-            <div className="w-full md:w-auto mb-2 md:mb-0">
+            <div className="w-full md:w-auto mb-2">
               <a href="https://www.google.com/maps/place/toronto/data=!4m2!3m1!1s0x89d4cb90d7c63ba5:0x323555502ab4c477?sa=X&ved=2ahUKEwimoNeUg72EAxXMjIkEHS7NCdsQh8EJegQIFhAA"
                 className="text-decoration-none flex items-center justify-center md:justify-start">
                 <i className="bi bi-geo-alt-fill pr-1"></i>Toronto - Canada
               </a>
             </div>
-            <div className="w-full md:w-auto mb-2 md:mb-0">
+            <div className="w-full md:w-auto mb-2">
               <a href="mailto:support@zimapeak.com" className="text-decoration-none flex items-center justify-center md:justify-start">
                 <i className="bi bi-envelope-at-fill pr-1"></i>support@zimapeak.com
               </a>

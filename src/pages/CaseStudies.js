@@ -40,7 +40,7 @@ const CaseStudies = () => {
         : caseStudies.filter(study => study.category === selectedCategory);
 
     return (
-        <div id='casestudies' className={`text-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div id='casestudies' className={`text-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
                 <title>Case Studies | Zimapeak Marketing</title>
                 <meta name="description" content="Explore our case studies showcasing successful digital marketing campaigns, web development projects, and SEO strategies. Learn how we helped clients achieve their business goals." />
@@ -54,7 +54,7 @@ const CaseStudies = () => {
                     <button
                         key={category}
                         onClick={() => setSelectedCategory(category)}
-                        className={`mx-2 py-2 px-4 rounded ${darkMode ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'} ${selectedCategory === category ? 'font-bold' : ''} hover:bg-blue-600`}
+                        className={`mx-2 py-2 px-4 rounded ${darkMode ? 'bg-primary text-white' : 'bg-gray-200 text-black'} ${selectedCategory === category ? 'font-bold' : ''} hover:bg-primary hover:text-white`}
                     >
                         {category}
                     </button>
@@ -68,14 +68,14 @@ const CaseStudies = () => {
             ) : (
                 <div className="pb-20 px-20 flex flex-wrap justify-center">
                     {filteredCaseStudies.map((caseStudy, index) => (
-                        <div key={index} className={`max-w-sm m-4 rounded w-full ${darkMode ? 'bg-dark' : 'bg-gray'} border ${darkMode ? 'border-gray-700' : 'border-gray-300'} hover:border-blue-500 transition duration-300`}>
+                        <div key={index} className={`max-w-sm m-4 rounded w-full ${darkMode ? 'bg-dark' : 'bg-gray'} border-2 ${darkMode ? 'border-gray-700' : 'border-primary'} transition duration-300`}>
                             <img src={caseStudy.banner} alt="Case Study" className="w-full h-80 object-cover object-center" />
                             <div className="px-6 py-4">
-                                <div className={`font-bold text-xl mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{caseStudy.title}</div>
+                                <div className={`font-bold text-xl mb-2 ${darkMode ? 'text-white' : 'text-dark'}`}>{caseStudy.title}</div>
                                 <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{caseStudy.summary.length > 100 ? caseStudy.summary.substring(0, 100) + '...' : caseStudy.summary}</p>
                             </div>
                             <div className="px-6 pb-4">
-                                <Link to={`/casestudy/${caseStudy.id}`} className={`inline-block ${darkMode ? 'bg-blue-500 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'} text-white py-2 px-4 rounded`}>
+                                <Link to={`/casestudy/${caseStudy.id}`} className={`inline-block ${darkMode ? 'bg-primary hover:bg-secondary' : 'bg-primary hover:bg-secondary'} transition duration-200 text-white py-2 px-4 rounded`}>
                                     Learn more
                                 </Link>
                             </div>

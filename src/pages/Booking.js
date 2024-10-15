@@ -55,11 +55,11 @@ const Booking = () => {
     };
 
     return (
-        <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-black'} pt-20`}>
+        <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'} pt-20`}>
            <div className="calendly-inline-widget" data-url="https://calendly.com/zimapeak_audit/30min" style={{ minWidth: '10vw', height: '100vh' }}></div>
 
             {/* <div className="flex justify-center items-center py-28">
-                <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-black'} p-6 rounded-lg w-1/2`}>
+                <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'} p-6 rounded-lg w-1/2`}>
                     <h2 className="text-2xl flex justify-center mb-20">Book a <span className='font-black text-primary mx-2'>Free</span> Discovery call</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
@@ -87,7 +87,7 @@ const Booking = () => {
                         />
                         </div>
                         <div className="flex justify-center mt-4">
-                            <button type="submit" className={`w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400`}>Submit</button>
+                            <button type="submit" className={`w-full bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400`}>Submit</button>
                         </div>
                     </form>
                 </div>

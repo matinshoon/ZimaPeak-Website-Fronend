@@ -14,7 +14,7 @@ const ThemeProvider = ({ children }) => {
     if (currentTime >= 5 && currentTime < 18) {
       setDarkMode(false);
     } else {
-      setDarkMode(true); // Set dark mode for the rest of the time
+      setDarkMode(false); // Set dark mode for the rest of the time
     }
   }, []);
 

@@ -4,36 +4,6 @@
 
 /* Theme */
 
-.bg-primary {
-  background: #7ABFFF;
-}
-
-.text-primary {
-  color: #7ABFFF;
-}
-
-.border-primary {
-  border-color: #7ABFFF;
-}
-
-.bg-dark {
-  background: #000000;
-}
-
-/* Dark theme */
-.dark {
-  --bg-color: #1e293b;
-  --text-color: #ffffff;
-}
-
-.dark .text {
-  color: var(--text-color);
-}
-
-.dark .bg {
-  background-color: var(--bg-color);
-}
-
 /* Ensure body and html take up full height */
 html, body {
   height: 100%;
@@ -45,6 +15,9 @@ html, body {
   min-height: 100vh; /* Ensures the root element fills the viewport height */
   display: flex;
   flex-direction: column; /* Stack children vertically */
+
+  --primary: #054ada;
+  --secondary: #f80;
 }
 
 main {
@@ -89,7 +62,7 @@ body {
 }
 
 .btn-primary {
-  background: #7ABFFF;
+  background: #054ADA;
   border: none;
 }
 
@@ -98,7 +71,7 @@ body {
   color: #ffffff;
 }
 
-.text-black {
+.text-dark {
   color: #1e293b !important;
 }
 
@@ -174,7 +147,7 @@ body {
 .slider .slide {
   height: 500px;
   width: 100%;
-  border: 2px solid #7ABFFF;
+  border: 2px solid #054ADA;
   border-radius: 10px;
   padding: 5px;
   margin: 10px;
@@ -356,8 +329,8 @@ body {
   grid-template-rows: auto auto auto 1fr;
   align-items: start;
   gap: 1.25em;
-  border: 1px solid #7ABFFF;
-  background: #7abfff15;
+  border: 1px solid #054ADA;
+  background: #054ADA15;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 15px;
@@ -397,8 +370,8 @@ body {
   margin: 1em 0 0.5em 0;
   text-align: center;
   text-decoration: none;
-  color: #7ABFFF;
-  border: #7ABFFF solid 2px;
+  color: #054ADA;
+  border: #054ADA solid 2px;
   padding: 0.7em;
   border-radius: 10px;
   font-size: 1rem;
@@ -564,7 +537,7 @@ body {
   overflow: hidden;
   filter: blur(200px);
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, #7ABFFF, #47a6ff);
+  background: radial-gradient(circle, #054ADA, #47a6ff);
   z-index: -1 !important;
 }
 
@@ -577,15 +550,15 @@ body {
   /* Cover the entire area */
   height: 100%;
   /* Cover the entire area */
-  background: radial-gradient(circle, #7ABFFF, #47a6ff);
+  background: radial-gradient(circle, #054ADA, #47a6ff);
   filter: blur(100px);
   z-index: -1;
   /* Ensure the blur layer is behind the main gradient */
 }
 
 .bg-tiles {
-  background-image: linear-gradient(to right, #7abfff1f 1px, transparent 1px),
-    linear-gradient(to bottom, #7abfff1f 1px, transparent 1px);
+  background-image: linear-gradient(to right, #adadad1f 1px, transparent 1px),
+    linear-gradient(to bottom, #8e8e8e1f 1px, transparent 1px);
   background-size: 120px 120px;
 }
 
@@ -684,7 +657,7 @@ body {
 }
 
 #timerUi #timeUi .element.tick {
-  background-color: #7ABFFF;
+  background-color: #054ADA;
   margin-left: 6.25%;
   width: 2em;
   height: 2em;
@@ -692,7 +665,7 @@ body {
 }
 
 #timerUi #minute {
-  background-color: #7ABFFF;
+  background-color: #054ADA;
   transition: width 0.5s ease 0s, height 0.5s ease 0s;
   width: 0;
   height: 0;
@@ -758,4 +731,25 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.banner_light {
+  transform: translate(80%, -150%) rotate(25deg);
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F80; /* Color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #925700
 }

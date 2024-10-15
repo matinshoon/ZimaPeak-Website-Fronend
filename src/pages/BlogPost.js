@@ -35,11 +35,11 @@ const BlogPost = () => {
     }
 
     return (
-        <div id="blogPost" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div id="blogPost" className={`flex justify-center items-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <span className={`${darkMode ? 'blury-left' : 'blury-left'}`}></span>
             <span className={`${darkMode ? 'blury-right' : 'blury-right'}`}></span>
             <div className="container mx-auto py-40 z-10 relative flex flex-col justify-center items-center">
-                <p className="mb-4 text-sky-400">{blogPost.author}</p>
+                <p className="mb-4 text-primary">{blogPost.author}</p>
                 <h1 className="text-3xl font-bold relative">{blogPost.title}</h1>
                 <p className="text-lg mt-4">{blogPost.summary}</p>
                 <p className="text-sm mt-2">{blogPost.publishedDate}</p>

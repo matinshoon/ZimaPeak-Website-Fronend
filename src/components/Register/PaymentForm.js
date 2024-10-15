@@ -11,7 +11,19 @@ const PaymentForm = ({ darkMode, formData, handleChange, countries }) => {
     useEffect(() => {
         const fetchOffers = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/offer`);
+                // Retrieve token from localStorage
+                const token = localStorage.getItem('token');
+                
+                // Set up headers with the Authorization token
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Include the JWT token in the headers
+                    },
+                };
+    
+                // Make the request with the config object that includes headers
+                const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/offer`, config);
+                
                 // Access offers from the response
                 if (response.data) {
                     const showcasedOffers = response.data.filter(offer => offer.showcase === 1);
@@ -33,7 +45,7 @@ const PaymentForm = ({ darkMode, formData, handleChange, countries }) => {
     return (
         <div className={`w-full ${darkMode ? 'bg-dark' : 'bg-white'}`}>
             <div className="flex items-center mb-4">
-                <h3 className={`text-lg ${darkMode ? 'text-white' : 'text-black'}`}>Secure Payments with</h3>
+                <h3 className={`text-lg ${darkMode ? 'text-white' : 'text-dark'}`}>Secure Payments with</h3>
                 <img src={StripeLogo} alt="Stripe Logo" className="h-8 ml-2" />
             </div>
 
@@ -55,15 +67,15 @@ const PaymentForm = ({ darkMode, formData, handleChange, countries }) => {
                     },
                 }}
             />
-            <p className={`text-lg mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <p className={`text-lg mb-4 ${darkMode ? 'text-white' : 'text-dark'}`}>
                 Total: {(parseFloat(offers.find(offer => offer.id === formData.selectedOffer)?.discounted_price) / 100).toFixed(2)} USD
             </p>
-            <h3 className={`text-lg mb-2 ${darkMode ? 'text-white' : 'text-black'}`}>Billing Address</h3>
+            <h3 className={`text-lg mb-2 ${darkMode ? 'text-white' : 'text-dark'}`}>Billing Address</h3>
             <select
                 name="billingCountry"
                 value={formData.billingCountry}
                 onChange={handleChange}
-                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
             >
                 <option value="" disabled>Select Country</option>
                 {countries.map((country, index) => (
@@ -76,7 +88,7 @@ const PaymentForm = ({ darkMode, formData, handleChange, countries }) => {
                 value={formData.billingState}
                 onChange={handleChange}
                 placeholder="State/Province"
-                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
             />
             <input
                 type="text"
@@ -84,7 +96,7 @@ const PaymentForm = ({ darkMode, formData, handleChange, countries }) => {
                 value={formData.billingCity}
                 onChange={handleChange}
                 placeholder="City"
-                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
             />
             <input
                 type="text"
@@ -92,7 +104,7 @@ const PaymentForm = ({ darkMode, formData, handleChange, countries }) => {
                 value={formData.billingAddress}
                 onChange={handleChange}
                 placeholder="Street Address"
-                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
             />
             <input
                 type="text"
@@ -100,7 +112,7 @@ const PaymentForm = ({ darkMode, formData, handleChange, countries }) => {
                 value={formData.billingPostalCode}
                 onChange={handleChange}
                 placeholder="Postal Code"
-                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-black'}`}
+                className={`mb-4 p-4 w-full rounded ${darkMode ? 'bg-slate-800 text-white' : 'bg-gray-200 text-dark'}`}
             />
         </div>
     );

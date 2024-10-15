@@ -1,3 +1,5 @@
+/* global fbq */
+
 import React, { useEffect, useState, useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -27,16 +29,21 @@ const RegisterCard = () => {
     const countries = countryList().getData();
     const [confirmationCode, setConfirmationCode] = useState("");
     const [showConfirmationInput, setShowConfirmationInput] = useState(false);
-
+    const [orderId, setOrderId] = useState(null);
+    const fbq = window.fbq;
+    
     const validateConfirmationCode = async () => {
         try {
             // Validate the entered confirmation code with your backend
-            const isValid = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/auth/verify-code`, {
+            const response = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/auth/verify-code`, {
                 confirmationCode: formData.confirmationCode,
                 email: formData.email // Include the user's email
             });
-
-            if (isValid.data.success) {
+    
+            if (response.data.success) {
+                // Save the JWT token in localStorage
+                localStorage.setItem('token', response.data.token);
+    
                 setCurrentStep(3); // Move to the payment step
             } else {
                 setErrorMessage("Invalid confirmation code. Please try again.");
@@ -104,14 +111,14 @@ const RegisterCard = () => {
     const handleNext = async () => {
         if (currentStep === 1) {
             if (!validateInputs()) return;
-
+    
             const { full_name, email, phone, password } = formData;
             const data = { full_name, email, phone, password };
-
+    
             setLoading(true);
             const result = await handleRegister(data);
             setLoading(false);
-
+    
             if (result.success) {
                 setUserId(result.data);
                 setConfirmationCode(result.confirmationCode); // Save the confirmation code
@@ -122,25 +129,69 @@ const RegisterCard = () => {
             }
             return;
         }
-
+    
         if (currentStep === 2) {
             await validateConfirmationCode(); // Call validation here instead of handleVerifyCode
             return;
         }
-
+    
         if (currentStep === 3) {
             if (!formData.selectedOffer) {
                 setErrorMessage("Please select an offer to proceed.");
                 return;
             }
-
-            if (formData.selectedOffer === 'Free') {
-                navigate('/login');
-                return;
+    
+            const selectedOfferId = formData.selectedOffer;
+            const selectedOffer = offers.find(offer => offer.id === selectedOfferId);
+            const offerPrice = selectedOffer?.discounted_price;
+    
+            try {
+                const token = localStorage.getItem('token'); // Retrieve token from localStorage
+    
+                // Config for headers including the token
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Include the JWT token in headers
+                    },
+                };
+    
+                // Create an order
+                const orderResponse = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/order`, {
+                    user_id: userId, // Use the userId from state
+                    total_amount: (offerPrice / 100).toFixed(2), // Convert to dollars
+                    payment_status: 'pending'
+                }, config);
+    
+                const newOrderId = orderResponse.data.id; // Assuming the order API returns the order ID
+                setOrderId(newOrderId); // Save the orderId in state
+    
+                // Create an order item
+                await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/orderitem`, {
+                    order_id: newOrderId,
+                    offers_id: selectedOfferId,
+                    quantity: 1,
+                    price: (offerPrice / 100).toFixed(2) // Convert to dollars
+                }, config);
+    
+                // If payment is required, call handlePayment here
+                if (offerPrice > 0) {
+                    // Call handlePayment to process the payment after order creation
+                    await handlePayment();
+                    // Navigate to step 4 only after payment is processed
+                    setCurrentStep(4); 
+                } else {
+                    // If the offer is free, navigate to the desired route
+                    navigate('/done');
+                }
+    
+            } catch (error) {
+                console.error('Error creating order or order item:', error);
             }
-
-            setCurrentStep(4);
+            return; // Ensure we exit here to avoid moving to step 4 unnecessarily
         }
+    
+        // Move to step 4 if conditions are met
+        setCurrentStep(4);
     };
 
     const [formData, setFormData] = useState({
@@ -170,7 +221,18 @@ const RegisterCard = () => {
     useEffect(() => {
         const fetchOffers = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/offer`);
+                const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    
+                // Config for headers including the token
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Include the JWT token in headers
+                    },
+                };
+    
+                // Fetch offers with the token in the header
+                const response = await axios.get(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/offer`, config);
+    
                 // Access offers from the response
                 if (response.data) {
                     const showcasedOffers = response.data.filter(offer => offer.showcase === 1);
@@ -187,19 +249,30 @@ const RegisterCard = () => {
 
     const handlePayment = async () => {
         setLoading(true); // Optional loading state
-
+    
+        const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+            },
+        };
+    
         const cardElement = elements.getElement(CardElement);
         if (!cardElement) return;
-
+    
         try {
             // Create payment intent by calling backend API
-            const paymentIntentResponse = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/payment/Intent`, {
-                amount: parseFloat(offers.find(offer => offer.id === formData.selectedOffer)?.discounted_price),
-                currency: 'usd',
-            });
-
+            const paymentIntentResponse = await axios.post(
+                `${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/payment/Intent`,
+                {
+                    amount: parseFloat(offers.find(offer => offer.id === formData.selectedOffer)?.discounted_price),
+                    currency: 'usd',
+                },
+                config // Pass the token in headers
+            );
+    
             const clientSecret = paymentIntentResponse.data.clientSecret;
-
+    
             // Confirm card payment using Stripe.js
             const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
@@ -216,16 +289,24 @@ const RegisterCard = () => {
                     },
                 },
             });
-
-            console.log(paymentIntent); // Log paymentIntent details
-
+    
             if (error) {
                 console.error(error);
                 setRegisterSuccess(false); // Handle errors
             } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-                console.log('Payment succeeded!');
+                console.log('Payment successful!');
                 setRegisterSuccess(true);
-
+    
+                // Facebook Pixel tracking for purchase
+                const totalAmount = (parseFloat(offers.find(offer => offer.id === formData.selectedOffer)?.discounted_price) / 100).toFixed(2); // Assuming discounted_price is in cents
+                fbq('track', 'Purchase', {
+                    value: totalAmount,
+                    currency: 'USD',
+                });
+    
+                // Extract payment method
+                const paymentMethod = paymentIntent.payment_method;
+    
                 // Send the paymentIntent.id
                 const billingData = {
                     userId,
@@ -236,19 +317,44 @@ const RegisterCard = () => {
                     billingCountry: formData.billingCountry,
                     paymentID: paymentIntent.id, // Send paymentIntent ID
                 };
-
+    
                 console.log(billingData);
-                await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/user/billing`, billingData);
+                await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/user/billing`, billingData, config); // Pass the token in headers
                 console.log('Billing details sent!');
-
+    
+                // Prepare the payment data to send to the /payments endpoint
+                const paymentData = {
+                    order_id: orderId, // Replace orderId with the actual order ID
+                    payment_method: paymentMethod, // Use the extracted payment method
+                    payment_id: paymentIntent.id, // Payment ID returned from the payment gateway
+                    payment_amount: totalAmount, // Use the calculated total amount
+                    payment_status: 'completed', // Set the payment status
+                };
+    
+                // Send a POST request to the /api/orders/payments/ endpoint
+                await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/payment/`, paymentData, config); // Pass the token in headers
+                console.log('Payment details sent!');
+    
+                // Update the payment status in the order
+                await axios.put(
+                    `${process.env.REACT_APP_PUBLIC_BASE_URL}/orders/order/${orderId}`,
+                    {
+                        payment_status: 'successful', // Update the payment status
+                        paymentID: paymentIntent.id,
+                        total_amount: totalAmount, // Add total_amount here
+                    },
+                    config // Pass the token in headers
+                );
+                console.log('Payment status updated!');
+    
                 // Navigate or update user state after successful payment
-                navigate('/#');
+                navigate('/done');
             }
         } catch (error) {
             console.error("Payment error:", error);
             setRegisterSuccess(false);
         }
-
+    
         setLoading(false);
     };
 
@@ -303,24 +409,24 @@ const RegisterCard = () => {
     };
 
     return (
-        <div className={`flex flex-col justify-around h-full p-10 ${darkMode ? 'bg-dark text-white' : 'bg-white text-black'}`}>
+        <div className={`flex flex-col justify-around h-full p-10 ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <div>
-                <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>Create an account</h2>
+                <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-dark'}`}>Create an account</h2>
                 <p className={`text-xl mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Register now to grow your business in every possible way!</p>
             </div>
             {renderStepContent()}
             <div className='flex justify-between'>
                 {currentStep > 1 && (
-                    <button onClick={handleBack} className={`px-4 py-2 border rounded ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-black'}`}>
+                    <button onClick={handleBack} className={`px-4 py-2 border rounded ${darkMode ? 'border-gray-600 text-white' : 'border-gray-300 text-dark'}`}>
                         Back
                     </button>
                 )}
                 <button
                     onClick={currentStep === 4 ? handlePayment : handleNext}
-                    className={`px-4 py-2 rounded ${darkMode ? 'bg-blue-700 text-white' : 'bg-blue-600 text-white'}`}
+                    className={`px-4 py-2 rounded ${darkMode ? 'bg-primary text-white' : 'bg-primary text-white'}`}
                 >
                     {currentStep === 4 ? (
-                        loading ? "Processing..." : "Complete"
+                        loading ? "Complete" : "Complete"
                     ) : "Next"}
                 </button>
             </div>
