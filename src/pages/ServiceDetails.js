@@ -41,7 +41,7 @@ const ServiceDetails = () => {
                 </div>
 
                 <h2 className="text-xl mt-20 text-center font-semibold mb-6">{slang}</h2>
-                <Link to="/register">
+                <Link to="/booking">
                     <button className={`w-full px-10 py-3 rounded-2xl text-white text-xl font-bold bg-primary ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300 hover:text-slate-900'}`}>
                         Book a free Discovery Call
                     </button>

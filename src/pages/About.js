@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ThemeContext } from '../ThemeContext';
+import PageHeader from '../components/PageHeader'
 
 const About = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -43,10 +44,8 @@ const About = () => {
                 <meta name="description" content="Learn more about ZimaPeak Marketing, Toronto's leading digital marketing agency specializing in social media marketing, SEO, and web development. Meet our team of experts dedicated to elevating your brand's online presence." />
                 <link rel="canonical" href="https://www.zimapeak.com/about" />
             </Helmet>
-            <div className="container mx-auto py-20 z-10 relative flex flex-col justify-center items-center">
-                <p className="mb-4 text-primary">About Us</p>
-                <h1 className="text-3xl font-bold relative">ZimaPeak Marketing</h1>
-                <p className="text-lg text-center mt-4">Elevating Your Beauty Brand's Social Media Presence. We're experts in crafting strategies to boost engagement and visibility.</p>
+            <div className="container mx-auto z-10 relative flex flex-col justify-center items-center">
+                <PageHeader />
                 <div className={`w-full md:w-3/5 h-28 my-20 flex justify-around items-center text-white ${darkMode ? 'border' : 'bg-primary opacity-90'} md:rounded-lg`}>
                     <div className="text-center">
                         <p className='font-bold text-2xl mb-2'>+100</p>

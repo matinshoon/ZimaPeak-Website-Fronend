@@ -2,12 +2,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ThemeContext } from '../ThemeContext';
 import Banner from '../components/Home/Banner';
-import Compare from '../components/Home/Compare';
+import Portfolio from '../components/Home/Portfolio';
 import Testimonial from '../components/Home/Testimonial';
 import LogoSlider from '../components/Home/LogoSlider';
+import TagSlider from '../components/Home/TagSlider';
 import Stats from '../components/Home/Stats';
 import PopupBanner from '../components/PopupBanner';
-// import Ai from './Ai';
 
 const Home = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -28,11 +28,11 @@ const Home = () => {
     };
 
     return (
-        <div className={`bg-tiles text-center ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
+        <div className={`bg-tiles text-center overflow-hidden ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
-                <title>Zimapeak Marketing | Toronto's Best Web Development & Digital Marketing Agency</title>
-                <meta name="description" content="Zimapeak Marketing offers top-notch web development, SEO services, and social media marketing in Toronto. Let us help you grow your business online." />
-                <meta name="keywords" content="Web development agency, Digital marketing agency, Web design company, SEO services, Social media marketing, Content marketing, PPC management, E-commerce development, Mobile app development, Custom web applications, Toronto web development agency, Toronto digital marketing services, Web design in Toronto, SEO services in Toronto, Toronto social media marketing" />
+                <title>Toronto Marketing Agency | Zimapeak Marketing</title>
+                <meta name="description" content="Zimapeak Marketing, a leading Toronto marketing agency, specializes in web development, SEO, and digital marketing to elevate your business." />
+                <meta name="keywords" content="Toronto Marketing Agency, Digital marketing, SEO services, Web development in Toronto, Social media marketing, Content marketing" />
                 <link rel="canonical" href="https://www.zimapeak.com/" />
                 <script type="application/ld+json">
                     {JSON.stringify({
@@ -40,7 +40,7 @@ const Home = () => {
                         "@type": "LocalBusiness",
                         "name": "Zimapeak Marketing",
                         "url": "https://www.zimapeak.com",
-                        "logo": "https://www.zimapeak.com/logo.png",
+                        "logo": "https://zimapeak.com/static/media/logo-black.e615ec67e0b220c2f2ac.png",
                         "contactPoint": {
                             "@type": "ContactPoint",
                             "telephone": "+1-647-570-2244",
@@ -63,24 +63,26 @@ const Home = () => {
                 </script>
             </Helmet>
             {popupVisible && <PopupBanner closePopup={closePopup} />}
-            <div className='h-screen'>
-            <div className='h-full md:h-2/3 lg:pt-40 flex flex-col justify-center'>
-                <Banner/>
+
+            <div className='h-screen md:h-2/3 mt-[20vh] md:mt-0 lg:pt-[15vh] flex flex-col justify-center'>
+                <Banner />
             </div>
-            <div className='md:p-0 md:h-1/3 flex flex-col justify-end lg:justify-center'>
+            <div className='md:p-0 md:h-1/3 my-20 flex flex-col justify-end lg:justify-center'>
                 <LogoSlider />
             </div>
-            </div>
-            <div className="z-10 my-40">
+            <div className="z-10 my-20">
                 <Stats />
             </div>
-            <div className='my-40 z-20'>
+            <div className="z-10 my-20">
+                <Portfolio />
+            </div>
+            <div className='my-20 z-20'>
                 <Testimonial />
             </div>
-            <div className='mt-40 flex justify-center'>
-                <Compare />
+            <div className='z-30 md:p-0 md:h-1/2 my-20 flex flex-col justify-end lg:justify-center rotate-12 -translate-x-10 translate-y-10 w-[115vw]'>
+                <TagSlider />
             </div>
-        
+
         </div>
     );
 };

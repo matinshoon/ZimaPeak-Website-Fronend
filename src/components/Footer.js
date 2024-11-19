@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import logo from "../images/logo-white.png"; // Ensure the correct path to your logo image
+import logo from "../images/logo-primary.png"; // Ensure the correct path to your logo image
 
 function Footer() {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <section id="footer" className={`${darkMode ? 'bg-dark text-white' : 'bg-primary text-white'}`}>
+    <section id="footer" className={`${darkMode ? 'bg-dark text-white' : 'bg-gray-200 text-dark'}`}>
       <div className="container mx-auto py-8 px-4 flex flex-col md:flex-row items-center justify-between">
         
         {/* Logo and Social Icons Section */}
         <div className="flex flex-col items-center md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
-          <img src={logo} className='h-32 mb-4' alt="Logo Blue" /> {/* Increased size of the logo */}
+          <img src={logo} className='h-32 mb-4' alt="Zimapeak Logo" /> {/* Increased size of the logo */}
           <div className="flex justify-center mb-4">
             <a href="https://x.com/zimapeak" className="mx-2 text-decoration-none">
               <FaTwitter size={24} />
@@ -33,7 +33,7 @@ function Footer() {
         <div className="flex flex-col items-center md:items-start mb-4 md:mb-0 md:w-1/2 lg:w-1/4">
           <a href="/about" className="text-decoration-none mb-2">About Us</a>
           <a href="/services" className="text-decoration-none mb-2">Services</a>
-          <a href="/contact" className="text-decoration-none mb-2">Contact</a>
+          <a href="/booking" className="text-decoration-none mb-2">Contact</a>
           <a href="/privacy" className="text-decoration-none mb-2">Privacy Policy</a>
         </div>
 

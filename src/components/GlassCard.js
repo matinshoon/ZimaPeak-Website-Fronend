@@ -42,11 +42,11 @@ const GlassCard = ({ icon, title }) => {
       {
         label: 'Dataset 1',
         borderColor: 'rgba(255, 136, 0, 1)',
-        backgroundColor: 'rgba(5, 74, 218, 1)',
-        pointBackgroundColor: 'rgba(5, 74, 218, 1)',
-        pointBorderColor: 'rgba(5, 74, 218, 1)',
-        pointHoverBackgroundColor: 'rgba(5, 74, 218, 1)',
-        pointHoverBorderColor: 'rgba(5, 74, 218, 1)',
+        backgroundColor: 'rgba(255, 136, 0, 1)',
+        pointBackgroundColor: 'rgba(255, 136, 0, 1)',
+        pointBorderColor: 'rgba(255, 136, 0, 1)',
+        pointHoverBackgroundColor: 'rgba(255, 136, 0, 1)',
+        pointHoverBorderColor: 'rgba(255, 136, 0, 1)',
         data: data,
         fill: false,
       },
@@ -60,12 +60,12 @@ const GlassCard = ({ icon, title }) => {
       legend: {
         display: false,
         labels: {
-          color: 'rgba(5, 74, 218, 1)', // Set the legend text color to white
+          color: 'rgba(255, 136, 0, 1)', // Set the legend text color to white
         },
       },
       title: {
         display: false,
-        color: 'rgba(5, 74, 218, 1)', // Set the title text color to white
+        color: 'rgba(255, 136, 0, 1)', // Set the title text color to white
       },
     },
     scales: {
@@ -74,7 +74,6 @@ const GlassCard = ({ icon, title }) => {
           display: false,
         },
         ticks: {
-          color: 'rgba(5, 74, 218, 1)', // Set x-axis ticks color to white
         },
       },
       y: {
@@ -82,7 +81,6 @@ const GlassCard = ({ icon, title }) => {
           display: false,
         },
         ticks: {
-          color: 'rgba(5, 74, 218, 1)', // Set y-axis ticks color to white
         },
       },
     },
@@ -95,7 +93,7 @@ const GlassCard = ({ icon, title }) => {
         <meta name="keywords" content="Google Ads, Facebook Ads, Paid Ads, Digital Marketing, Lead Generation, Zimapeak Marketing" />
         <link rel="canonical" href="https://www.zimapeak.com/marketing" />
       </Helmet>
-      <div className="bg-white border-4 border-primary p-6 rounded-xl flex flex-col items-center justify-center text-center w-full md:h-72">
+      <div className="bg-gray-100 p-6 rounded-xl flex flex-col items-center justify-center text-center w-full md:h-72">
         <div className="mb-2 text-3xl">{icon}</div>
         <h3 className="font-bold mb-1 text-lg">{title}</h3>
         <p className="text-xl mb-4">{`Leads generated today: ${lastValue}`}</p>

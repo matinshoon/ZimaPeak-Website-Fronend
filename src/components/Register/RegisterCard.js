@@ -95,7 +95,19 @@ const RegisterCard = () => {
 
     const handleRegister = async (data) => {
         try {
-            const response = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/auth/register`, data);
+            const response = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/auth/booking`, data);
+            
+            // Track the lead with Facebook Pixel
+            if (response.data && response.data.success) {
+                fbq('track', 'Lead', {
+                    full_name: formData.full_name || '', 
+                    email: formData.email || '',        
+                    phone: formData.phone || '',        
+                    lead_source: 'Register form',       
+                    page_url: window.location.href
+                });
+            }
+    
             return { success: true, data: response.data.userId, confirmationCode: response.data.confirmationCode };
         } catch (error) {
             console.error("Error during registration:", error);

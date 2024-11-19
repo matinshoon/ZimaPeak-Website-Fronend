@@ -559,7 +559,8 @@ body {
 .bg-tiles {
   background-image: linear-gradient(to right, #adadad1f 1px, transparent 1px),
     linear-gradient(to bottom, #8e8e8e1f 1px, transparent 1px);
-  background-size: 120px 120px;
+  background-size: 100px 100px;
+  z-index: -100;
 }
 
 .bg-glass {
@@ -752,4 +753,13 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #925700
+}
+
+
+.react-calendar__tile {
+  height: 3.5vw; 
+}
+
+.react-calendar {
+  width: 100% !important;
 }

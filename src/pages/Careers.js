@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ThemeContext } from '../ThemeContext';
 import { ClipLoader } from 'react-spinners';
 import axios from 'axios';
+import PageHeader from '../components/PageHeader'
 
 const Careers = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -29,17 +30,14 @@ const Careers = () => {
     }, [baseUrl]);
 
     return (
-        <div className={`py-16 px-6 ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
+        <div className={`${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
                 <title>Careers | Join Our Team</title>
                 <meta name="description" content="Explore career opportunities at our company. We are hiring talented individuals for various positions. Apply now to join our team!" />
                 <meta name="keywords" content="careers, jobs, hiring, frontend developer, backend developer, project manager, SEO, branding specialist" />
             </Helmet>
             <div className="max-w-7xl mx-auto">
-                <h1 className="mt-32 text-3xl md:text-5xl font-bold mb-8 max-w-7xl mx-auto text-left">Careers</h1>
-                <p className="mb-32 text-lg md:text-xl mb-8 text-left max-w-7xl mx-auto">
-                    Explore career opportunities at our company. We are hiring talented individuals for various positions. Apply now to join our team!
-                </p>
+                <PageHeader />
                 {isLoading ? (
                     <div className="flex items-center justify-center h-screen">
                         <ClipLoader color={darkMode ? '#ffffff' : '#000000'} loading={isLoading} size={50} />

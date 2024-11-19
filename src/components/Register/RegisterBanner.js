@@ -65,7 +65,7 @@ const RegisterBanner = () => {
             <div className="absolute top-12 left-10">
                 <img 
                     src={logo} 
-                    alt="Logo"
+                    alt="Zimapeak Logo"
                     className="h-16 w-auto"
                 />
             </div>

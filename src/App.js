@@ -11,7 +11,7 @@ import ServiceDetails from './pages/ServiceDetails';
 import Booking from './pages/Booking';
 import About from './pages/About';
 import Careers from './pages/Careers';
-import BlogPost from './pages/BlogPost';
+
 import Privacy from './pages/Privacy';
 import Done from './pages/Done';
 import AppLayout from './AppLayout';
@@ -50,13 +50,19 @@ function App() {
                   </Elements>
                 } 
               />
+              {/* <Route 
+                path="/booking" 
+                element={
+                  <Elements stripe={stripePromise}>
+                    <Booking />
+                  </Elements>
+                } 
+              /> */}
               <Route path="/services" element={<Services />} />
               <Route path="/done" element={<Done />} />
-              {/* <Route path="/ai" element={<Ai />} /> */}
               <Route path="/services/:serviceName" element={<ServiceDetails />} />
-              <Route path="/register" element={<Booking />} />
+              <Route path="/booking" element={<Booking />} />
               <Route path="/about" element={<About />} />
-              <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/careers" element={<Careers />} />
               <Route path="/casestudies" element={<CaseStudies />} />

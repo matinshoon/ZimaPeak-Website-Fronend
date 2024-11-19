@@ -9,9 +9,9 @@ const AppLayout = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {location.pathname === '/register' ? <RegisterNavbar /> : <Navbar />}
+      {location.pathname === '/register' || location.pathname === '/booking' ? <RegisterNavbar /> : <Navbar />}
       <main className="flex-grow">{children}</main>
-      {location.pathname !== '/register' && <Footer />}
+      {location.pathname !== '/register' && location.pathname !== '/booking' && <Footer />}
     </div>
   );
 };

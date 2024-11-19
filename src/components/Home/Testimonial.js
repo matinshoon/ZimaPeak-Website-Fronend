@@ -29,16 +29,18 @@ const Testimonial = () => {
     const { darkMode } = useContext(ThemeContext);
 
     return (
-        <div className={`py-12 px-4 sm:px-6 lg:px-8 ${darkMode ? 'text-white' : 'text-dark'}`}>
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-center text-2xl font-extrabold tracking-tight mb-8">What Our Clients Say</h1>
-                <p className="text-center text-lg mb-12">Hear from our satisfied clients who have experienced the transformative power of our marketing services.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className={` ${darkMode ? 'text-white' : 'text-dark'}`}>
+            <div className="max-w-7xl mx-auto flex flex-col justify-center items-center ">
+                <div className='w-full md:w-1/2'>
+                    <h1 className="text-center text-2xl font-extrabold tracking-tight mb-8">What Our Clients Say</h1>
+                    <p className="text-center text-lg mb-12">Hear from our satisfied clients who have experienced the transformative power of our marketing services.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {testimonials.map((testimonial, index) => (
-                        <div key={index} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
-                            <div className={`px-6 py-8 bg-primary text-white`}>
+                        <div key={index} className="flex flex-col rounded-lg border border-4 overflow-hidden">
+                            <div className={`px-6 py-8 bg-white text-dark`}>
                                 <div className="flex items-center mb-4">
-                                    <FaGoogle className="text-white text-4xl mr-2" />
+                                    <FaGoogle className="text-primary text-4xl mr-2" />
                                     <div>
                                         <div className="font-semibold">{testimonial.name}</div>
                                         <div className="flex items-center">
@@ -50,8 +52,8 @@ const Testimonial = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="text-sm italic mb-4">{testimonial.title}</div>
-                                <p className={`text-sm text-white`}>{testimonial.quote}</p>
+                                <div className="text-m text-left italic mb-4">{testimonial.title}</div>
+                                <p className={`text-m text-left text-dark`}>{testimonial.quote}</p>
                             </div>
                         </div>
                     ))}

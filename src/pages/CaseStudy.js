@@ -1,33 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThemeContext } from '../ThemeContext';
+import caseStudiesData from '../data/casestudiesData';
 
 const CaseStudy = () => {
     const { darkMode } = useContext(ThemeContext);
-    const [caseStudy, setCaseStudy] = useState(null);
-    const [loading, setLoading] = useState(true);
     const { id } = useParams();
-    const baseUrl = process.env.REACT_APP_PUBLIC_BASE_URLL;
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${baseUrl}/website/get/casestudy/${id}`);
-                setCaseStudy(response.data);
-            } catch (error) {
-                console.error('Error fetching case study data:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, [id, baseUrl]);
-
-    if (loading) {
-        return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
-    }
+    const caseStudy = caseStudiesData.find((study) => study.id === id);
 
     if (!caseStudy) {
         return <div className="flex justify-center items-center min-h-screen">No case study found.</div>;
@@ -45,8 +24,8 @@ const CaseStudy = () => {
             <span className={`${darkMode ? 'blury-right' : 'blury-right'}`}></span>
             <div className="container mx-auto py-40 z-10 relative flex flex-col justify-center items-center">
                 <p className="mb-4 text-primary">{caseStudy.client}</p>
-                <h1 className="text-3xl font-bold relative">{caseStudy.title}</h1>
-                <p className="text-lg mt-4">{caseStudy.summary}</p>
+                <h1 className="text-center mx-10 text-3xl font-bold relative">{caseStudy.title}</h1>
+                <p className="text-center mx-10 text-lg mt-4">{caseStudy.summary}</p>
                 <div className={`w-full md:w-3/5 h-28 my-20 flex justify-around items-center text-white ${darkMode ? 'border' : 'bg-black opacity-90'} md:rounded-lg`}>
                     {caseStudy.outcome.split(',').map((outcome, index) => {
                         const number = outcome.trim();
