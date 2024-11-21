@@ -97,7 +97,12 @@ const Banner = () => {
             </span>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => navigate('/booking')}
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="px-6 py-3 bg-primary text-white rounded-full hover:bg-secondary transition-transform transform hover:scale-105"
               >
                 Contact Us

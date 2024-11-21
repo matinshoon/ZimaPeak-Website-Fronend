@@ -8,6 +8,7 @@ import LogoSlider from '../components/Home/LogoSlider';
 import TagSlider from '../components/Home/TagSlider';
 import Stats from '../components/Home/Stats';
 import PopupBanner from '../components/PopupBanner';
+import Contact from '../components/Contact';
 
 const Home = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -67,7 +68,7 @@ const Home = () => {
             <div className='h-screen md:h-2/3 mt-[20vh] md:mt-0 lg:pt-[15vh] flex flex-col justify-center'>
                 <Banner />
             </div>
-            <div className='md:p-0 md:h-1/3 my-20 flex flex-col justify-end lg:justify-center'>
+            <div className='md:p-0 md:h-1/3 mt-40 md:my-20 flex flex-col justify-end lg:justify-center'>
                 <LogoSlider />
             </div>
             <div className="z-10 my-20">
@@ -79,10 +80,12 @@ const Home = () => {
             <div className='my-20 z-20'>
                 <Testimonial />
             </div>
-            <div className='z-30 md:p-0 md:h-1/2 my-20 flex flex-col justify-end lg:justify-center rotate-12 -translate-x-10 translate-y-10 w-[115vw]'>
+            <div className='z-30 relative md:p-0 md:h-1/2 my-20 flex flex-col justify-end lg:justify-center rotate-12 -translate-x-10 translate-y-10 w-[115vw]'>
                 <TagSlider />
             </div>
-
+            <div className='mt-20 z-20'>
+                <Contact />
+            </div>
         </div>
     );
 };

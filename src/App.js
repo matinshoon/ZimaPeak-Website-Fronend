@@ -6,14 +6,13 @@ import Register from './pages/Register';
 import CaseStudies from './pages/CaseStudies';
 import CaseStudy from './pages/CaseStudy';
 import Services from './pages/Services';
-// import Ai from './pages/Ai';
 import ServiceDetails from './pages/ServiceDetails';
 import Booking from './pages/Booking';
 import About from './pages/About';
 import Careers from './pages/Careers';
-
 import Privacy from './pages/Privacy';
 import Done from './pages/Done';
+import NotFound from './pages/NotFound';
 import AppLayout from './AppLayout';
 import { ThemeContext } from './ThemeContext';
 import ReactGA from 'react-ga4';
@@ -50,15 +49,8 @@ function App() {
                   </Elements>
                 } 
               />
-              {/* <Route 
-                path="/booking" 
-                element={
-                  <Elements stripe={stripePromise}>
-                    <Booking />
-                  </Elements>
-                } 
-              /> */}
               <Route path="/services" element={<Services />} />
+              <Route path="/marketing" element={<Services />} />
               <Route path="/done" element={<Done />} />
               <Route path="/services/:serviceName" element={<ServiceDetails />} />
               <Route path="/booking" element={<Booking />} />
@@ -67,6 +59,7 @@ function App() {
               <Route path="/careers" element={<Careers />} />
               <Route path="/casestudies" element={<CaseStudies />} />
               <Route path="/casestudy/:id" element={<CaseStudy />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>
         </div>
