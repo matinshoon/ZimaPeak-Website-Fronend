@@ -17,7 +17,7 @@ const Contact = () => {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State to control success message visibility
     const [error, setError] = useState(""); // State to store error messages
     const [showHiThere, setShowHiThere] = useState(false); // State to control "Hi there" visibility with animation
-
+    const [loading, setLoading] = useState(false); // State to track loading
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -31,7 +31,7 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         // Validation for required fields
         if (
             !formData.fullName ||
@@ -45,31 +45,58 @@ const Contact = () => {
         } else {
             setError(""); // Clear any previous error
         }
-
+    
         // Fetch user IP or any other additional data
         const userIp = await getUserIP(); // Replace with your IP-fetching method
-
-        const dataToSubmit = {
-            ...formData,
-            selected_option: selected_option,
-            userIp: userIp, // Include IP address in the data
+    
+        const dataToCRM = {
+            fullName: formData.fullName,
+            phone: formData.phone,
+            email: formData.email,
+            website: formData.existingWebsite,
+            service: selected_option,
+            ip: userIp,
+            lists: [5],
+            status: "Pending",
+            contactType: "lead",
+            source: window.location.href,
         };
-
+    
+        setLoading(true); // Set loading state to true when form submission starts
+    
         try {
-            const response = await axios.post(
-                `${process.env.REACT_APP_PUBLIC_BASE_URL}/contact`,
-                dataToSubmit
+            // Single API request to /leads
+            const leadsResponse = await axios.post(
+                `${process.env.REACT_APP_PUBLIC_BASE_URL}/leads`,
+                dataToCRM
             );
-
-            if (response.status === 201) {
-                console.log("Form submitted successfully:", response.data);
+    
+            // Check for success based on the response message
+            if (leadsResponse.data.message === "Contact successfully updated in FluentCRM") {
+                console.log("Lead submitted successfully:", leadsResponse.data);
+    
+                // Google Analytics Event
+                if (window.gtag) {
+                    window.gtag('event', 'Contact_form', {
+                        event_category: 'Leads',
+                        event_label: `${formData.fullName} | ${formData.email} | ${formData.existingWebsite}`, // Use formData for the values
+                    });
+    
+                    console.log('Google Analytics event tracked: Contact_form');
+                }
+    
                 setFormVisible(false);
                 setShowSuccessMessage(true);
             } else {
-                console.error("Form submission error:", response.data);
+                // Handle unexpected responses
+                console.error("Unexpected response:", leadsResponse.data);
+                setError("There was an issue submitting your lead. Please try again.");
             }
         } catch (error) {
             console.error("Network error:", error);
+            setError("There was an error submitting your lead. Please try again.");
+        } finally {
+            setLoading(false); // Set loading to false when done
         }
     };
 
@@ -97,7 +124,7 @@ const Contact = () => {
     };
 
     return (
-        <div id="contact" className="flex flex-col lg:flex-row bg-gray-100 bg-tiles p-20 pb-20 justify-center items-center">
+        <div id="contact" className="flex flex-col lg:flex-row bg-gray-100 bg-tiles p-8 md:p-20 pb-20 justify-center items-center">
             <div className="w-full max-w-7xl h-auto mx-auto flex flex-col justify-center items-center">
                 <div className="h-full flex flex-col w-full space-y-4">
                     <div className="flex flex-col lg:flex-row bg-white rounded-xl w-full">
@@ -238,26 +265,28 @@ const Contact = () => {
                                             />
                                             <p className="text-sm text-gray-600">By clicking the submit button, you agree to<a href='/privacy/#s' className='ml-1 text-primary'>Terms and Conditions</a></p>
                                         </div>
-                                        <button
-                                            type="submit"
-                                            className="w-full bg-primary text-white py-3 rounded-full"
-                                        >
-                                            Submit
-                                        </button>
+
+                                        {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+                                        {/* Submit Button */}
+                                        <div className="mt-4">
+                                            <button
+                                                type="submit"
+                                                className="bg-primary text-white py-3 px-6 rounded-full w-full"
+                                                disabled={loading} // Disable button while loading
+                                            >
+                                                {loading ? "Submitting..." : "Submit"}
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
-                            ) : showSuccessMessage ? (
-                                <div className="h-full flex justify-center items-center bg-white p-6 rounded-xl text-center">
-                                    <h2 className="text-xl font-bold">
-                                        Thank you! Your form has been submitted successfully! 🎉
-                                    </h2>
+                            ) : null}
+
+                            {/* Success Message */}
+                            {showSuccessMessage && (
+                                <div className="bg-white p-6 rounded-xl w-full h-full flex items-center justify-center">
+                                    <h2 className="text-xl font-semibold text-center">Thank you for contacting us! We'll get back to you shortly.</h2>
                                 </div>
-                            ) : (
-                                <div className="h-full flex justify-center items-center bg-white p-6 rounded-xl text-center">
-                                    <h2 className="text-xl font-bold">Hi there! <span className='animate-hand-rotate'>👋</span></h2>
-                                </div>
-                            )
-                            }
+                            )}
                         </div>
                     </div>
                 </div>

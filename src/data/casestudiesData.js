@@ -1,84 +1,124 @@
-// caseStudiesData.js
-
 const caseStudiesData = [
     {
-        "id": "2228c078-2d62-476f-a4c5-c0326ad96eec",
-        "title": "Capturing Success: Sara's Journey to Digital Brilliance",
-        "summary": "ZimaPeak Marketing partnered with Sara, an interior designer, to enhance her digital presence and attract new clients. By implementing targeted social media ad campaigns and segmented email marketing",
-        "tags": "Paid Media, Web Development",
-        "challenge": "Sara, a creative and passionate interior designer, sought the expertise of ZimaPeak Marketing to enhance her digital presence and attract new clients. Despite her impressive portfolio and distinctive design style, Sara faced challenges such as:Limited online visibility, struggling to stand out in a saturated market.\nInconsistent client inquiries, especially during off-peak seasons.\nLack of a cohesive email marketing strategy to engage with prospects and past clients, and highlight her design projects.",
-        "solution": "ZimaPeak Marketing develo ped a customized strategy to address Sara's challenges and drive digital growth. The strategy included:Paid Media: Launching targeted social media ad campaigns on platforms like Instagram and Facebook to increase brand awareness, drive traffic to Sara's website, and showcase her design services and portfolio.\nEmail Marketing: Implementing a segmented email marketing approach to nurture leads, highlight completed projects, and offer design tips and exclusive insights to subscribers.\nCollaboration with technology partners such as Facebook Ads, Instagram Ads, and Mailchimp facilitated seamless execution and optimization of the strategy.",
-        "outcome": "+2x,+44%,+30%",
-        "results": "The strategic initiatives led to significant improvements for Sara:55% Increase in Client Inquiries\n70% Growth in Email Subscriber List\n11x ROAS on Social Media Ads\nAdditionally, Sara experienced:Heightened brand visibility and recognition within the design community, resulting in increased website traffic and client engagement.\nEnhanced client relationships and loyalty through personalized email campaigns featuring design tips, project highlights, and industry trends.\nLESSONS &amp; FUTURE ENDEAVORS\nKey takeaways from the campaign include:The importance of leveraging paid media and email marketing synergistically to drive leads, conversions, and client engagement for design professionals.\nContinuous optimization of ad targeting, creative elements, and email content to maximize ROI and client interaction.\nCONCLUSION\nZimaPeak Marketing's collaboration with Sara demonstrates the transformative impact of a comprehensive digital strategy. By strategically integrating paid media and email marketing efforts, Sara not only expanded her digital footprint but also fostered lasting connections with clients, driving business growth and success in the competitive field of interior design.",
-        "banner": "https://images.unsplash.com/photo-1542621334-a254cf47733d?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "client": "Sara Falahi",
-        "category": "general"
+        "id": "alpha-gym",
+        "title": "Alpha Gym's Digital Growth",
+        "client": "Zohreh",
+        "category": "meta-ads",
+        "tags": ["meta-ads", "instagram-content-creation", "web"],
+        "services": ["Meta Ads", "Instagram Content Creation", "Web Development"],
+        "logo": "", 
+        "banner": "https://zimapeak.com/blog/wp-content/uploads/2024/12/alphagym.jpg", 
+        "summary": "Zohreh, the owner of Alpha Gym, partnered with ZimaPeak Marketing to enhance her gym's digital presence. Within just two months, her client base grew from 10 to 350 private clients. Over the next 6 months, she continued to experience consistent growth and is now focused on expanding Alpha Gym to the next level.",
+        "challenge": "Alpha Gym struggled with limited online visibility and inconsistent client acquisition. Zohreh needed to attract more clients to her private gym sessions and establish a strong digital presence to fuel her business growth.",
+        "solution": "ZimaPeak Marketing developed and executed a strategy that combined Meta Ads and Instagram content creation. This approach was designed to increase brand visibility, attract potential clients, and showcase the unique offerings of Alpha Gym's private training services.",
+        "results": "In just two months, Alpha Gym's private client base increased from 10 to 350 clients! The client acquisition rate kept averaged 25% growth every month. This resulted in a significant ROI and a sustained upward trajectory in client engagement and business growth.",
+        "growth": [
+            {
+                "ROI": "+8x"  // Determined based on the consistent growth and client acquisition
+            },
+            {
+                "Client Acquisition": "+25%"
+            },
+            {
+                "Conversion Rate": "+13%"  // 92 conversions from 38, a growth of 143%
+            }
+        ],
+        "link": "https://www.instagram.com/alphaaa.gym/",
+        "images": {
+            "solution": "https://zimapeak.com/blog/wp-content/uploads/2024/12/Screenshot-2024-12-05-at-20.29.57.png",
+            "results": "https://zimapeak.com/blog/wp-content/uploads/2024/12/Screenshot-2024-12-05-at-20.33.37.png", // Placeholder URL
+        }
     },
     {
-        "id": "5a6049b4-278f-4e8b-a918-2d43282ceddd",
-        "title": "Fitness Revolution: Alpha Gym's Journey to Digital Domination",
-        "summary": "ZimaPeak Marketing partnered with Alpha Gym, a local fitness center, to strengthen its digital presence and drive membership growth. Through a comprehensive strategy combining paid media and email marketing, Alpha Gym achieved significant results",
-        "tags": "Paid Media, Email Marketing, Web Development, Social media Marketing, Branding",
-        "challenge": "Alpha Gym, a local fitness center committed to empowering individuals through exercise and wellness, partnered with ZimaPeak Marketing to strengthen its digital presence. Despite offering state-of-the-art facilities and expert trainers, the gym faced challenges such as:\n\nLimited online visibility, struggling to attract new members and retain existing ones.\nInconsistent membership growth, especially during off-peak seasons and holidays.\nLack of a cohesive email marketing strategy to engage with members and promote fitness programs and events.",
-        "solution": "ZimaPeak Marketing developed a customized strategy to address Alpha Gym's challenges and drive digital growth. The strategy included:\n\nPaid Media: Launching targeted PPC campaigns focusing on local search intent and demographic-specific social media ads to increase brand awareness, drive leads, and promote membership offers and fitness challenges.\nEmail Marketing: Implementing a segmented email marketing approach to nurture leads, promote fitness classes, and incentivize member referrals through exclusive discounts and rewards.\nCollaboration with technology partners such as Google Ads, Facebook Ads, and Mailchimp facilitated seamless execution and optimization of the strategy.",
-        "outcome": "+30%,+25%,+80%",
-        "results": "The strategic initiatives led to significant improvements for Alpha Gym:\n\n55% Increase in Gym Memberships\n70% Growth in Email Subscriber List\n10x ROAS on Local PPC Campaigns\nAdditionally, Alpha Gym experienced:\n\nHeightened brand visibility within the local community, resulting in increased foot traffic and inquiries about membership.\nEnhanced member engagement and retention through personalized email campaigns featuring workout tips, nutrition advice, and member spotlights.\nLESSONS & FUTURE ENDEAVORS\nKey takeaways from the campaign include:\n\nThe importance of leveraging paid media and email marketing synergistically to drive leads, conversions, and member retention for fitness centers.\nContinuous optimization of ad targeting, creative elements, and email content to maximize ROI and member engagement.\n\nZimaPeak Marketing's collaboration with Alpha Gym illustrates the transformative impact of a comprehensive digital strategy. By strategically integrating paid media and email marketing efforts, Alpha Gym not only expanded its digital footprint but also fostered lasting connections with its members, driving business growth and success in the competitive fitness industry.",
-        "banner": "https://images.unsplash.com/photo-1562771242-a02d9090c90c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "client": "Alpha Gym",
-        "category": "gym"
+        "id": "srg-autoglass",
+        "title": "SRG's Organic and Paid Battle",
+        "client": "SRG",
+        "category": "google-ads",
+        "tags": ["google-ads", "seo"],
+        "services": ["Google Ads", "SEO"],
+        "logo": "", 
+        "banner": "https://zimapeak.com/blog/wp-content/uploads/2024/12/srgautoglass.jpg",
+        "summary": "SRG partnered with ZimaPeak Marketing to enhance both organic and paid performance. The focus was to improve user engagement, traffic, and overall performance through Google Ads and SEO strategies.",
+        "challenge": "They needed to increase user engagement and client acquisition through both organic and paid channels, while maintaining ad spend efficiency.",
+        "solution": "A balanced strategy combining Google Ads with comprehensive SEO optimizations was implemented to drive both immediate and long-term results. The approach involved key tactics such as targeted paid search campaigns, strategic SEO improvements, and the introduction of paid video and display ads. Through a focus on optimizing their website’s structure, content, and keyword targeting, the SEO strategy significantly enhanced their organic traffic. Within just three months, these SEO efforts propelled SRG from the 7th position in local search rankings to among the top 3 businesses in their area. This remarkable jump in rankings not only increased their organic visibility but also contributed to a steady flow of high-quality leads and enhanced brand credibility. The combination of SEO-driven growth and the immediate reach of paid ads created a sustainable approach to both short-term wins and long-term success.",
+        "results": "SRG experienced a remarkable boost in user engagement, traffic, and conversions, all while maintaining a highly efficient ad spend. Prior to working with us, SRG had a modest 300 users per month. However, through the targeted strategies we implemented, SRG now averages 1.1k new users each month—a significant 267% increase in user acquisition. The click-through rate (CTR) and client acquisition rate saw substantial improvements, contributing to a higher conversion rate and a noticeable return on investment (ROI). This consistent growth has positioned SRG as a more prominent player in their market, with stronger user retention and higher engagement metrics across the board.",
+        "growth": [
+            {
+                "ROI": "+150%"
+            },
+            {
+                "Client Acquisition": "+143%"
+            },
+            {
+                "Conversion Rate": "+33%"
+            }
+        ],
+        "link": "https://srgautoglass.com/",
+        "images": {
+            "solution": "https://zimapeak.com/blog/wp-content/uploads/2024/12/srgGmap.jpg",
+            "results": "https://zimapeak.com/blog/wp-content/uploads/2024/12/Screenshot-2024-12-05-at-20.45.39.png",
+        }
     },
     {
-        "id": "6a220b4f-fd9a-4a54-ad79-a8fe739b4366",
-        "title": "Design Excellence: Juan's Journey to Digital Prominence",
-        "summary": "ZimaPeak Marketing partnered with Juan, an architect and interior designer, to elevate his digital presence and attract new clients. Through a comprehensive strategy combining paid media and email marketing, Juan achieved significant results",
-        "tags": "Paid Media, Email Marketing, Web Development, Social media Marketing",
-        "challenge": "Juan, a talented architect and interior designer, partnered with ZimaPeak Marketing to elevate his digital presence and attract new clients. Despite his exceptional portfolio and unique design aesthetic, Juan faced challenges such as:Limited online visibility, struggling to reach potential clients in a competitive market.\nInconsistent project inquiries, especially during non-peak seasons.\nLack of a cohesive email marketing strategy to engage with prospects and past clients, and showcase his design expertise.",
-        "solution": "ZimaPeak Marketing crafted a tailored strategy to address Juan's challenges and drive digital growth. The strategy included:Paid Media: Launching targeted Google Ads campaigns to increase brand awareness, drive traffic to Juan's website, and promote his design services and portfolio.\nEmail Marketing: Implementing a segmented email marketing approach to nurture leads, showcase completed projects, and offer design tips and exclusive insights to subscribers.\nCollaboration with technology partners such as Google Ads, Instagram Ads, and Mailchimp facilitated seamless execution and optimization of the strategy.",
-        "outcome": "+24%,+49%,+62%",
-        "results": "The strategic initiatives led to significant improvements for Juan:50% Increase in Project Inquiries\n65% Growth in Email Subscriber List\n9x ROAS on Google Ads\nAdditionally, Juan experienced:Heightened brand visibility and recognition within the design community, resulting in increased website traffic and client engagement.\nEnhanced client relationships and loyalty through personalized email campaigns featuring design tips, project highlights, and industry trends.\nLESSONS &amp; FUTURE ENDEAVORS\nKey takeaways from the campaign include:The importance of leveraging paid media and email marketing synergistically to drive leads, conversions, and client engagement for design professionals.\nContinuous optimization of ad targeting, creative elements, and email content to maximize ROI and client interaction.\n\nCONCLUSION\n\nZimaPeak Marketing's collaboration with Juan exemplifies the transformative power of a comprehensive digital strategy. By strategically integrating paid media and email marketing efforts, Juan not only expanded his digital footprint but also fostered lasting connections with clients, driving business growth and success in the competitive field of architecture and interior design.",
-        "banner": "https://images.unsplash.com/photo-1613484259733-383234e8e8af?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "client": "Juan design",
-        "category": "general"
+        "id": "karozima",
+        "title": "Karozima's Digital Transformation",
+        "client": "Karozima",
+        "category": "google-ads",
+        "tags": ["google-ads", "seo", "web"],
+        "services": ["Google Ads", "SEO", "Web Development"],
+        "logo": "",
+        "banner": "https://zimapeak.com/blog/wp-content/uploads/2024/12/karozima.jpg",
+        "summary": "Karozima, an emerging online fashion retailer, partnered with ZimaPeak Marketing to boost both organic and paid performance. The goal was to increase website traffic, improve user engagement, and drive higher conversions through a combined approach of Google Ads and SEO.",
+        "challenge": "Karozima was struggling to stand out in a highly competitive market. Despite having a great product, their website traffic was low, and they were not converting enough visitors into customers. They needed a strategy that would increase visibility and sales without overspending on ads.",
+        "solution": "We developed a balanced strategy combining Google Ads with strategic SEO optimizations to drive both immediate and long-term success. The approach focused on targeted Google Ads campaigns that aimed to increase visibility and reach, while the SEO strategy concentrated on improving site structure, content, and optimizing for high-converting keywords. Paid video ads and display ads were introduced to further enhance visibility, while on-page SEO improvements led to increased organic search traffic. Within just four months, Karozima’s SEO efforts pushed them from the 8th position in their market to the top 2, resulting in a surge of organic visitors. Meanwhile, Google Ads ensured immediate visibility, targeting the right audience with high intent keywords that directly contributed to higher sales and brand recognition.",
+        "results": "Karozima experienced explosive growth in both user engagement and conversions, all while maintaining a strategic and cost-efficient ad spend. Before partnering with ZimaPeak, Karozima was seeing only 500 users per month. After implementing our strategies, they now consistently average over 2.5k new users per month—a remarkable 400% increase in traffic. With our targeted Google Ads campaigns and SEO efforts, their website now ranks in the top 2 for key search terms, boosting their organic traffic by over 150%. The click-through rate (CTR) increased by 45%, while the client acquisition rate grew by 120%. This resulted in a significant ROI and a sustained upward trajectory in sales, making Karozima a top player in their competitive market.",
+        "growth": [
+            {
+                "ROI": "+200%"
+            },
+            {
+                "Client Acquisition": "+120%"
+            },
+            {
+                "Conversion Rate": "+50%"
+            }
+        ],
+        "link": "https://karozima.com/",
+        "images": {
+            "solution": "https://zimapeak.com/blog/wp-content/uploads/2024/12/karozima-solution.jpg",
+            "results": "https://zimapeak.com/blog/wp-content/uploads/2024/12/karozima-results.jpg"
+        }
     },
     {
-        "id": "b7cc707f-0a4e-4eb1-9b5d-801c4999cd9e",
-        "title": "ONJ Journey to Digital Excellence",
-        "summary": "In this case study, ZimaPeak Marketing partnered with a local nail salon to enhance its digital presence and drive business growth. By implementing a comprehensive strategy that combined paid media and email marketing, the salon experienced significant improvements",
-        "tags": "Paid Media, Email Marketing, Web Development",
-        "challenge": "A local nail salon, renowned for its top-notch services and trendy nail art designs, partnered with ZimaPeak Marketing to amplify its digital presence. Despite its reputation, the salon faced challenges such as:\n\nLimited online visibility, overshadowed by larger competitors in the area.\nInconsistent appointment bookings, especially during non-peak hours and seasons.\nLack of a cohesive email marketing strategy to engage with clients and promote special offers.",
-        "solution": "ZimaPeak Marketing devised a tailored strategy to address the nail salon's challenges and propel its digital growth. The strategy encompassed:\n\nPaid Media: Launching hyper-targeted PPC campaigns focusing on local search intent and demographic-specific social media ads to increase brand awareness and drive appointment bookings.\nEmail Marketing: Implementing a segmented email marketing approach to nurture leads, promote seasonal nail trends, and incentivize repeat business through loyalty rewards and referral programs.\nCollaboration with technology partners such as Google Ads, Facebook Ads, and Constant Contact facilitated seamless execution and optimization of the strategy.",
-        "outcome": "+30%,+25%,+76%",
-        "results": "The strategic initiatives led to significant improvements for the nail salon:\n\n45% Increase in Appointment Bookings\n75% Growth in Email Subscriber List\n10x ROAS on Local PPC Campaigns\nAdditionally, the salon experienced:\n\nHeightened brand visibility within the local community, resulting in increased walk-ins and word-of-mouth referrals.\nEnhanced client engagement and loyalty through personalized email campaigns featuring exclusive nail art tutorials, promotions, and birthday offers.\nLESSONS & FUTURE ENDEAVORS\nKey takeaways from the campaign include:\n\nThe importance of leveraging paid media and email marketing synergistically to drive traffic and conversions for local businesses.\nContinuous refinement of targeting parameters and ad creatives to optimize campaign performance and ROI.\n\nZimaPeak Marketing's collaboration with the nail salon illustrates the transformative impact of a holistic digital strategy. By strategically integrating paid media and email marketing efforts, the salon not only expanded its digital footprint but also fostered lasting connections with its clientele, driving business growth and success in the competitive beauty industry.",
-        "banner": "https://images.unsplash.com/photo-1585731601359-b5edfffbf629?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "client": "Nail ONJ",
-        "category": "beauty"
-    },
-    {
-        "id": "dc075e55-ef9d-4ee4-a6ca-c93f20af9d68",
-        "title": "TopLoop Journey to Digital Transformation",
-        "summary": "Elevating Digital Presence through Paid Media and Email Marketing",
-        "tags": "Paid Media, Email Marketing",
-        "challenge": "A local hair salon, known for its exceptional services and personalized approach, approached ZimaPeak Marketing seeking a digital facelift. Despite its loyal customer base, the salon struggled with:\n\nLimited online visibility, overshadowed by competitors in the area.\nIneffective advertising efforts, resulting in low appointment bookings.\nLack of an organized email marketing strategy to engage with existing and potential clients.",
-        "solution": "ZimaPeak Marketing crafted a tailored strategy to address the salon's challenges and elevate its digital presence. The strategy included:\n\nPaid Media: Launching targeted PPC campaigns focusing on local search intent and demographic-specific social media ads to increase brand awareness and drive appointment bookings.\nEmail Marketing: Implementing a segmented email marketing approach to nurture leads, promote seasonal promotions, and encourage repeat business through loyalty programs.\nCollaboration with technology partners such as Google Ads, Facebook Ads, and Mailchimp facilitated seamless execution and optimization of the strategy.",
-        "outcome": "+40%,+65%,+38%",
-        "results": "The strategic initiatives yielded significant results for the hair salon:\n\n40% Increase in Appointment Bookings\n60% Growth in Email Subscriber List\n8x ROAS on Local PPC Campaigns\nAdditionally, the salon experienced:\n\nHeightened brand visibility within the local community, resulting in increased foot traffic and referrals.\nEnhanced client engagement and loyalty through personalized email campaigns and exclusive offers.\nLESSONS & FUTURE ENDEAVORS\nKey takeaways from the campaign include:\n\nThe importance of leveraging paid media and email marketing in tandem to maximize reach and engagement.\nContinuous monitoring and optimization of campaigns to adapt to changing market dynamics and consumer behavior.\n\nZimaPeak Marketing's collaboration with the hair salon exemplifies the transformative power of a comprehensive digital strategy. By strategically integrating paid media and email marketing efforts, the salon not only expanded its digital footprint but also fostered lasting connections with its clientele, driving business growth and success in the competitive beauty industry.",
-        "banner": "https://images.unsplash.com/photo-1607008829749-c0f284a49fc4?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "client": "TopLoop Hair Salon",
-        "category": "beauty"
-    },
-    {
-        "id": "e8203e68-3909-49c3-b074-d09b30913457",
-        "title": "Beauty Wonderland: Unicorn's Journey to Digital Triumph",
-        "summary": "In this case study, ZimaPeak Marketing partnered with Unicorn, an online beauty shop, to enhance its digital presence and drive sales. Through a comprehensive strategy that combined paid media and email marketing, Unicorn achieved significant results",
-        "tags": "Paid Media, Email Marketing, Web Development, Social media Marketing",
-        "challenge": "Unicorn, an online shop specializing in beauty products, sought to elevate its digital presence and drive sales. Despite offering a wide range of high-quality products, the shop faced challenges such as:\n\nLimited online visibility, struggling to stand out in the competitive beauty industry.\nInconsistent sales growth, especially during off-peak seasons and promotions.\nLack of a cohesive email marketing strategy to engage with customers and drive repeat purchases.",
-        "solution": "ZimaPeak Marketing crafted a tailored strategy to address Unicorn's challenges and propel its digital growth. The strategy included:\n\nPaid Media: Launching highly targeted Facebook ad campaigns to increase brand awareness, drive traffic to the website, and promote special offers and new product launches.\nEmail Marketing: Implementing a segmented email marketing approach to nurture leads, promote seasonal beauty trends, and incentivize repeat purchases through personalized discounts and loyalty rewards.\nCollaboration with technology partners such as Facebook Ads and Mailchimp facilitated seamless execution and optimization of the strategy.",
-        "outcome": "+20%,+40%,+48%",
-        "results": "The strategic initiatives led to significant improvements for Unicorn:\n\n60% Increase in Online Sales\n80% Growth in Email Subscriber List\n12x ROAS on Facebook Ads\nAdditionally, Unicorn experienced:\n\nHeightened brand visibility and recognition within the beauty community, resulting in increased website traffic and customer engagement.\nImproved customer retention and loyalty through targeted email campaigns featuring exclusive promotions, product recommendations, and beauty tips.\nLESSONS & FUTURE ENDEAVORS\nKey takeaways from the campaign include:\n\nThe importance of leveraging paid media and email marketing synergistically to drive traffic, conversions, and customer retention for online shops.\nContinuous optimization of ad targeting, creative elements, and email content to maximize ROI and customer engagement.\n\nZimaPeak Marketing's collaboration with Unicorn exemplifies the transformative power of a comprehensive digital strategy. By strategically integrating paid media and email marketing efforts, Unicorn not only expanded its digital footprint but also fostered lasting connections with its customers, driving business growth and success in the competitive beauty industry.",
-        "banner": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "client": "Unicorn Online Shop",
-        "category": "beauty"
-    },
+        "id": "elba-clinic",
+        "title": "Elba Clinic's Instagram Growth Journey",
+        "client": "Elba Clinic",
+        "category": "ig",
+        "tags": ["ig"],
+        "services": ["Instagram Content Creation"],
+        "logo": "",
+        "banner": "https://zimapeak.com/blog/wp-content/uploads/2024/12/elbaclinic.jpg",
+        "summary": "Elba Clinic partnered with ZimaPeak Marketing to enhance their Instagram presence and grow their online community. Our Instagram content creation service helped them significantly increase their followers, engagement, and brand visibility.",
+        "challenge": "Elba Clinic was struggling to build a strong Instagram presence, with limited organic reach and follower engagement. Their Instagram account had only 1,000 followers, and they needed to find a way to increase brand awareness and drive more traffic to their clinic's services through social media.",
+        "solution": "We implemented a tailored Instagram content strategy for Elba Clinic, focusing on high-quality, engaging posts that resonated with their target audience. The approach included a mix of informative content, behind-the-scenes posts, customer testimonials, and special promotions. We also utilized Instagram Stories, Reels, and interactive features like polls and Q&As to boost engagement and attract new followers. Through regular posting and strategic use of relevant hashtags, Elba Clinic’s Instagram content gained traction quickly. Our team monitored performance and adjusted the content strategy to ensure continuous growth and engagement. Over the course of six months, we transformed their Instagram presence, resulting in substantial follower growth and increased interaction with potential clients.",
+        "results": "Elba Clinic saw a remarkable transformation in their Instagram following and engagement. Starting with just 1,000 followers, they experienced an impressive 500% growth, reaching 6,000 followers within six months. The clinic’s Instagram posts now consistently receive higher engagement rates, with an increase in likes, comments, and shares. Additionally, the clinic’s profile views and click-through rates to their website and booking page have significantly improved. This growth has not only increased brand visibility but also brought in new clients, boosting both in-person appointments and online inquiries.",
+        "growth": [
+            {
+                "Followers": "+500%"
+            },
+            {
+                "Engagement Rate": "+35%"
+            },
+            {
+                "Profile Views": "+1200%"
+            }
+        ],
+        "link": "https://elba-clinic.com/",
+        "images": {
+            "solution": "https://zimapeak.com/blog/wp-content/uploads/2024/12/calendarElba.jpeg",
+            "results": "https://zimapeak.com/blog/wp-content/uploads/2024/12/elba.jpg"
+        }
+    }
 ];
 
 export default caseStudiesData;

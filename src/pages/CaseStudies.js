@@ -4,7 +4,7 @@ import { ThemeContext } from '../ThemeContext';
 import { Link } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import caseStudiesData from '../data/casestudiesData';  // Import the static data
-import PageHeader from '../components/PageHeader'
+import PageHeader from '../components/PageHeader';
 
 const CaseStudies = () => {
     const { darkMode } = useContext(ThemeContext);
@@ -20,6 +20,24 @@ const CaseStudies = () => {
         }, 1000);
     }, []);
 
+    // Extract unique categories from the case studies
+    const categories = ['All', ...new Set(caseStudies.map(study => study.category))];
+
+    // Function to format category names (e.g. 'meta-ads' -> 'Meta Ads')
+    const formatCategory = (category) => {
+        if (category === 'web') {
+            return 'Web Development';
+        }
+        if (category === 'ig') {
+            return 'Instagram';
+        }
+        return category
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+
+    // Filter case studies based on the selected category
     const filteredCaseStudies = selectedCategory === 'All'
         ? caseStudies
         : caseStudies.filter(study => study.category === selectedCategory);
@@ -37,13 +55,13 @@ const CaseStudies = () => {
 
                     {/* Category Buttons */}
                     <div className="pb-6 flex flex-wrap justify-center gap-2">
-                        {['All', 'Google Ads', 'Meta Ads', 'SEO', 'Website Development', 'Content Creation'].map(category => (
+                        {categories.map(category => (
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
                                 className={`py-2 px-4 rounded ${darkMode ? 'bg-primary text-white' : 'bg-gray-200 text-black'} ${selectedCategory === category ? 'font-bold' : ''} hover:bg-primary hover:text-white transition duration-200`}
                             >
-                                {category}
+                                {formatCategory(category)}  {/* Display formatted category name */}
                             </button>
                         ))}
                     </div>
@@ -55,15 +73,12 @@ const CaseStudies = () => {
                     ) : (
                         <div className="pb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {filteredCaseStudies.map((caseStudy, index) => (
-                                <Link to={`/casestudy/${caseStudy.id}`} >
-                                    <div key={index} className={`flex flex-col justify-center items-center text-left rounded-2xl w-full p-3 ${darkMode ? 'bg-dark' : 'bg-gray-100 hover:bg-gray-200'} transition duration-300`}>
+                                <Link to={`/casestudy/${caseStudy.id}`} key={index}>
+                                    <div className={`flex flex-col justify-center items-center text-left rounded-2xl w-full p-3 ${darkMode ? 'bg-dark' : 'bg-gray-100 hover:bg-gray-200'} transition duration-300`}>
                                         <img src={caseStudy.banner} alt="zimapeak Case Study" className="w-full h-72 object-cover object-center rounded-xl" />
                                         <div className="px-4 py-4">
                                             <div className={`font-bold text-lg sm:text-xl mb-2 ${darkMode ? 'text-white' : 'text-dark'}`}>{caseStudy.title}</div>
                                             <p className={`text-sm sm:text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{caseStudy.summary.length > 100 ? caseStudy.summary.substring(0, 100) + '...' : caseStudy.summary}</p>
-                                        </div>
-                                        <div className="px-4 pb-4">
-
                                         </div>
                                     </div>
                                 </Link>

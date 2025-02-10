@@ -5,11 +5,14 @@ import TimePicker from './TimePicker';
 import Confirmation from './Confirmation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';  // Import axios for API calls
+import moment from 'moment-timezone';
 
 const BookingCard = () => {
     const { darkMode } = useContext(ThemeContext);
     const [errorMessage, setErrorMessage] = useState("");
     const [currentStep, setCurrentStep] = useState(1);  // Start from Step 1
+    const [loading, setLoading] = useState(false); // Add a loading state
+
     const [formData, setFormData] = useState({
         full_name: '',
         email: '',
@@ -34,19 +37,17 @@ const BookingCard = () => {
     };
 
     const createBooking = async () => {
+        setLoading(true); // Start loading spinner
         const { full_name, email, phone, website, appointmentDate, appointmentTime, additional_details } = formData;
-    
+
         // Convert appointmentTime to Date object
         const [hours, minutes] = appointmentTime.split(':');
         const startTime = new Date(`${appointmentDate}T${appointmentTime}:00`);
-    
-        // Calculate the end time by adding 1 hour to the start time
-        const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
 
-        // Create the event name with the full_name
+        const torontoTime = moment(startTime).tz('America/Toronto').format();
+        const endTime = moment(torontoTime).add(1, 'hour').format();
         const eventName = `Meeting with ${full_name}`;
-    
-        // Omit attendees if the service account cannot invite them, but still include the Google Meet link
+
         const bookingData = {
             full_name,
             email,
@@ -54,10 +55,10 @@ const BookingCard = () => {
             website,
             additional_details,
             appointmentDate,
-            appointmentTime: startTime.toISOString(), // Send start time as ISO string
-            startTime: startTime.toISOString(),
-            endTime: endTime.toISOString(),
-            summary: eventName,  // Set event name as "Meeting with full_name"
+            appointmentTime: torontoTime,
+            startTime: torontoTime,
+            endTime: endTime,
+            summary: eventName,
             conferenceData: {
                 createRequest: {
                     requestId: `${Date.now()}`,
@@ -70,14 +71,64 @@ const BookingCard = () => {
                 }
             }
         };
-    
+
         try {
+            // Create booking event
             const response = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/booking/create-event`, bookingData);
             console.log('Booking created:', response.data);
-            setCurrentStep(3); // Move to Confirmation step after successful booking
+
+            // Fetch IP address for lead data
+            const ipAddress = await getIpAddress();
+            const leadData = {
+                prefix: '',
+                fullName: full_name,
+                phone,
+                email,
+                website,
+                lists: [7],
+                forceUpdate: false,
+                status: 'subscribed',
+                contactType: 'lead',
+                source: window.location.href,
+                appointmentDate: moment(appointmentDate).tz('America/Toronto').format('YYYY-MM-DD'),
+                appointmentTime: moment(appointmentTime, 'HH:mm').tz('America/Toronto').format('HH:mm'),
+                ip: ipAddress
+            };
+
+            // Send lead data
+            const leadsResponse = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/leads`, leadData);
+            console.log('Lead data sent:', leadsResponse.data);
+
+            // Track Google Analytics event
+            if (window.gtag) {
+                const formattedDate = moment(appointmentDate).tz('America/Toronto').format('YYYY-MM-DD');
+                const formattedTime = moment(appointmentTime, 'HH:mm').tz('America/Toronto').format('HH:mm');
+
+                window.gtag('event', 'Appt_Book_form', {
+                    event_category: 'Leads',
+                    event_label: `${full_name} | ${formattedDate} ${formattedTime}`,
+                });
+
+                console.log('Google Analytics event tracked: Appt_Book_form');
+            }
+
+            setCurrentStep(3);  // Proceed to the confirmation step
         } catch (error) {
-            console.error('Error creating booking:', error);
+            console.error('Error creating booking or sending lead data:', error);
             setErrorMessage('Error creating appointment.');
+        } finally {
+            setLoading(false);  // Stop the spinner
+        }
+    };
+
+    // Function to get the IP address (on the client side, you can use an API to fetch it)
+    const getIpAddress = async () => {
+        try {
+            const response = await axios.get('https://api.ipify.org?format=json');
+            return response.data.ip;
+        } catch (error) {
+            console.error('Error fetching IP address:', error);
+            return '';  // Fallback if IP cannot be fetched
         }
     };
 
@@ -121,12 +172,23 @@ const BookingCard = () => {
     };
 
     const renderStepContent = () => {
-        if (currentStep === 1) {
-            return <BookingForm formData={formData} handleChange={handleChange} darkMode={darkMode} />;
-        } else if (currentStep === 2) {
-            return <TimePicker formData={formData} handleChange={handleChange} darkMode={darkMode} />;
-        } else if (currentStep === 3) {
-            return <Confirmation formData={formData} darkMode={darkMode} />;
+        if (loading) {
+            return (
+                <div className="flex justify-center items-center h-40">
+                    <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-b-4 border-primary"></div>
+                </div>
+            );
+        }
+    
+        switch (currentStep) {
+            case 1:
+                return <BookingForm formData={formData} handleChange={handleChange} darkMode={darkMode} />;
+            case 2:
+                return <TimePicker formData={formData} handleChange={handleChange} darkMode={darkMode} />;
+            case 3:
+                return <Confirmation formData={formData} darkMode={darkMode} />;
+            default:
+                return null;
         }
     };
 
@@ -152,7 +214,7 @@ const BookingCard = () => {
             {currentStep === 3 && (
                 <button
                     onClick={handleBackToHome}
-                    className={`px-4 py-2 rounded ${darkMode ? 'bg-primary text-white' : 'bg-primary text-white'}`}
+                    className={`px-4 py-2 my-2 rounded ${darkMode ? 'bg-primary text-white' : 'bg-primary text-white'}`}
                 >
                     Back to Homepage
                 </button>

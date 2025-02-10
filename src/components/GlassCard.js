@@ -5,7 +5,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const GlassCard = ({ icon, title }) => {
+const GlassCard = ({ icon, title, children }) => {
   // Function to generate date labels for the past 7 days
   const generateDateLabels = () => {
     const today = new Date();
@@ -93,11 +93,11 @@ const GlassCard = ({ icon, title }) => {
         <meta name="keywords" content="Google Ads, Facebook Ads, Paid Ads, Digital Marketing, Lead Generation, Zimapeak Marketing" />
         <link rel="canonical" href="https://www.zimapeak.com/marketing" />
       </Helmet>
-      <div className="bg-gray-100 p-6 rounded-xl flex flex-col items-center justify-center text-center w-full md:h-72">
+      <div className="bg-gray-100 hover:bg-gray-200 p-6 rounded-xl flex flex-col items-center justify-center text-center w-full md:h-72">
         <div className="mb-2 text-3xl">{icon}</div>
         <h3 className="font-bold mb-1 text-lg">{title}</h3>
-        <p className="text-xl mb-4">{`Leads generated today: ${lastValue}`}</p>
-        <div className="w-full h-32 relative">
+        <p className="text-xl">{`Leads generated today: ${lastValue}`}</p>
+        <div className="w-full h-40 relative">
           <Line data={chartData} options={options} className="w-full h-full" />
         </div>
       </div>

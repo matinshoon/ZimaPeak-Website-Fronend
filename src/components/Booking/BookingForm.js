@@ -61,7 +61,7 @@ const BookingForm = ({ formData, handleChange, darkMode }) => {
                     className="mr-2"
                 />
                 <label htmlFor="terms" className={`${darkMode ? 'text-white' : 'text-dark'}`}>
-                    I agree to the <a href="https://example.com/terms" target="_blank" rel="noopener noreferrer" className="underline">terms and conditions</a> and <a href="https://zimapeak.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">privacy policy</a>.
+                    I agree to the <a href="https://zimapeak.com/terms" target="_blank" rel="noopener noreferrer" className="underline">terms and conditions</a> and <a href="https://zimapeak.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">privacy policy</a>.
                 </label>
             </div>
         </div>

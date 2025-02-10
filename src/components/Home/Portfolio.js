@@ -32,7 +32,7 @@ const Portfolio = () => {
                                         onClick={() => window.location.href = '/casestudies'}
                                         className="text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
                                     >
-                                        All Projects
+                                        Case Studies
                                     </button>
                                 </span>
                             </span>
@@ -61,7 +61,7 @@ const Portfolio = () => {
                                         onClick={() => navigate(`/casestudy/${project.id}`)} // Navigate to the project details page
                                         className="flex items-center text-blue-500 mt-4 hover:text-blue-700"
                                     >
-                                        <span>View Project</span>
+                                        <span>View Case Study</span>
                                         <BsArrowUpRightCircle className="ml-2" />
                                     </button>
                                 </div>

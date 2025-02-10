@@ -10,18 +10,15 @@ const Register = () => {
     const { darkMode } = React.useContext(ThemeContext);
 
     return (
-        <div className={`h-screen flex items-center overflow-hidden justify-center ${darkMode ? 'bg-dark' : 'bg-white'}`}>
+        <div className={`md:h-screen flex items-center overflow-hidden justify-center ${darkMode ? 'bg-dark' : 'bg-white'}`}>
             <Helmet>
-                <title>Zimapeak - Signup</title>
+                <title>Zimapeak - Book an appointment</title>
             </Helmet>
-            <div className="flex w-full h-screen">
-                {/* Left Side: ClaimCard */}
-                {/* <div className="w-1/2 p-6"> */}
-                <div className="w-full md:w-1/2 flex md:block justify-center">
+            <div className="flex w-full md:h-screen">
+                <div className="w-full mt-20 md:mt-0 md:w-1/2 flex md:block justify-center">
 
                     <BookingCard />
                 </div>
-                {/* Right Side: ClaimBanner */}
                 <div className={`hidden md:block w-1/2 flex items-center justify-center ${darkMode ? 'bg-' : 'bg-white'}`}>
                     <RegisterBanner />
                 </div>

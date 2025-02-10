@@ -18,6 +18,7 @@ import { ThemeContext } from './ThemeContext';
 import ReactGA from 'react-ga4';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import WebLanding from './pages/WebLanding';
 
 function App() {
   const { darkMode } = useContext(ThemeContext);
@@ -56,9 +57,12 @@ function App() {
               <Route path="/booking" element={<Booking />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
+              {/* Must be updated */}
+              <Route path="/terms" element={<Privacy />} />
               <Route path="/careers" element={<Careers />} />
               <Route path="/casestudies" element={<CaseStudies />} />
               <Route path="/casestudy/:id" element={<CaseStudy />} />
+              <Route path="/Website" element={<WebLanding />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>

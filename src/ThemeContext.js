@@ -1,25 +1,13 @@
 // ThemeContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 const ThemeContext = createContext(); // Create a new context
 
 const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true); // Initial theme state
-
-  useEffect(() => {
-    // Get the current time
-    const currentTime = new Date().getHours();
-
-    // Set the theme based on the current time
-    if (currentTime >= 5 && currentTime < 18) {
-      setDarkMode(false);
-    } else {
-      setDarkMode(false); // Set dark mode for the rest of the time
-    }
-  }, []);
+  const [darkMode, setDarkMode] = useState(false); // Always white mode
 
   const toggleDarkMode = () => {
-    setDarkMode(prevDarkMode => !prevDarkMode); // Toggle theme state
+    setDarkMode(prevDarkMode => !prevDarkMode); // Toggle theme state, but you can keep it unused if you want it to stay white
   };
 
   return (

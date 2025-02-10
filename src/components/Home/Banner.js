@@ -20,9 +20,10 @@ const Banner = () => {
       {/* Header Section */}
       <div className="text-center">
         <h1 className="text-5xl sm:text-5xl md:text-8xl font-bold leading-snug">
-          TRANSFORM <span className="text-primary">→</span> GROWTH <br />
-          DRIVING <span className="text-primary">*</span> SUCCESS
+          Advertise <span className="text-primary">→</span> GROWTH <br />
+          As low as <span className="text-primary">*</span> <span className='text-secondary'>$199</span>!?
         </h1>
+        <p className='mt-4'>- to help all businesses grow -</p>
       </div>
 
       {/* Stats Section */}
@@ -111,7 +112,7 @@ const Banner = () => {
                 onClick={() => navigate('/booking')}
                 className="px-6 py-3 bg-white text-primary border border-primary rounded-full hover:bg-primary hover:text-white transition-transform transform hover:scale-105"
               >
-                Book Meeting
+                Book a Meeting
               </button>
             </div>
           </div>
@@ -122,15 +123,15 @@ const Banner = () => {
               : 'text-dark bg-gray-100'
               } p-6 rounded-3xl flex flex-col items-start justify-between w-full h-auto sm:h-[40vh] text-left`}
           >
-            <h2 className="text-4xl sm:text-7xl">40+</h2>
-            <p className="text-sm sm:text-base">
-              Elevated Brands through Social Media.
+            <h2 className="text-4xl sm:text-5xl">{new Date().toLocaleString('default', { month: 'long' })} Offer</h2>
+            <p className="text-sm sm:text-lg">
+              Meta Ads for <span className='text-primary'>Beauty Businesses</span> – Drive Results Starting at Just <span className='text-secondary'>$199</span>!
             </p>
             <button
-              onClick={() => window.location.href = '/services'}
+              onClick={() => window.location.href = '/booking'}
               className="mt-4 text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
             >
-              See how it works
+              Let's talk!
             </button>
           </div>
         </div>
@@ -140,7 +141,7 @@ const Banner = () => {
           className={`${darkMode ? 'border-4 border-gray-100' : 'text-dark bg-gray-100'} p-6 rounded-3xl flex flex-col justify-between w-full sm:w-[45%] lg:w-[30%] h-auto sm:h-[50vh]`}
         >
           <div className="text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-2">Our Services</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-2">Our Values</h2>
             <p className="text-sm sm:text-base mb-4">
               Transparency, innovation, and outstanding value.
             </p>

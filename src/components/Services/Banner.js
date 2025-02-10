@@ -117,7 +117,7 @@ const Banner = () => {
         <div className={`flex flex-col justify-around items-center ${darkMode ? 'text-white' : 'text-black'}`}>
             <div className="z-20 flex flex-col justify-center items-center">
                 <h1 className="text-dark text-3xl md:text-8xl font-bold text-center mt-20 mb-10">
-                    <span>Services</span><br /> that make a difference
+                Services <br /> that make a <span className='text-primary sm:text-dark font-black'>difference</span>
                 </h1>
                 <p className="text-2xl md:text-2xl text-center mb-6">Elevating Your Brand's Social Media Presence.</p>
                 <Link to="/booking">
