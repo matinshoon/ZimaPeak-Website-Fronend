@@ -57,7 +57,7 @@ const Samples = () => {
                                 <img
                                     src={work.image}
                                     alt={`Zimapeak - ${work.headline}`}
-                                    className="w-full h-[50vh] object-cover object-top rounded-lg"
+                                    className="w-full h-[50rem] object-cover object-top rounded-lg"
                                 />
                                 {/* Hover Content */}
                                 <div
@@ -65,7 +65,6 @@ const Samples = () => {
                                 >
                                     <h3 className="text-lg font-bold mb-2">{work.headline}</h3>
                                     <p className="text-sm mb-4 text-center px-4">{work.description}</p>
-                                    <p className="text-sm mb-4 text-center px-4">Click Learn More</p>
                                         
                                 </div>
                             </div>

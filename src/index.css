@@ -82,6 +82,26 @@ body {
   /* Smooth transition for background-color */
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-menu {
+  z-index: 1000;
+  background-color: #00000050;
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+
 .navbar.dark {
   backdrop-filter: blur(10px);
 }

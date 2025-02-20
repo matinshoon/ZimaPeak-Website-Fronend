@@ -29,8 +29,8 @@ const WebLanding = () => {
         <div className={`bg-tiles flex flex-col justify-center items-center text-center overflow-hidden ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <Helmet>
                 <title>Customize Web Design | Zimapeak Marketing</title>
-                <meta name="description" content="Affordable web design services starting at $199! Get professional, responsive websites designed to boost your online presence. Perfect for small businesses and startups. Contact us today!" />
-                <meta name="keywords" content="cheap web design, affordable web design, web design $199, small business websites, responsive web design, budget-friendly web design, professional web design service, startup websites, Google Ads web design" />
+                <meta name="description" content="Affordable web design services starting at $499! Get professional, responsive websites designed to boost your online presence. Perfect for small businesses and startups. Contact us today!" />
+                <meta name="keywords" content="cheap web design, affordable web design, web design $499, small business websites, responsive web design, budget-friendly web design, professional web design service, startup websites, Google Ads web design" />
                 <link rel="canonical" href="https://www.zimapeak.com/" />
                 <script type="application/ld+json">
                     {JSON.stringify({

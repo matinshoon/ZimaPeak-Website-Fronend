@@ -14,7 +14,8 @@ const BookingCard = () => {
     const [loading, setLoading] = useState(false); // Add a loading state
 
     const [formData, setFormData] = useState({
-        full_name: '',
+        first_name: '',
+        last_name: '',
         email: '',
         phone: '',
         website: '',
@@ -22,11 +23,25 @@ const BookingCard = () => {
         appointmentTime: '',
         terms: false,
         additional_details: '',
+        country_code: '+1', // Set a default country code
     });
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate();
 
     const handleNext = () => {
+        const { phone, country_code } = formData;
+        
+        // Log the country_code and phone to verify
+        console.log("Country Code:", country_code);
+        console.log("Phone:", phone);
+    
+        // Ensure that country_code has a plus sign (+) and the phone number is correctly formatted
+        const fullPhoneNumber = country_code && country_code !== 'undefined' 
+            ? `${country_code}${phone}`  // country_code should already include the "+"
+            : phone;
+    
+        console.log('Full Phone Number:', fullPhoneNumber); // Log the full phone number
+        
         if (validateInputs()) {
             if (currentStep === 2) {
                 createBooking(); // Call the API to create a booking
@@ -38,20 +53,24 @@ const BookingCard = () => {
 
     const createBooking = async () => {
         setLoading(true); // Start loading spinner
-        const { full_name, email, phone, website, appointmentDate, appointmentTime, additional_details } = formData;
-
+        const { first_name, last_name, email, phone, country_code, website, appointmentDate, appointmentTime, additional_details } = formData;
+    
+        // Ensure country_code exists and concatenate it with phone if available, otherwise use the phone number alone
+        const fullPhoneNumber = country_code && country_code !== 'undefined' ? `${country_code}${phone}` : phone;
+    
         // Convert appointmentTime to Date object
         const [hours, minutes] = appointmentTime.split(':');
         const startTime = new Date(`${appointmentDate}T${appointmentTime}:00`);
-
+    
         const torontoTime = moment(startTime).tz('America/Toronto').format();
         const endTime = moment(torontoTime).add(1, 'hour').format();
-        const eventName = `Meeting with ${full_name}`;
-
+        const eventName = `Meeting with ${first_name}`;
+    
         const bookingData = {
-            full_name,
+            first_name,
+            last_name,
             email,
-            phone,
+            phone: fullPhoneNumber,  // Use the full phone number here
             website,
             additional_details,
             appointmentDate,
@@ -71,18 +90,21 @@ const BookingCard = () => {
                 }
             }
         };
-
+    
         try {
             // Create booking event
             const response = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/booking/create-event`, bookingData);
             console.log('Booking created:', response.data);
-
-            // Fetch IP address for lead data
+    
+            // Fetch IP address and location data
             const ipAddress = await getIpAddress();
+            const locationData = await getLocationFromIP();  // Get location data from IP
+    
             const leadData = {
                 prefix: '',
-                fullName: full_name,
-                phone,
+                first_name: first_name,
+                last_name: last_name,
+                phone: fullPhoneNumber,  // Use the full phone number here
                 email,
                 website,
                 lists: [7],
@@ -92,32 +114,50 @@ const BookingCard = () => {
                 source: window.location.href,
                 appointmentDate: moment(appointmentDate).tz('America/Toronto').format('YYYY-MM-DD'),
                 appointmentTime: moment(appointmentTime, 'HH:mm').tz('America/Toronto').format('HH:mm'),
-                ip: ipAddress
+                ip: ipAddress,
+                country: locationData.country,
+                city: locationData.city,
+                state: locationData.state, // Add city and state to lead data
             };
-
+    
             // Send lead data
             const leadsResponse = await axios.post(`${process.env.REACT_APP_PUBLIC_BASE_URL}/leads`, leadData);
             console.log('Lead data sent:', leadsResponse.data);
-
+    
             // Track Google Analytics event
             if (window.gtag) {
                 const formattedDate = moment(appointmentDate).tz('America/Toronto').format('YYYY-MM-DD');
                 const formattedTime = moment(appointmentTime, 'HH:mm').tz('America/Toronto').format('HH:mm');
-
+    
                 window.gtag('event', 'Appt_Book_form', {
                     event_category: 'Leads',
-                    event_label: `${full_name} | ${formattedDate} ${formattedTime}`,
+                    event_label: `${first_name} | ${formattedDate} ${formattedTime}`,
                 });
-
+    
                 console.log('Google Analytics event tracked: Appt_Book_form');
             }
-
+    
             setCurrentStep(3);  // Proceed to the confirmation step
         } catch (error) {
             console.error('Error creating booking or sending lead data:', error);
             setErrorMessage('Error creating appointment.');
         } finally {
             setLoading(false);  // Stop the spinner
+        }
+    };
+    
+    // Function to get the location data from IP
+    const getLocationFromIP = async () => {
+        try {
+            const { data } = await axios.get('https://ipapi.co/json/'); // Use any reliable IP geolocation API
+            return {
+                country: data.country_name || '',
+                city: data.city || '',
+                state: data.region || '',
+            };
+        } catch (error) {
+            console.error('Error fetching location:', error);
+            return { country: '', city: '', state: '' };
         }
     };
 
@@ -133,11 +173,11 @@ const BookingCard = () => {
     };
 
     const validateInputs = () => {
-        const { full_name, email, phone, terms, appointmentDate, appointmentTime } = formData;
+        const { first_name, last_name, email, phone, terms, appointmentDate, appointmentTime } = formData;
 
         // Step 1: Check for required fields
         if (currentStep === 1) {
-            if (!full_name || !email || !phone || !terms) {
+            if (!first_name || !last_name || !email || !phone || !terms) {
                 setErrorMessage("All fields are required.");
                 return false;
             }
@@ -179,7 +219,7 @@ const BookingCard = () => {
                 </div>
             );
         }
-    
+
         switch (currentStep) {
             case 1:
                 return <BookingForm formData={formData} handleChange={handleChange} darkMode={darkMode} />;

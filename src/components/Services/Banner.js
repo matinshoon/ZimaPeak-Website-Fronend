@@ -55,7 +55,7 @@ const Banner = () => {
     const selectedTodo = todos.find(todo => format(todo.date, 'PPPP') === format(selectedDate, 'PPPP'));
 
     const todayDay = today.getDate();
-    const leadsGeneratedToday = Math.ceil(todayDay * 3.8);
+    const leadsGeneratedToday = Math.ceil(todayDay * 8.8);
 
     const leadsGeneratedData = Array.from({ length: 6 }, (_, index) => {
         if (index === 5) {

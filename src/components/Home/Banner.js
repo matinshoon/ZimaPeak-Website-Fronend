@@ -21,7 +21,7 @@ const Banner = () => {
       <div className="text-center">
         <h1 className="text-5xl sm:text-5xl md:text-8xl font-bold leading-snug">
           Advertise <span className="text-primary">→</span> GROWTH <br />
-          As low as <span className="text-primary">*</span> <span className='text-secondary'>$199</span>!?
+          As low as <span className="text-primary">*</span> <span className='text-secondary'>$499</span>!?
         </h1>
         <p className='mt-4'>- to help all businesses grow -</p>
       </div>
@@ -125,7 +125,7 @@ const Banner = () => {
           >
             <h2 className="text-4xl sm:text-5xl">{new Date().toLocaleString('default', { month: 'long' })} Offer</h2>
             <p className="text-sm sm:text-lg">
-              Meta Ads for <span className='text-primary'>Beauty Businesses</span> – Drive Results Starting at Just <span className='text-secondary'>$199</span>!
+              Meta Ads for <span className='text-primary'>Beauty and Construction Businesses</span> – Drive Results Starting at Just <span className='text-secondary'>$499</span>!
             </p>
             <button
               onClick={() => window.location.href = '/booking'}

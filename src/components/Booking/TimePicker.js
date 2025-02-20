@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import moment from 'moment-timezone';
 
 const TimePicker = ({ formData, handleChange, darkMode }) => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -8,6 +9,16 @@ const TimePicker = ({ formData, handleChange, darkMode }) => {
     const [busyTimes, setBusyTimes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    // User's local timezone
+    const userTimezone = moment.tz.guess(); // e.g., 'America/Los_Angeles' for PST
+
+    // EST available times (in EST timezone)
+    const availableTimesEST = [
+        "10:00", "11:00", "12:00", "13:00", "14:00",
+        "15:00", "16:00", "17:00", "18:00", "19:00",
+        "20:00", "21:00"
+    ];
 
     // Fetch available times whenever the selected date changes
     useEffect(() => {
@@ -32,19 +43,18 @@ const TimePicker = ({ formData, handleChange, darkMode }) => {
         }
     };
 
-    // Convert UTC time to local time
-    const convertToLocalTime = (utcTime) => {
-        const date = new Date(`1970-01-01T${utcTime}Z`);
-        const localTime = new Date(date.toLocaleString('en-US', { timeZone: 'America/Toronto' }));
-        const hours = localTime.getHours().toString().padStart(2, '0');
-        const minutes = localTime.getMinutes().toString().padStart(2, '0');
-        return `${hours}:${minutes}`;
+    // Convert EST times to user's local time zone (PST)
+    const convertToLocalTime = (estTime) => {
+        const estMoment = moment.tz(estTime, 'YYYY-MM-DD HH:mm', 'America/New_York'); // Convert from EST
+        const localTime = estMoment.clone().tz(userTimezone); // Convert to user timezone
+        return localTime.format('HH:mm'); // Return time in the user’s local format
     };
 
-    // Handle date and time changes
     const handleDateChange = (date) => {
-        setSelectedDate(date);
-        handleChange({ target: { name: "appointmentDate", value: date.toISOString().split('T')[0] } });
+        if (date) {
+            setSelectedDate(date);
+            handleChange({ target: { name: "appointmentDate", value: date.toISOString().split('T')[0] } });
+        }
     };
 
     const handleTimeChange = (time) => {
@@ -52,15 +62,19 @@ const TimePicker = ({ formData, handleChange, darkMode }) => {
         handleChange({ target: { name: "appointmentTime", value: time } });
     };
 
-    const times = [
-        "10:00", "11:00", "12:00", "13:00", "14:00", 
-        "15:00", "16:00", "17:00", "18:00", "19:00",
-        "20:00", "21:00"
-    ];
-
+    // Check if the time is available
     const isTimeAvailable = (time) => {
         return Array.isArray(busyTimes) && !busyTimes.includes(time);
     };
+
+    // Convert available EST times to user's local time (PST) for display
+    const localAvailableTimes = selectedDate 
+        ? availableTimesEST.map((time) => {
+            // Convert each EST time to the user's local time
+            const localTime = convertToLocalTime(`${selectedDate.toISOString().split('T')[0]} ${time}:00`);
+            return localTime;
+        })
+        : [];
 
     const minDate = new Date();
     minDate.setDate(minDate.getDate() + 1);
@@ -86,18 +100,18 @@ const TimePicker = ({ formData, handleChange, darkMode }) => {
                 <>
                     <label htmlFor="appointmentTime" className="mb-2 font-semibold">Available Times:</label>
                     <div className="grid grid-cols-4 gap-2 mb-4">
-                        {times.map((time, index) => (
+                        {localAvailableTimes.map((time, index) => (
                             <button
                                 key={index}
                                 type="button"
                                 onClick={() => handleTimeChange(time)}
                                 disabled={!selectedDate || !isTimeAvailable(time)}
                                 className={`w-full py-2 text-sm font-normal rounded-lg transition-all duration-200 ease-in-out focus:outline-none 
-                                    ${selectedTime === time 
-                                    ? 'bg-primary text-white shadow-lg transform scale-105'
-                                    : darkMode
-                                    ? 'bg-gray-700 text-white hover:bg-gray-600' 
-                                    : 'bg-white text-black border-2 border-gray-300 hover:bg-gray-100'} 
+                                    ${selectedTime === time
+                                        ? 'bg-primary text-white shadow-lg transform scale-105'
+                                        : darkMode
+                                            ? 'bg-gray-700 text-white hover:bg-gray-600'
+                                            : 'bg-white text-black border-2 border-gray-300 hover:bg-gray-100'} 
                                     ${(!selectedDate || !isTimeAvailable(time)) ? 'cursor-not-allowed opacity-50' : ''}`}
                             >
                                 {time}

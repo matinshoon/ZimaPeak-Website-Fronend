@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Home from './pages/Home';
 import Register from './pages/Register';
-import CaseStudies from './pages/CaseStudies';
-import CaseStudy from './pages/CaseStudy';
 import Services from './pages/Services';
 import ServiceDetails from './pages/ServiceDetails';
 import Booking from './pages/Booking';
@@ -22,11 +20,21 @@ import WebLanding from './pages/WebLanding';
 
 function App() {
   const { darkMode } = useContext(ThemeContext);
-  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+  // const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
   useEffect(() => {
     ReactGA.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID);
     ReactGA.send('pageview');
+  }, []);
+
+  useEffect(() => {
+    const handleRedirect = (path) => {
+      if (path === '/casestudies' || path.startsWith('/casestudy/')) {
+        window.location.href = 'https://zimapeak.com/blog/casestudies';
+      }
+    };
+
+    handleRedirect(window.location.pathname);
   }, []);
 
   return (
@@ -57,11 +65,8 @@ function App() {
               <Route path="/booking" element={<Booking />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
-              {/* Must be updated */}
               <Route path="/terms" element={<Privacy />} />
               <Route path="/careers" element={<Careers />} />
-              <Route path="/casestudies" element={<CaseStudies />} />
-              <Route path="/casestudy/:id" element={<CaseStudy />} />
               <Route path="/Website" element={<WebLanding />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
