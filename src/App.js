@@ -50,14 +50,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
-              <Route 
+              {/* <Route 
                 path="/register" 
                 element={
                   <Elements stripe={stripePromise}>
                     <Register />
                   </Elements>
                 } 
-              />
+              /> */}
               <Route path="/services" element={<Services />} />
               <Route path="/marketing" element={<Services />} />
               <Route path="/done" element={<Done />} />
