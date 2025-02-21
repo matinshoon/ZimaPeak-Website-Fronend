@@ -48,6 +48,7 @@ const Contact = () => {
     
         // Fetch user IP or any other additional data
         const userIp = await getUserIP(); // Replace with your IP-fetching method
+        const locationData = await getIpAndCountry(); // Get location data from IP
     
         const dataToCRM = {
             fullName: formData.fullName,
@@ -56,6 +57,9 @@ const Contact = () => {
             website: formData.existingWebsite,
             service: selected_option,
             ip: userIp,
+            country: locationData.country,
+            city: locationData.city,
+            state: locationData.state,
             lists: [5],
             status: "Pending",
             contactType: "lead",
@@ -108,6 +112,22 @@ const Contact = () => {
         } catch (error) {
             console.error("Error fetching IP address", error);
             return null; // Handle failure
+        }
+    };
+
+    // Function to fetch user's IP and country information
+    const getIpAndCountry = async () => {
+        try {
+            const response = await axios.get('https://ipapi.co/json/');
+            return {
+                ip: response.data.ip,
+                country: response.data.country_name,
+                city: response.data.city,
+                state: response.data.region,
+            };
+        } catch (error) {
+            console.error('Error fetching IP or country:', error);
+            return { ip: '', country: '', city: '', state: '' };
         }
     };
 

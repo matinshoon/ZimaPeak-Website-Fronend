@@ -17,10 +17,12 @@ function Footer() {
       return {
         ip: response.data.ip,
         country: response.data.country_name,
+        city: response.data.city,
+        state: response.data.region,
       };
     } catch (error) {
       console.error('Error fetching IP or country:', error);
-      return { ip: '', country: '' };
+      return { ip: '', country: '', city: '', state: '' };
     }
   };
 
@@ -28,12 +30,14 @@ function Footer() {
     e.preventDefault();
     setLoading(true); // Start the spinner
 
-    const { ip, country } = await getIpAndCountry();
+    const { ip, country, city, state } = await getIpAndCountry();
 
     const dataToCRM = {
       email: email,
       ip: ip,
       country: country,
+      city: city,
+      state: state,
       lists: [6],
       status: "subscribed",
       contactType: "lead",
