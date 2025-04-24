@@ -107,7 +107,7 @@ const Compare = () => {
 
             <div className="flex justify-center mt-8">
               <a
-                href="/booking"
+                href="/go/booking"
                 className={`relative flex justify-center bg-secondary transition duration-200 hover:text-white hover:bg-primary md:font-bold h-10 w-full md:w-auto md:h-auto px-4 md:py-3 md:px-6 rounded-full ${darkMode ? 'text-white hover:border-secondary hover:border-2' : 'text-white '}`}
               >
                 <div className="flex items-center justify-center space-x-2">

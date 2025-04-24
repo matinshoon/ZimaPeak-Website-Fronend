@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import BookingCard from '../components/Booking/BookingCard';
+import BookingCard from "../components/Booking/BookingCard";
 import RegisterBanner from '../components/Register/RegisterBanner';
 import { ThemeContext } from '../ThemeContext';
 

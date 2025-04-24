@@ -20,20 +20,20 @@ const WebsiteTypes = () => {
   };
 
   return (
-    <div className="max-w-7xl py-10 px-4 sm:px-6 lg:px-8">
-      <h2 className="text-center text-3xl font-bold mb-6">
+    <div className="max-w-7xl py-10 px-6 lg:px-8">
+      <h2 className="text-left sm:text-center text-3xl font-bold mb-6">
         Best Custom Web Development & Design Services
       </h2>
-      <p className="text-center text-lg mb-8">
+      <p className="text-left sm:text-center text-lg mb-8">
         Offering Outstanding Web Solutions to Help All Types of Businesses, Big or Small, Established or Startup, to Captivate Their Audiences.
       </p>
 
       {/* Button selection */}
-      <div className="flex flex-wrap justify-center space-x-6 mb-10">
+      <div className="flex flex-wrap justify-center space-x-0 sm:space-x-6 mb-10">
         {webTypes.map((website, index) => (
           <button
             key={index}
-            className={`flex items-center px-4 py-2 w-full sm:w-auto rounded-full border transition duration-300 mb-4 sm:mb-0 ${
+            className={`flex items-center px-6 py-3 w-full sm:w-auto rounded-full border transition duration-300 mb-4 sm:mb-0 ${
               selectedWebsite === website
                 ? 'bg-blue-100 text-primary'
                 : 'bg-white text-gray-400'
@@ -49,7 +49,7 @@ const WebsiteTypes = () => {
       {selectedWebsite && (
         <div className="p-8 rounded-lg flex flex-col sm:flex-row items-center justify-between space-y-6 sm:space-y-0">
           {/* Left side - text related to the selected website type */}
-          <div className="w-full sm:w-1/2 text-center sm:text-left">
+          <div className="w-full sm:w-1/2 text-left">
             <h3 className="text-2xl font-semibold mb-4">{selectedWebsite.title}</h3>
             <p className="text-lg mb-6">{selectedWebsite.desc}</p>
             <ul className="list-disc text-left pl-6 space-y-2">
@@ -61,7 +61,7 @@ const WebsiteTypes = () => {
             {/* "Get a Quote" button */}
             <button
               onClick={openModal}
-              className="mt-6 px-6 py-2 rounded-full bg-primary text-white font-semibold hover:bg-blue-700 transition duration-300"
+              className="mt-6 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-blue-700 transition duration-300"
             >
               Get a Quote
             </button>
@@ -84,7 +84,7 @@ const WebsiteTypes = () => {
           onClick={closeModal} // Close the modal when the overlay is clicked
         >
           <div
-            className=""
+            className="bg-white p-6 rounded-lg max-w-md w-full"
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
           >
             <button

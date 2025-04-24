@@ -10,9 +10,11 @@ const AppLayout = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {location.pathname === '/register' || location.pathname === '/booking' ? <RegisterNavbar /> : <Navbar className="" />}
+      {/* {location.pathname === '/register' || location.pathname === '/go/booking' ? <RegisterNavbar /> : <Navbar className="" />} */}
+      <Navbar />
       <main className="flex-grow">{children}</main>
-      {location.pathname !== '/register' && location.pathname !== '/booking' && <Footer />}
+      {/* {location.pathname !== '/register' && location.pathname !== '/go/booking' && <Footer />} */}
+      <Footer />
       <CookieConsent />
     </div>
   );

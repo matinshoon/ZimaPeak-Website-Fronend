@@ -117,7 +117,7 @@ const BookingCard = () => {
                 ip: ipAddress,
                 country: locationData.country,
                 city: locationData.city,
-                state: locationData.state, // Add city and state to lead data
+                state: locationData.state, 
             };
     
             // Send lead data
@@ -239,7 +239,7 @@ const BookingCard = () => {
     return (
         <div className={`flex flex-col justify-around h-full p-10 ${darkMode ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
             <div>
-                <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-dark'}`}>Booking Form</h2>
+                <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-dark'}`}>Schedule Now!</h2>
                 <p className={`text-xl mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Learn how to grow your business in every possible way!</p>
             </div>
             {renderStepContent()}

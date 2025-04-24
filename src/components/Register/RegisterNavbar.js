@@ -59,8 +59,8 @@ const Navbar = () => {
             </li>
             <li className='pb-6'>
               <a 
-                href="/casestudies" 
-                className={`text-4xl font-bold ${isActive('/casestudies') ? 'text-secondary' : ''} hover:text-gray-300 text-left w-full`} 
+                href="/go/casestudies" 
+                className={`text-4xl font-bold ${isActive('/go/casestudies') ? 'text-secondary' : ''} hover:text-gray-300 text-left w-full`} 
                 onClick={handleLinkClick}
               >
                 Case Studies
@@ -77,8 +77,8 @@ const Navbar = () => {
             </li>
             <li className='pb-6'>
               <a 
-                href="/blog" 
-                className={`text-4xl font-bold ${isActive('/blog') ? 'text-secondary' : ''} hover:text-gray-300 text-left w-full`} 
+                href="/go" 
+                className={`text-4xl font-bold ${isActive('/go') ? 'text-secondary' : ''} hover:text-gray-300 text-left w-full`} 
                 onClick={handleLinkClick}
               >
                 Blog

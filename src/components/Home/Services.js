@@ -49,7 +49,7 @@ const Services = () => {
                     {/* Image Section */}
                     <div className="flex-shrink-0 mb-4">
                         <img
-                            src="https://zimapeak.com/blog/wp-content/uploads/2024/12/googleadslogo.png" // Update with the correct image path
+                            src="https://zimapeak.com/go/wp-content/uploads/2024/12/googleadslogo.png" // Update with the correct image path
                             alt="Card Image"
                             className="w-[7rem] h-[7rem] object-contain rounded-t-xl"
                         />
@@ -114,7 +114,7 @@ const Services = () => {
                     {/* Image Section */}
                     <div className="flex-shrink-0 mb-4">
                         <img
-                            src="https://zimapeak.com/blog/wp-content/uploads/2024/12/metalogo.png" // Update with the correct image path
+                            src="https://zimapeak.com/go/wp-content/uploads/2024/12/metalogo.png" // Update with the correct image path
                             alt="Card Image"
                             className="w-[7rem] h-[7rem] object-contain rounded-t-xl"
                         />

@@ -122,7 +122,7 @@ const ServiceDetails = () => {
                     {/* Call to Action */}
                     <div className="mt-16">
                         <h2 className="text-lg sm:text-xl text-center font-semibold mb-6">{slang}</h2>
-                        <Link to="/booking">
+                        <Link to="/go/booking">
                             <button
                                 className={`w-full px-10 py-3 rounded-2xl text-white text-xl font-bold bg-primary ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300 hover:text-slate-900'}`}
                             >

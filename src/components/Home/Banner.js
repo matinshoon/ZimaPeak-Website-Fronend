@@ -19,11 +19,10 @@ const Banner = () => {
     <div id="banner" className="z-10 flex flex-col items-center px-4 sm:px-6 lg:px-8 space-y-10">
       {/* Header Section */}
       <div className="text-center">
-        <h1 className="text-5xl sm:text-5xl md:text-8xl font-bold leading-snug">
-          Advertise <span className="text-primary">→</span> GROWTH <br />
-          As low as <span className="text-primary">*</span> <span className='text-secondary'>$499</span>!?
+        <h1 className="text-5xl sm:text-5xl md:text-8xl leading-snug">
+        <span className="text- font-black">Builld & Grow </span><br /> your online <span className='text-secondary ' data-text="presence">presence</span>  <br />
         </h1>
-        <p className='mt-4'>- to help all businesses grow -</p>
+        <p className='mt-4'>- Strategic Websites & Marketing That Fuel Business Growth -</p>
       </div>
 
       {/* Stats Section */}
@@ -36,7 +35,7 @@ const Banner = () => {
             } p-6 m-4 rounded-3xl flex flex-col items-start justify-between w-[30%] h-[50vh] hidden md:flex`}
         >
           <div className="text-left space-y-6">
-            <h2 className="text-4xl sm:text-5xl font-bold">10+</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold">Case Studies</h2>
             <p className="text-sm sm:text-base">
               Your trusted partner for all things digital. Let’s transform your online presence.
             </p>
@@ -44,7 +43,7 @@ const Banner = () => {
           </div>
           <div className="w-full flex flex-col sm:flex-row justify-between items-end">
             <a
-              href="/casestudies"
+              href="/go/casestudies"
               className="flex items-center justify-center w-16 sm:w-20 h-16 sm:h-20 bg-secondary text-white rounded-full shadow-md hover:scale-105 transition-transform duration-300"
             >
               <svg
@@ -80,7 +79,7 @@ const Banner = () => {
                 ))}
               </div>
               <div className="text-xs sm:text-sm">
-                <p>Loved by +20 business owners</p>
+                <p>Loved by +100 business owners</p>
                 <div className="flex items-center space-x-1">
                   <p>5.0</p>
                   {[...Array(5)].map((_, i) => (
@@ -109,7 +108,7 @@ const Banner = () => {
                 Contact Us
               </button>
               <button
-                onClick={() => navigate('/booking')}
+                onClick={() => navigate('/go/booking')}
                 className="px-6 py-3 bg-white text-primary border border-primary rounded-full hover:bg-primary hover:text-white transition-transform transform hover:scale-105"
               >
                 Book a Meeting
@@ -125,13 +124,13 @@ const Banner = () => {
           >
             <h2 className="text-4xl sm:text-5xl">{new Date().toLocaleString('default', { month: 'long' })} Offer</h2>
             <p className="text-sm sm:text-lg">
-              Meta Ads for <span className='text-primary'>Beauty and Construction Businesses</span> – Drive Results Starting at Just <span className='text-secondary'>$499</span>!
+              Meta Ads for <span className='text-primary font-bold'>Beauty Businesses</span> – Drive Results Starting at Just <span className='text-secondary'>$600/M</span>!
             </p>
             <button
-              onClick={() => window.location.href = '/booking'}
+              onClick={() => window.location.href = '/go/booking'}
               className="mt-4 text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
             >
-              Let's talk!
+              Learn More!
             </button>
           </div>
         </div>
@@ -141,7 +140,7 @@ const Banner = () => {
           className={`${darkMode ? 'border-4 border-gray-100' : 'text-dark bg-gray-100'} p-6 rounded-3xl flex flex-col justify-between w-full sm:w-[45%] lg:w-[30%] h-auto sm:h-[50vh]`}
         >
           <div className="text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-2">Our Values</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-2">Our Services</h2>
             <p className="text-sm sm:text-base mb-4">
               Transparency, innovation, and outstanding value.
             </p>

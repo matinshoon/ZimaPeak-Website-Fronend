@@ -120,7 +120,7 @@ const Banner = () => {
                 Services <br /> that make a <span className='text-primary sm:text-dark font-black'>difference</span>
                 </h1>
                 <p className="text-2xl md:text-2xl text-center mb-6">Elevating Your Brand's Social Media Presence.</p>
-                <Link to="/booking">
+                <Link to="/go/booking">
                     <button className={`${darkMode ? 'glass' : 'bg-white text-black border-4 border-dark'} hover:bg-dark hover:text-white transition duration-200 px-6 py-3 rounded-full text-lg font-semibold`}>
                         Get Started!
                     </button>
@@ -178,7 +178,7 @@ const Banner = () => {
                     </div>
                     <div className="m-4 rounded-3xl items-center w-[20%] relative h-[50vh] flex flex-col justify-end">
                         <video src={Card5Vid} className="rounded-3xl w-full h-[50vh] object-cover" autoPlay loop muted playsInline />
-                        <Link to="/booking" className="w-full flex justify-center">
+                        <Link to="/go/booking" className="w-full flex justify-center">
                             <button className={`glass absolute -translate-y-20 text-white z-10 px-6 py-3 rounded-2xl text-lg font-semibold m-2`}>
                                 See how it all works
                             </button>

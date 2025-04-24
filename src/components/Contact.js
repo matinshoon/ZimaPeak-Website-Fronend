@@ -209,7 +209,7 @@ const Contact = () => {
                         {/* Form or Success Message Section */}
                         <div className="w-full lg:w-6/12 flex flex-col justify-between h-full">
                             {formVisible ? (
-                                <div className="bg-white p-6 rounded-xl flex items-center justify-center text-left w-full h-full">
+                                <div className="bg-white p-10 !h-auto rounded-xl flex items-center justify-center text-left w-full h-full">
                                     <form className="w-full" onSubmit={handleSubmit}>
                                         <div className="mb-4 flex flex-col lg:flex-row justify-between items-start gap-2">
                                             <div className="flex w-full flex-col">

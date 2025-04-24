@@ -68,7 +68,7 @@ const Home = () => {
             </Helmet>
             {popupVisible && <PopupBanner closePopup={closePopup} />}
 
-            <div className='md:h-2/3 mt-[20vh] md:mt-0 lg:pt-[15vh] flex flex-col justify-center'>
+            <div className='md:h-2/3 mt-[15vh] md:mt-0 lg:pt-[10vh] flex flex-col justify-center'>
                 <Banner />
             </div>
             <div className='md:p-0 md:h-1/3 mt-40 md:my-20 flex flex-col justify-end lg:justify-center'>

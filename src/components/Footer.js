@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { ThemeContext } from '../ThemeContext';
-import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 import logo from "../images/logo-primary.png"; // Ensure the correct path to your logo image
 
 function Footer() {
@@ -84,7 +85,7 @@ function Footer() {
           <img src={logo} className='h-32 mb-4' alt="Zimapeak Logo" /> {/* Increased size of the logo */}
           <div className="flex justify-center mb-4">
             <a href="https://x.com/zimapeak" className="mx-2 text-decoration-none">
-              <FaTwitter size={24} />
+              <FaXTwitter size={24} />
             </a>
             <a href="https://www.facebook.com/profile.php?id=61559690607181" className="mx-2 text-decoration-none">
               <FaFacebook size={24} />
@@ -102,7 +103,7 @@ function Footer() {
         <div className="flex flex-col items-center md:items-start mb-4 md:mb-0 md:w-1/2 lg:w-2/12">
           <a href="/about" className="text-decoration-none mb-2">About Us</a>
           <a href="/services" className="text-decoration-none mb-2">Services</a>
-          <a href="/booking" className="text-decoration-none mb-2">Contact</a>
+          <a href="/go/booking" className="text-decoration-none mb-2">Contact</a>
           <a href="/privacy" className="text-decoration-none mb-2">Privacy Policy</a>
         </div>
 

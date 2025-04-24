@@ -136,14 +136,16 @@ const WebsiteForm = () => {
             : formData.designRequirement || '',
         project_budget: formData.budget || '',
         objectives: formData.websiteObjective.join(', ') || '',
-        first_name: formData.firstName,
-        last_name: formData.lastName,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
         phone: formData.phone || '',
         email: formData.email || '',
         tags: ['website-ad'],
         country: locationData.country,
         city: locationData.city,
         state: locationData.state,
+        status: 'subscribed',
+        lists: [5],
       };
 
       // Send lead data to the endpoint
@@ -163,7 +165,7 @@ const WebsiteForm = () => {
           event_label: `${formData.fullName} | ${formData.websiteType}`,
           event_callback: () => {
             console.log('Google Analytics event tracked: Ad_Lead');
-            window.location = 'https://zimapeak.com/website';
+            // Remove the window.location assignment
           },
           event_timeout: 2000,
         });
@@ -205,7 +207,7 @@ const WebsiteForm = () => {
                 You can book a free meeting with our team to go over your project details.
               </p>
               <a
-                href="/booking"
+                href="/go/booking"
                 className="bg-primary text-white py-2 px-6 rounded-full hover:bg-primary-dark transition duration-300"
               >
                 Book a Free Meeting
@@ -374,27 +376,27 @@ const WebsiteForm = () => {
                         <label className="block text-sm font-medium">First Name</label>
                         <input
                           type="text"
-                          name="firstName"
-                          value={formData.firstName}
+                          name="first_name"
+                          value={formData.first_name}
                           onChange={handleInputChange}
-                          className={`w-full border rounded-full p-3 ${errors.firstName ? 'border-red-500' : ''}`}
+                          className={`w-full border rounded-full p-3 ${errors.first_name ? 'border-red-500' : ''}`}
                           placeholder="Enter your first name"
                           required
                         />
-                        {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName}</p>}
+                        {errors.first_name && <p className="text-red-500 text-sm">{errors.first_name}</p>}
                       </div>
                       <div className="mb-4 w-full">
                         <label className="block text-sm font-medium">Last Name</label>
                         <input
                           type="text"
-                          name="lastName"
-                          value={formData.lastName}
+                          name="last_name"
+                          value={formData.last_name}
                           onChange={handleInputChange}
-                          className={`w-full border rounded-full p-3 ${errors.lastName ? 'border-red-500' : ''}`}
+                          className={`w-full border rounded-full p-3 ${errors.last_name ? 'border-red-500' : ''}`}
                           placeholder="Enter your last name"
                           required
                         />
-                        {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName}</p>}
+                        {errors.last_name && <p className="text-red-500 text-sm">{errors.last_name}</p>}
                       </div>
                     </div>
 

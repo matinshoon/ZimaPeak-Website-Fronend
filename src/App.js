@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Home from './pages/Home';
-import Register from './pages/Register';
+// import Register from './pages/Register';
 import Services from './pages/Services';
 import ServiceDetails from './pages/ServiceDetails';
-import Booking from './pages/Booking';
+// import Booking from './pages/Booking';
 import About from './pages/About';
 import Careers from './pages/Careers';
 import Privacy from './pages/Privacy';
@@ -14,9 +14,9 @@ import NotFound from './pages/NotFound';
 import AppLayout from './AppLayout';
 import { ThemeContext } from './ThemeContext';
 import ReactGA from 'react-ga4';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import WebLanding from './pages/WebLanding';
+// import { loadStripe } from '@stripe/stripe-js';
+// import { Elements } from '@stripe/react-stripe-js';
+// import WebLanding from './pages/WebLanding';
 
 function App() {
   const { darkMode } = useContext(ThemeContext);
@@ -28,13 +28,27 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const handleRedirect = (path) => {
-      if (path === '/casestudies' || path.startsWith('/casestudy/')) {
-        window.location.href = 'https://zimapeak.com/blog/casestudies';
-      }
-    };
+    const path = window.location.pathname;
+  
+    // Redirect old /blog/... links to /go/...
+    if (path.startsWith('/blog/')) {
+      const newPath = path.replace('/blog/', '/go/');
+      window.location.replace(newPath);
+    }
+  
+    // Keep your existing case studies redirect
+    if (path === '/casestudies' || path.startsWith('/casestudy/')) {
+      window.location.href = 'https://zimapeak.com/go/casestudies';
+    }
 
-    handleRedirect(window.location.pathname);
+    if (path === '/booking' || path.startsWith('/booking/')) {
+      window.location.href = 'https://zimapeak.com/go/booking';
+    }
+
+    if (path === '/website' || path.startsWith('/website/')) {
+      window.location.href = 'https://zimapeak.com/go/website';
+    }
+    
   }, []);
 
   return (
@@ -62,12 +76,12 @@ function App() {
               <Route path="/marketing" element={<Services />} />
               <Route path="/done" element={<Done />} />
               <Route path="/services/:serviceName" element={<ServiceDetails />} />
-              <Route path="/booking" element={<Booking />} />
+              {/* <Route path="/booking" element={<Booking />} /> */}
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Privacy />} />
               <Route path="/careers" element={<Careers />} />
-              <Route path="/Website" element={<WebLanding />} />
+              {/* <Route path="/Website" element={<WebLanding />} /> */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>

@@ -87,7 +87,7 @@ const Banner = () => {
           </div>
           <div className="w-full flex flex-col sm:flex-row justify-between items-end">
             <a
-              href="/casestudies"
+              href="/go/casestudies"
               className="flex items-center justify-center w-16 sm:w-20 h-16 sm:h-20 bg-secondary text-white rounded-full shadow-md hover:scale-105 transition-transform duration-300"
             >
               <svg
@@ -152,7 +152,7 @@ const Banner = () => {
                 Contact Us
               </button>
               <button
-                onClick={() => navigate('/booking')}
+                onClick={() => navigate('/go/booking')}
                 className="px-6 py-3 bg-white text-primary border border-primary rounded-full hover:bg-primary hover:text-white transition-transform transform hover:scale-105"
               >
                 Book Meeting

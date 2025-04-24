@@ -12,7 +12,7 @@ const Portfolio = () => {
     useEffect(() => {
         const fetchCaseStudies = async () => {
             try {
-                const response = await axios.get('https://zimapeak.com/blog/wp-json/wp/v2/case-study');
+                const response = await axios.get('https://zimapeak.com/go/wp-json/wp/v2/case-study');
                 const shuffledProjects = response.data.sort(() => 0.5 - Math.random()).slice(0, 3);
                 const formattedProjects = shuffledProjects.map(project => ({
                     id: project.id,
@@ -48,7 +48,7 @@ const Portfolio = () => {
                             <span className="flex justify-center mt-4 p-2 bg-blue-100 rounded-full">
                                 <span className="justify-center p-2 bg-blue-200 rounded-full">
                                     <button
-                                        onClick={() => window.location.href = '/blog/casestudies/'}
+                                        onClick={() => window.location.href = '/go/casestudies/'}
                                         className="text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
                                     >
                                         Case Studies
