@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import RegisterNavbar from './components/Register/RegisterNavbar';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 

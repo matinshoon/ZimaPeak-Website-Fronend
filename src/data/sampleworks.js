@@ -1,7 +1,7 @@
 const sampleWorks = [
     {
         id: 1,
-        image: require('../images/thumbnails/demodex-cillin.com_.jpg'),
+        image: require('../images/thumbnails/demodex-cillin.com_.png'),
         headline: 'demodex-cillin.com',
         description: '',
     },
@@ -13,13 +13,13 @@ const sampleWorks = [
     },
     {
         id: 3,
-        image: require('../images/thumbnails/easybidhub.com_.jpg'),
+        image: require('../images/thumbnails/easybidhub.com_.png'),
         headline: 'easybidhub.com',
         description: '',
     },
     {
         id: 4,
-        image: require('../images/thumbnails/focusroadside.ca_.jpg'),
+        image: require('../images/thumbnails/focusroadside.ca_.png'),
         headline: 'focusroadside.ca',
         description: '',
     },
@@ -63,6 +63,42 @@ const sampleWorks = [
         id: 11,
         image: require('../images/thumbnails/zimapeak.com_.jpg'),
         headline: 'zimapeak.com',
+        description: '',
+    },
+    {
+        id: 12,
+        image: require('../images/thumbnails/BoldWall.png'),
+        headline: 'BoldWall',
+        description: '',
+    },
+    {
+        id: 13,
+        image: require('../images/thumbnails/Fdaesthetic.png'),
+        headline: 'Fdaesthetic',
+        description: '',
+    },
+    {
+        id: 14,
+        image: require('../images/thumbnails/Golden Cover.png'),
+        headline: 'Golden Cover',
+        description: '',
+    },
+    {
+        id: 15,
+        image: require('../images/thumbnails/Lady Glam.png'),
+        headline: 'Lady Glam',
+        description: '',
+    },
+    {
+        id: 16,
+        image: require('../images/thumbnails/MrTinter.png'),
+        headline: 'MrTinter',
+        description: '',
+    },
+    {
+        id: 17,
+        image: require('../images/thumbnails/RugBotic.png'),
+        headline: 'RugBotic',
         description: '',
     },
 ];
