@@ -94,10 +94,8 @@
 // export default CaseStudies;
 
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const CaseStudies = () => {
-  const navigate = useNavigate();
 
   useEffect(() => {
     window.location.href = 'https://zimapeak.com/go/go/casestudies';

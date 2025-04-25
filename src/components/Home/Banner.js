@@ -5,14 +5,12 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 
 const Banner = () => {
   const { darkMode } = useContext(ThemeContext);
-  const navigate = useNavigate();
 
   const services = [
     { name: 'Google Ads', link: '/services' },
     { name: 'Meta Ads', link: '/services' },
     { name: 'Website Development', link: '/services' },
     { name: 'SEO', link: '/services' },
-    { name: 'Content Creation', link: '/services' },
   ];
 
   return (

@@ -8,7 +8,6 @@ const Navbar = () => {
   const { darkMode } = useContext(ThemeContext); // Access darkMode state from ThemeContext
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation(); // Get current route
 
   useEffect(() => {

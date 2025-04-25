@@ -6,7 +6,6 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Careers from './pages/Careers';
 import Privacy from './pages/Privacy';
-import Done from './pages/Done';
 import NotFound from './pages/NotFound';
 import AppLayout from './AppLayout';
 import { ThemeContext } from './ThemeContext';
@@ -61,7 +60,6 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/services" element={<Services />} />
               <Route path="/marketing" element={<Services />} />
-              <Route path="/done" element={<Done />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Privacy />} />

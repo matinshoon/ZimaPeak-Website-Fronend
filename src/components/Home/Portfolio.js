@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../ThemeContext';
-import { useNavigate } from 'react-router-dom';
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import axios from 'axios';
 
 const Portfolio = () => {
     const { darkMode } = useContext(ThemeContext);
-    const navigate = useNavigate();
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {

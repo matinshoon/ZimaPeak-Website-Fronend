@@ -1,12 +1,8 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext';
-import { useNavigate } from 'react-router-dom';
-import { BsArrowUpRightCircle } from "react-icons/bs";
-import { Link } from 'react-router-dom';
 
 const Services = () => {
     const { darkMode } = useContext(ThemeContext);
-    const navigate = useNavigate();
 
     return (
         <div id="banner" className="z-10 px-4 sm:px-6 lg:px-8 bg-gray-100">
@@ -67,13 +63,12 @@ const Services = () => {
 
                     {/* Button Section */}
                     <div className="text-center mt-4">
-                        <Link to="https://zimapeak.com/go/google-ads">
-                            <button
-                                className="py-2 px-6 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-200"
-                            >
-                                Learn More
-                            </button>
-                        </Link>
+                        <a
+                            href="https://zimapeak.com/go/google-ads"
+                            className="py-2 px-6 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-200"
+                        >
+                            Learn More
+                        </a>
                     </div>
                 </div>
 
@@ -132,13 +127,12 @@ const Services = () => {
 
                     {/* Button Section */}
                     <div className="text-center mt-4">
-                        <Link to="https://zimapeak.com/go/meta-ads">
-                            <button
-                                className="py-2 px-6 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-200"
-                            >
-                                Learn More
-                            </button>
-                        </Link>
+                        <a
+                            href="https://zimapeak.com/go/meta-ads"
+                            className="py-2 px-6 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-200"
+                        >
+                            Learn More
+                        </a>
                     </div>
                 </div>
             </div>

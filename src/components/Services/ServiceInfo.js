@@ -34,13 +34,12 @@ const ServiceInfo = () => {
                             <div className='flex'>
                                 <span className="relative flex items-center justify-center mt-4 space-x-1 p-2 bg-blue-100 rounded-full">
                                     <span className="justify-center space-x-1 p-2 bg-blue-200 rounded-full">
-                                        <Link to={service.link}>
-                                            <button
-                                                className="text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
-                                            >
-                                                Learn More
-                                            </button>
-                                        </Link>
+                                        <a
+                                            href={service.link}
+                                            className="text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
+                                        >
+                                            Learn More
+                                        </a>
                                     </span>
                                 </span>
                             </div>
