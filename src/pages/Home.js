@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ThemeContext } from '../ThemeContext';
 import Banner from '../components/Home/Banner';
-import BlackFriday from '../components/Home/BlackFriday';
 import Portfolio from '../components/Home/Portfolio';
 import Testimonial from '../components/Home/Testimonial';
 import LogoSlider from '../components/Home/LogoSlider';

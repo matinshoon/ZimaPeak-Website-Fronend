@@ -3,7 +3,7 @@
 // import { ThemeContext } from '../ThemeContext';
 // import { Link } from 'react-router-dom';
 // import { ClipLoader } from 'react-spinners';
-// import caseStudiesData from '../data/go/casestudiesData';  // Import the static data
+// import caseStudiesData from '../datahttps://zimapeak.com/go/casestudiesData';  // Import the static data
 // import PageHeader from '../components/PageHeader';
 
 // const CaseStudies = () => {
@@ -49,7 +49,7 @@
 //                     <Helmet>
 //                         <title>Case Studies | Zimapeak Marketing</title>
 //                         <meta name="description" content="Explore our case studies showcasing successful digital marketing campaigns, web development projects, and SEO strategies. Learn how we helped clients achieve their business goals." />
-//                         <link rel="canonical" href="https://www.zimapeak.com/go/casestudies" />
+//                         <link rel="canonical" href="https://www.zimapeak.comhttps://zimapeak.com/go/casestudies" />
 //                     </Helmet>
 //                     <PageHeader />
 

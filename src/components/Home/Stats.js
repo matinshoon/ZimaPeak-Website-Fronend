@@ -11,13 +11,13 @@ const Stats = () => {
             id: 1,
             icon: <FaFacebook aria-label="Facebook Ads - Marketing Agency" />,
             title: 'Facebook Ads',
-            link: '/services/meta-ads' // Add URL for each card 
+            link: 'https://zimapeak.com/go/meta-ads' // Add URL for each card 
         },
         {
             id: 2,
             icon: <FaGoogle aria-label="Google Ads - Marketing Agency" />,
             title: 'Google Ads',
-            link: '/services/google-ads' // Add URL for each card 
+            link: 'https://zimapeak.com/go/google-ads' // Add URL for each card 
         },
     ];
 

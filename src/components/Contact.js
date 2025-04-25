@@ -77,7 +77,6 @@ const Contact = () => {
     
             // Check for success based on the response message
             if (leadsResponse.data.message === "Contact successfully updated in FluentCRM") {
-                console.log("Lead submitted successfully:", leadsResponse.data);
     
                 // Google Analytics Event
                 if (window.gtag) {

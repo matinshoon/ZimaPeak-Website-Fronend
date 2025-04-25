@@ -43,7 +43,7 @@ const Banner = () => {
           </div>
           <div className="w-full flex flex-col sm:flex-row justify-between items-end">
             <a
-              href="/go/casestudies"
+              href="https://zimapeak.com/go/casestudies"
               className="flex items-center justify-center w-16 sm:w-20 h-16 sm:h-20 bg-secondary text-white rounded-full shadow-md hover:scale-105 transition-transform duration-300"
             >
               <svg
@@ -108,7 +108,7 @@ const Banner = () => {
                 Contact Us
               </button>
               <button
-                onClick={() => navigate('/go/booking')}
+              onClick={() => window.location.href = 'https://zimapeak.com/go/booking'}
                 className="px-6 py-3 bg-white text-primary border border-primary rounded-full hover:bg-primary hover:text-white transition-transform transform hover:scale-105"
               >
                 Book a Meeting
@@ -127,7 +127,7 @@ const Banner = () => {
               Meta Ads for <span className='text-primary font-bold'>Beauty Businesses</span> – Drive Results Starting at Just <span className='text-secondary'>$600/M</span>!
             </p>
             <button
-              onClick={() => window.location.href = '/go/booking'}
+              onClick={() => window.location.href = 'https://zimapeak.com/go/booking'}
               className="mt-4 text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
             >
               Learn More!

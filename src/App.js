@@ -12,7 +12,6 @@ import AppLayout from './AppLayout';
 import { ThemeContext } from './ThemeContext';
 import ReactGA from 'react-ga4';
 
-
 function App() {
   const { darkMode } = useContext(ThemeContext);
 
@@ -23,26 +22,28 @@ function App() {
 
   useEffect(() => {
     const path = window.location.pathname;
-  
-    // Redirect old /blog/... links to /go/...
+
+    // Redirect old /blog/... links to https://zimapeak.com/go/...
     if (path.startsWith('/blog/')) {
-      const newPath = path.replace('/blog/', '/go/');
+      const newPath = path.replace('/blog/', 'https://zimapeak.com/go/');
       window.location.replace(newPath);
     }
-  
+
+    // Redirect https://zimapeak.com/go/... links to the external URL
+    if (path.startsWith('https://zimapeak.com/go/')) {
+      const externalUrl = `https://zimapeak.com${path}`;
+      window.location.href = externalUrl;
+    }
+
     // Keep your existing case studies redirect
     if (path === '/casestudies' || path.startsWith('/casestudy/')) {
       window.location.href = 'https://zimapeak.com/go/casestudies';
     }
 
-    if (path === '/booking' || path.startsWith('/booking/')) {
-      window.location.href = 'https://zimapeak.com/go/booking';
-    }
 
     if (path === '/website' || path.startsWith('/website/')) {
       window.location.href = 'https://zimapeak.com/go/website';
     }
-    
   }, []);
 
   return (

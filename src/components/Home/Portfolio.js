@@ -48,7 +48,7 @@ const Portfolio = () => {
                             <span className="flex justify-center mt-4 p-2 bg-blue-100 rounded-full">
                                 <span className="justify-center p-2 bg-blue-200 rounded-full">
                                     <button
-                                        onClick={() => window.location.href = '/go/casestudies/'}
+                                        onClick={() => window.location.href = 'https://zimapeak.com/go/casestudies/'}
                                         className="text-sm font-bold py-2 px-4 bg-primary text-white rounded-full hover:bg-blue-600 transition"
                                     >
                                         Case Studies

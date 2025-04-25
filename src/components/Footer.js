@@ -103,7 +103,7 @@ function Footer() {
         <div className="flex flex-col items-center md:items-start mb-4 md:mb-0 md:w-1/2 lg:w-2/12">
           <a href="/about" className="text-decoration-none mb-2">About Us</a>
           <a href="/services" className="text-decoration-none mb-2">Services</a>
-          <a href="/go/booking" className="text-decoration-none mb-2">Contact</a>
+          <a href="https://zimapeak.com/go/booking" className="text-decoration-none mb-2">Contact</a>
           <a href="/privacy" className="text-decoration-none mb-2">Privacy Policy</a>
         </div>
 

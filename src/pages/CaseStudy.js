@@ -100,7 +100,7 @@
 //                 {/* Call to Action */}
 //                 <div className="mt-16">
 //                     <h2 className="text-xl text-center font-semibold mb-6">{slang}</h2>
-//                     <Link to="/go/booking">
+//                     <Link to="https://zimapeak.com/go/booking">
 //                         <button
 //                             className={`w-full py-3 rounded-2xl text-white text-xl font-bold bg-primary ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300 hover:text-slate-900'}`}
 //                         >
@@ -130,7 +130,7 @@
 //                                         <h2 className="text-lg sm:text-xl font-semibold">{relatedCase.title}</h2>
 //                                         <p className="text-sm text-gray-500 mt-2 line-clamp-3">{relatedCase.summary}</p>
 //                                         <button
-//                                             onClick={() => navigate(`/go/casestudies/${relatedCase.id}`)}
+//                                             onClick={() => navigate(`https://zimapeak.com/go/casestudies/${relatedCase.id}`)}
 //                                             className="flex items-center text-blue-500 mt-4 hover:text-blue-700"
 //                                         >
 //                                             <span>View Case Study</span>

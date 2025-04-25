@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   const handleGetStartedClick = () => {
-    navigate('/go/booking');
+    window.location.href = 'https://zimapeak.com/go/booking';
   };
 
   // Function to check if link is active
@@ -75,8 +75,8 @@ const Navbar = () => {
             </li>
             <li>
               <a 
-                href="/go/casestudies" 
-                className={`${isActive('/go/casestudies') ? 'font-bold' : ''} hover:${darkMode ? 'text-gray-300' : 'text-secondary'} transition duration-200`} 
+                href="https://zimapeak.com/go/casestudies" 
+                className={`${isActive('https://zimapeak.com/go/casestudies') ? 'font-bold' : ''} hover:${darkMode ? 'text-gray-300' : 'text-secondary'} transition duration-200`} 
                 onClick={handleLinkClick}
               >
                 Case Studies
@@ -135,8 +135,8 @@ const Navbar = () => {
             </li>
             <li className='pb-6'>
               <a 
-                href="/go/casestudies" 
-                className={`text-4xl font-bold ${isActive('/go/casestudies') ? 'text-secondary' : ''} hover:text-gray-300 text-left w-full`} 
+                href="https://zimapeak.com/go/casestudies" 
+                className={`text-4xl font-bold ${isActive('https://zimapeak.com/go/casestudies') ? 'text-secondary' : ''} hover:text-gray-300 text-left w-full`} 
                 onClick={handleLinkClick}
               >
                 Case Studies

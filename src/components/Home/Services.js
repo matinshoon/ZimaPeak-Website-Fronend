@@ -67,7 +67,7 @@ const Services = () => {
 
                     {/* Button Section */}
                     <div className="text-center mt-4">
-                        <Link to="/services/google-ads">
+                        <Link to="https://zimapeak.com/go/google-ads">
                             <button
                                 className="py-2 px-6 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-200"
                             >
@@ -132,7 +132,7 @@ const Services = () => {
 
                     {/* Button Section */}
                     <div className="text-center mt-4">
-                        <Link to="/services/meta-ads">
+                        <Link to="https://zimapeak.com/go/meta-ads">
                             <button
                                 className="py-2 px-6 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-200"
                             >
